@@ -5,11 +5,11 @@ using domain.enums;
 
 namespace infrastructure.persistence.entities
 {
-    public class ProductEntity : IBase
+    public class ProductEntity : BaseEntity ,IBase
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public string Slug { get; set; } = string.Empty;
+        public string? Slug { get; set; }
         public string? Description { get; set; }
         public decimal Price { get; set; }
         public decimal? SalePrice { get; set; }

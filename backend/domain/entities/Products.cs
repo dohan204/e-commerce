@@ -26,8 +26,9 @@ namespace domain.entities
         public int? ReviewCount { get; private set; }
         public StatusProduct Status { get; set; } = StatusProduct.active;
         public DateTime Created_At {get; set;}
-        protected Products() {}
-        private Products(
+        private Products() {}
+        // public Products() {}
+        public Products(
             string name, 
             string description, 
             decimal price, 
@@ -70,6 +71,26 @@ namespace domain.entities
         )
         {
             return new Products(name, description, price, stock, categoryid);
+        }
+        public void Update(string? name
+        , string? description, 
+        decimal? price, 
+        int? stock, 
+        int? sold,
+        decimal? salePrice, 
+        int? categoryId, 
+        string? images,int? reviewCount, decimal? avgRating )
+        {
+            this.Name = name;
+            this.Description = description;
+            this.Price = (decimal)price;
+            this.Stock = (int)stock;
+            this.CategoryId = (int)categoryId;
+            this.Images = images;
+            this.Sold = sold;
+            this.SalePrice =salePrice;
+            this.ReviewCount = reviewCount;
+            this.AvgRating = avgRating;
         }
         private string GenerateSlug(string input)
         {
