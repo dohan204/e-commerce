@@ -1,4 +1,5 @@
 using application.cases.Dtos;
+using application.exceptions;
 using domain.entities;
 using domain.interfaces;
 
@@ -14,10 +15,9 @@ namespace application.cases.Queries.Users
         {
             var user =  await _userRepository.GetByIdAsync(userId);
             if (user is null) 
-                throw new ApplicationException("User Not found");
+                throw new NotFoundException("User Not found");
             return new UserResponse
             (
-
                 user.UserId,
                 user.Name,
                 user.Email,

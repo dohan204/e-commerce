@@ -16,6 +16,8 @@ using Microsoft.IdentityModel.Tokens;
 using domain.interfaces;
 using infrastructure.repositories;
 using application.interfaces;
+using Serilog;
+using infrastructure.automappers.ProductMapping;
 
 namespace infrastructure.dependency
 {
@@ -23,6 +25,12 @@ namespace infrastructure.dependency
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Console()
+                .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Hour)
+                .CreateLogger();
+            services.AddAutoMapper(typeof(ProductMapperProfile));
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
