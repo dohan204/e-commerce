@@ -17,3 +17,4 @@ D:\TMDT\backend\infrastructure\obj\Debug\net9.0\refint\infrastructure.dll
 D:\TMDT\backend\infrastructure\obj\Debug\net9.0\infrastructure.pdb
 D:\TMDT\backend\infrastructure\obj\Debug\net9.0\infrastructure.genruntimeconfig.cache
 D:\TMDT\backend\infrastructure\obj\Debug\net9.0\ref\infrastructure.dll
+D:\TMDT\backend\infrastructure\obj\Debug\net9.0\infrastructure.sourcelink.json

@@ -1,4 +1,6 @@
-﻿using domain.entities;
+﻿using application.interfaces;
+using AutoMapper.Internal.Mappers;
+using domain.entities;
 using infrastructure.identity;
 using infrastructure.persistence.entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -7,6 +9,7 @@ using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +22,15 @@ namespace infrastructure.dependency
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            foreach(var entityType in builder.Model.GetEntityTypes())
+            {
+                if(typeof(ISoftDelete).IsAssignableFrom(entityType.ClrType))
+                {
+                    builder.Entity(entityType.ClrType)
+                        .HasQueryFilter(ConvertFilterExpression(entityType.ClrType));
+                }
+            }
             // thay thế schema mặc định
             builder.HasDefaultSchema("MySchema");
 
@@ -115,7 +127,7 @@ namespace infrastructure.dependency
                 .HasMany(o => o.Items)
                 .WithOne(o => o.Orders)
                 .HasForeignKey(o => o.OrderId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<OrderEntity>()
                 .Property(o => o.TotalAmount)
@@ -170,6 +182,19 @@ namespace infrastructure.dependency
                 entry.Entity.UpdatedAt = now;
             }
             return base.SaveChangesAsync(cancellationToken);
+        }
+        private static LambdaExpression ConvertFilterExpression(Type type)
+        {
+            // tạo tham số x cho biểu thức x => 
+            var paramter = Expression.Parameter(type, "x");
+
+            // tạo biểu thức so sánh x.IsDeleted == false
+            var property = Expression.Property(paramter, nameof(ISoftDelete.IsDeleted));
+            var falseConstant = Expression.Constant(false);
+            var comparion = Expression.Equal(property, falseConstant);
+
+            // trả về biểu thức hoàn chình 
+            return Expression.Lambda(comparion, paramter);
         }
     }
 }

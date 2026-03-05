@@ -2,6 +2,6 @@ namespace application.interfaces
 {
     public interface ICurrentUser
     {
-        Guid UserId {get;}
+        string UserId {get;}
     }
 }

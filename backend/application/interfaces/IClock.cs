@@ -1,7 +1,8 @@
 namespace application.interfaces
 {
-    public interface IClock
+    public interface ISoftDelete
     {
-        DateTime Now { get; }
+        bool IsDeleted {get; set;}
+        DateTimeOffset? DeleteAt { get; set; }
     }
 }

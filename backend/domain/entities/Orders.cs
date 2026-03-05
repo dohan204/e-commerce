@@ -26,15 +26,16 @@ namespace domain.entities
 
         public DateTime CreatedAt { get; private set; }
         public DateTime? CompletedAt { get; private set; }
+        public ICollection<OrderItem> Items {get; set;}
 
-        protected Order() { }
+        private Order() { }
 
-        private Order(
+        public Order(
             Guid userId,
             decimal totalAmount,
             decimal discountAmount,
             decimal shippingFee,
-            PaymentMethod paymentMethod,
+            // string paymentMethod,
             string shippingAddress,
             int? voucherId,
             string? note
@@ -45,21 +46,21 @@ namespace domain.entities
 
             if (totalAmount <= 0)
                 throw new DomainException("Total amount invalid");
-
+            OrderCode = Guid.NewGuid().ToString().Substring(0, 10);
             UserId = userId;
             TotalAmount = totalAmount;
             DiscountAmount = discountAmount;
             ShippingFee = shippingFee;
             FinalAmount = totalAmount - discountAmount + shippingFee;
 
-            PaymentMethod = paymentMethod;
+            PaymentMethod = PaymentMethod.cod;
             PaymentStatus = PaymentStatus.unpaid;
             Status = StatusOrder.pending;
 
             ShippingAddress = shippingAddress;
             VoucherId = voucherId;
             Note = note;
-
+            Items = new List<OrderItem>();
             CreatedAt = DateTime.UtcNow;
         }
 
@@ -68,7 +69,7 @@ namespace domain.entities
             decimal totalAmount,
             decimal discountAmount,
             decimal shippingFee,
-            PaymentMethod paymentMethod,
+            // PaymentMethod paymentMethod,
             string shippingAddress,
             int? voucherId,
             string? note
@@ -79,13 +80,41 @@ namespace domain.entities
                 totalAmount,
                 discountAmount,
                 shippingFee,
-                paymentMethod,
+                // paymentMethod,
                 shippingAddress,
                 voucherId,
                 note
             );
         }
+        public void Update(decimal discountAmount, decimal shippingFee, string shippingAddress, string? note)
+        {
+            DiscountAmount = discountAmount;
+            ShippingFee = shippingFee;
+            ShippingAddress = shippingAddress;
+            Note = note;
+        }
+        public void UpdateOrderItem(int productId, int quantity, decimal price)
+        {
+            var item = OrderItem.Update(productId, quantity, price);
+            Items.Add(item);
 
+            RecalculateAmount();
+        }
+        public void AddOrderItem(int productId, int quantity, decimal price)
+        {
+            var item = OrderItem.Create(this.Id, productId, quantity, price);
+            Items.Add(item);
+
+            RecalculateAmount();
+        }
+        
+
+        public void RecalculateAmount()
+        {
+            var subTotal = Items.Sum(x => x.Quantity * x.Price);
+            TotalAmount = subTotal;
+            FinalAmount = subTotal - DiscountAmount + ShippingFee;
+        }
         public void MarkPaymentSuccess()
         {
             PaymentStatus = PaymentStatus.paid;
@@ -117,6 +146,10 @@ namespace domain.entities
                 throw new DomainException("Cannot cancel delivered order");
 
             Status = StatusOrder.cancelled;
+        }
+        public void ReturnFinal(decimal totalAmount)
+        {
+            FinalAmount = totalAmount;
         }
     }
 }

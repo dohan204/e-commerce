@@ -25,6 +25,7 @@ namespace api.Controllers
             return Ok(product);
         }
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAll()
         {
             var query = new GetProductsQuery();

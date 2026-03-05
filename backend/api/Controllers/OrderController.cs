@@ -1,0 +1,62 @@
+using application.cases.Commands.Orders;
+using application.cases.Queries.Orders;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
+
+namespace api.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class OrderController : ControllerBase
+    {
+        private readonly CreateOrderHandler _handler;
+        private readonly IMediator _mediator;
+        public OrderController(CreateOrderHandler handler, IMediator mediator)
+        {
+            _handler = handler;
+            _mediator = mediator;
+        }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var order = await _mediator.Send(new GetOrderQuery {Id = id});
+            return Ok(order);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var orders = await _mediator.Send(new GetOrdersQuery());
+            if(!orders.Any())
+                return Ok(new
+                {
+                    message = "list empty",
+                    data = orders
+                });
+            return Ok(orders);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Created([FromBody] CreateOrderCommand command)
+        {
+            await _mediator.Send(command);
+            return StatusCode(StatusCodes.Status201Created, new
+            {
+                status = 201,
+                message = "Created successfuly"
+            });
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var command = new DeleteOrderCommand { Id = id};
+            await _mediator.Send(command);
+            return NoContent();
+        }
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateOrderCommand command)
+        {
+            await _mediator.Send(command);
+            return NoContent();
+        }
+    }
+}

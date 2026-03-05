@@ -9,3 +9,4 @@ D:\TMDT\backend\domain\obj\Debug\net9.0\domain.dll
 D:\TMDT\backend\domain\obj\Debug\net9.0\refint\domain.dll
 D:\TMDT\backend\domain\obj\Debug\net9.0\domain.pdb
 D:\TMDT\backend\domain\obj\Debug\net9.0\ref\domain.dll
+D:\TMDT\backend\domain\obj\Debug\net9.0\domain.sourcelink.json

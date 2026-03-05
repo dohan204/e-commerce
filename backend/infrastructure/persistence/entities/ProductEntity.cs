@@ -1,11 +1,12 @@
 using System.Linq.Expressions;
 using System.Net.Http.Headers;
+using application.interfaces;
 using domain.entities;
 using domain.enums;
 
 namespace infrastructure.persistence.entities
 {
-    public class ProductEntity : BaseEntity ,IBase
+    public class ProductEntity : IBase, ISoftDelete
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
@@ -25,6 +26,8 @@ namespace infrastructure.persistence.entities
         public StatusProduct Status { get; set; } = StatusProduct.active;
         public ICollection<ReviewEntity> Reviews { get; set; } = new List<ReviewEntity>();
         public ICollection<OrderItemEntity> OrderItems { get; set; } = new List<OrderItemEntity>();
-        public ICollection<CartEntity> Carts { get; set;} = new List<CartEntity>();
+        public ICollection<CartEntity> Carts { get; set; } = new List<CartEntity>();
+        public bool IsDeleted { get; set; }
+        public DateTimeOffset? DeleteAt { get; set; }
     }
 }
