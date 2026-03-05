@@ -5,7 +5,7 @@ using domain.enums;
 
 namespace infrastructure.persistence.entities
 {
-    public class ProductEntity : BaseEntity ,IBase
+    public class ProductEntity : IBase
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;

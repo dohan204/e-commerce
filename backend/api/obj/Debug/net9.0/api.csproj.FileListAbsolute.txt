@@ -186,3 +186,11 @@ D:\TMDT\backend\api\bin\Debug\net9.0\MimeKit.dll
 D:\TMDT\backend\api\bin\Debug\net9.0\MediatR.dll
 D:\TMDT\backend\api\bin\Debug\net9.0\MediatR.Contracts.dll
 D:\TMDT\backend\api\bin\Debug\net9.0\System.Diagnostics.DiagnosticSource.dll
+D:\TMDT\backend\api\bin\Debug\net9.0\AutoMapper.dll
+D:\TMDT\backend\api\bin\Debug\net9.0\FluentValidation.dll
+D:\TMDT\backend\api\bin\Debug\net9.0\FluentValidation.AspNetCore.dll
+D:\TMDT\backend\api\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll
+D:\TMDT\backend\api\bin\Debug\net9.0\Serilog.dll
+D:\TMDT\backend\api\bin\Debug\net9.0\Serilog.Sinks.Console.dll
+D:\TMDT\backend\api\bin\Debug\net9.0\Serilog.Sinks.File.dll
+D:\TMDT\backend\api\obj\Debug\net9.0\api.sourcelink.json
