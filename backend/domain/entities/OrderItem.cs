@@ -12,8 +12,8 @@ namespace domain.entities
 
         private OrderItem(int orderId, int productId, int quantity, decimal price)
         {
-            if(orderId <= 0) 
-                throw new DomainException("Invalid Order");
+            // if(orderId <= 0) 
+            //     throw new DomainException("Invalid Order");
 
             if(productId <= 0) 
                 throw new DomainException("Invalid Product");
@@ -29,7 +29,16 @@ namespace domain.entities
             Quantity = quantity;
             Price = price;
         } 
+        public OrderItem(int Productid, int quantity, decimal price)
+        {
+            ProductId = Productid;
+            Quantity = quantity;
+            Price = price;
+        }
         public static OrderItem Create(int orderId, int productId, int quantity, decimal price)
         => new OrderItem(orderId, productId, quantity, price);
+
+        public static OrderItem Update(int productId, int quantity, decimal price) 
+        => new OrderItem(productId, quantity, price);
     }
 }

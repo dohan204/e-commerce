@@ -7,20 +7,27 @@ namespace domain.entities
         public string Name { get; private set; }
         public string? Images { get; private set; }
         public string Slug { get; private set; }
-        protected Category() { }
-        public Category(string name, string? images, string slug)
+        // protected Category() { }
+        public Category(string name, string? images)
         {
             if (string.IsNullOrEmpty(name))
                 throw new DomainException("Name is required");
             Name = name.Trim();
             Images = images;
-            Slug = GenerateSlug(slug);
+            Slug = GenerateSlug(name);
         }
+        public Category() {}
         public void Rename(string newName)
         {
             if(string.IsNullOrEmpty(newName))
                 throw new DomainException("Name isvalid");
             Name = newName;
+        }
+        public void Update(string name, string? image)
+        {
+            Name = name.ToUpperInvariant();
+            Images = image;
+            Slug = GenerateSlug(name.ToLower());
         }
         public string GenerateSlug(string slug)
         {

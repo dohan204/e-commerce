@@ -1,9 +1,10 @@
+using application.interfaces;
 using domain.enums;
 using infrastructure.identity;
 
 namespace infrastructure.persistence.entities
 {
-    public class OrderEntity : IBase
+    public class OrderEntity : IBase, ISoftDelete
     {
         public int Id { get; set;}
         public string OrderCode {get; set;} = string.Empty;
@@ -22,6 +23,8 @@ namespace infrastructure.persistence.entities
         public string? Note {get; set;}
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
+        public bool IsDeleted {get; set;}
+        public DateTimeOffset? DeleteAt {get; set;}
         public ICollection<OrderItemEntity> Items {get; set;} = new List<OrderItemEntity>();
     }
 }
