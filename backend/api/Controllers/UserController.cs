@@ -3,7 +3,7 @@ using application.cases.Queries.Users;
 using domain.entities;
 using Microsoft.AspNetCore.Mvc;
 
-namespace api.Controller
+namespace api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

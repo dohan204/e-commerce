@@ -17,7 +17,9 @@ using domain.interfaces;
 using infrastructure.repositories;
 using application.interfaces;
 using Serilog;
-using infrastructure.automappers.ProductMapping;
+using domain.entities;
+using application.cases.Dtos;
+using infrastructure.persistence.entities;
 
 namespace infrastructure.dependency
 {
@@ -30,7 +32,28 @@ namespace infrastructure.dependency
                 .WriteTo.Console()
                 .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Hour)
                 .CreateLogger();
-            services.AddAutoMapper(typeof(ProductMapperProfile));
+
+            services.AddAutoMapper(cfg =>
+            {
+                cfg.CreateMap<CategoryEntity, CategoryViewDto>();
+                cfg.CreateMap<Category, CategoryEntity>();
+                cfg.CreateMap<CategoryEntity, Category>();
+
+                cfg.CreateMap<Products, ProductEntity>();
+                cfg.CreateMap<ProductEntity, Products>();
+                cfg.CreateMap<Products, ProductViewDto>();
+
+                cfg.CreateMap<Order, OrderEntity>();
+                cfg.CreateMap<OrderEntity, Order>();
+                cfg.CreateMap<OrderItem, OrderItemEntity>();
+                cfg.CreateMap<OrderItemEntity, OrderItem>();
+
+                cfg.CreateMap<CartEntity, Cart>();
+                cfg.CreateMap<Cart, CartEntity>();
+                cfg.CreateMap<CartItemEntity, CartItem>();
+                cfg.CreateMap<CartItem, CartItemEntity>();
+                
+            });
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
@@ -44,7 +67,7 @@ namespace infrastructure.dependency
 
             services.Configure<IdentityOptions>(options =>
             {
-                options.Password.RequireNonAlphanumeric = true; 
+                options.Password.RequireNonAlphanumeric = true;
                 options.Password.RequiredLength = 6;
                 options.Password.RequireLowercase = true;
                 options.Password.RequireUppercase = true;
@@ -58,8 +81,8 @@ namespace infrastructure.dependency
                 {
                     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;   
-                }   
+                    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                }
             ).AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
@@ -78,8 +101,13 @@ namespace infrastructure.dependency
                 configuration.GetSection("EmailSettings")
             );
             services.AddScoped<IEmailSender, EmailSender>();
+            services.AddScoped<ICurrentUser, CurrentUser>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<ICartRepository, CartRepository>();
             services.AddScoped<JwtToken>();
             services.AddSingleton<EmailSender>();
             return services;

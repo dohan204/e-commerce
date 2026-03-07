@@ -1,0 +1,14 @@
+2026-03-07 16:01:44.393 +07:00 [INF] Cap nhat so luong trong gio hang
+2026-03-07 16:01:44.676 +07:00 [INF] thanh cong
+2026-03-07 16:01:51.544 +07:00 [INF] Cap nhat so luong trong gio hang
+2026-03-07 16:01:51.569 +07:00 [INF] thanh cong
+2026-03-07 16:02:18.707 +07:00 [INF] Cap nhat so luong trong gio hang
+2026-03-07 16:02:18.727 +07:00 [INF] thanh cong
+2026-03-07 16:02:21.655 +07:00 [INF] Cap nhat so luong trong gio hang
+2026-03-07 16:02:21.671 +07:00 [INF] thanh cong
+2026-03-07 16:13:44.571 +07:00 [INF] Cap nhat so luong trong gio hang
+2026-03-07 16:13:44.816 +07:00 [INF] thanh cong
+2026-03-07 16:22:49.844 +07:00 [INF] Cap nhat so luong trong gio hang
+2026-03-07 16:22:49.892 +07:00 [INF] thanh cong
+2026-03-07 16:38:02.378 +07:00 [INF] Cap nhat so luong trong gio hang
+2026-03-07 16:38:02.569 +07:00 [INF] thanh cong

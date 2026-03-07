@@ -1,0 +1,8 @@
+2026-03-05 22:05:57.920 +07:00 [INF] Start create Order with User and product
+2026-03-05 22:07:29.354 +07:00 [INF] Start create Order with User and product
+2026-03-05 22:10:07.071 +07:00 [INF] Start create Order with User and product
+2026-03-05 22:10:49.275 +07:00 [INF] Infor user: 50886117-d8ea-4f10-a51d-0ed5c118ecbf
+2026-03-05 22:10:49.279 +07:00 [INF] Start create Order with User and product
+2026-03-05 22:15:55.825 +07:00 [INF] Infor user: 50886117-d8ea-4f10-a51d-0ed5c118ecbf
+2026-03-05 22:15:55.912 +07:00 [INF] Start create Order with User and product
+2026-03-05 22:15:58.840 +07:00 [INF] Start insert Db,
