@@ -47,6 +47,11 @@ namespace infrastructure.dependency
                 cfg.CreateMap<OrderEntity, Order>();
                 cfg.CreateMap<OrderItem, OrderItemEntity>();
                 cfg.CreateMap<OrderItemEntity, OrderItem>();
+
+                cfg.CreateMap<CartEntity, Cart>();
+                cfg.CreateMap<Cart, CartEntity>();
+                cfg.CreateMap<CartItemEntity, CartItem>();
+                cfg.CreateMap<CartItem, CartItemEntity>();
                 
             });
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -102,6 +107,7 @@ namespace infrastructure.dependency
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<ICartRepository, CartRepository>();
             services.AddScoped<JwtToken>();
             services.AddSingleton<EmailSender>();
             return services;

@@ -26,7 +26,7 @@ namespace infrastructure.persistence.entities
         public StatusProduct Status { get; set; } = StatusProduct.active;
         public ICollection<ReviewEntity> Reviews { get; set; } = new List<ReviewEntity>();
         public ICollection<OrderItemEntity> OrderItems { get; set; } = new List<OrderItemEntity>();
-        public ICollection<CartEntity> Carts { get; set; } = new List<CartEntity>();
+        public ICollection<CartItemEntity> Carts { get; set; } = new List<CartItemEntity>();
         public bool IsDeleted { get; set; }
         public DateTimeOffset? DeleteAt { get; set; }
     }

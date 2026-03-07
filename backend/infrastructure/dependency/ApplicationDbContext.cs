@@ -75,6 +75,23 @@ namespace infrastructure.dependency
                 .Property(e => e.Email)
                 .IsRequired();
             
+            builder.Entity<CartEntity>()
+                .ToTable("Carts");
+
+            builder.Entity<CartEntity>()
+                .HasMany(e => e.Items)
+                .WithOne(e => e.Cart)
+                .HasForeignKey(e => e.CartId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+
+            builder.Entity<CartItemEntity>()
+                .ToTable("CartItems");
+
+            builder.Entity<CartItemEntity>()
+                .Property(e => e.UnitPrice)
+                .HasColumnType("decimal(15,2)");
+            
             // builder.Entity<AppUser>()
             // .Property(e => e.FirstName)
 
@@ -90,12 +107,6 @@ namespace infrastructure.dependency
                 .HasMany(r => r.OrderItems)
                 .WithOne(p => p.Products)
                 .HasForeignKey(p => p.ProductId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            builder.Entity<ProductEntity>()
-                .HasMany(c => c.Carts)
-                .WithOne(p => p.ProductEntity)
-                .HasForeignKey(e => e.ProductId)
                 .OnDelete(DeleteBehavior.Restrict);
             builder.Entity<ProductEntity>()
                 .Property(p => p.Price)
@@ -166,6 +177,7 @@ namespace infrastructure.dependency
         public DbSet<AddressEntity> Addresses=> Set<AddressEntity>();
         public DbSet<VoucherEntity> Vouchers=> Set<VoucherEntity>();
         public DbSet<CartEntity> Carts=> Set<CartEntity>();
+        public DbSet<CartItemEntity> CartItems=> Set<CartItemEntity>();
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             // lấy ra day sách được eeff theo dõi 

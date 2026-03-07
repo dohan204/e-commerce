@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using domain.entities;
 using infrastructure.identity;
 
 namespace infrastructure.persistence.entities
@@ -11,11 +12,7 @@ namespace infrastructure.persistence.entities
         [ForeignKey(nameof(UserId))]
         public Guid UserId { get; set; }
         public AppUser AppUser{ get; set; }
-        [ForeignKey(nameof(ProductId))]
-        public int ProductId {get; set;}
-        public ProductEntity ProductEntity{ get; set; }
-
-        public int Quantity {get; set;}
+        public virtual ICollection<CartItemEntity> Items { get; set; } = new List<CartItemEntity>();
         public DateTime CreatedAt {get; set;}
         public DateTime? UpdatedAt {get; set;}
     }

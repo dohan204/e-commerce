@@ -10,6 +10,7 @@ using application.cases.Commands.Product;
 using application.cases.Commands.Categories;
 using application.cases.Commands.Orders;
 using Serilog;
+using application.cases.Queries.Carts;
 namespace application
 {
     public static class AppDependency
@@ -23,6 +24,9 @@ namespace application
                 .CreateLogger();
            // services.AddFluentValidationAutoValidation();
             services.AddValidatorsFromAssembly(typeof(CreateProductCommand).Assembly);
+            services.AddScoped<GetCartByUserHandler>();
+            services.AddScoped<CreateCategoryHandler>();
+            services.AddScoped<CreateCategoryHandler>();
             services.AddScoped<CreateOrderHandler>();
             services.AddScoped<CreateCategoryHandler>();
             services.AddScoped<RemoveUserHandler>();

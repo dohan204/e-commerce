@@ -304,12 +304,6 @@ namespace infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -318,11 +312,44 @@ namespace infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
-
                     b.HasIndex("UserId");
 
                     b.ToTable("Carts", "MySchema");
+                });
+
+            modelBuilder.Entity("infrastructure.persistence.entities.CartItemEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset?>("DeleteAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(15,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("CartItems", "MySchema");
                 });
 
             modelBuilder.Entity("infrastructure.persistence.entities.CategoryEntity", b =>
@@ -665,12 +692,6 @@ namespace infrastructure.Migrations
 
             modelBuilder.Entity("infrastructure.persistence.entities.CartEntity", b =>
                 {
-                    b.HasOne("infrastructure.persistence.entities.ProductEntity", "ProductEntity")
-                        .WithMany("Carts")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("infrastructure.identity.AppUser", "AppUser")
                         .WithMany("Carts")
                         .HasForeignKey("UserId")
@@ -678,8 +699,25 @@ namespace infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("AppUser");
+                });
 
-                    b.Navigation("ProductEntity");
+            modelBuilder.Entity("infrastructure.persistence.entities.CartItemEntity", b =>
+                {
+                    b.HasOne("infrastructure.persistence.entities.CartEntity", "Cart")
+                        .WithMany("Items")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("infrastructure.persistence.entities.ProductEntity", "Product")
+                        .WithMany("Carts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("infrastructure.persistence.entities.OrderEntity", b =>
@@ -758,6 +796,11 @@ namespace infrastructure.Migrations
                     b.Navigation("Orders");
 
                     b.Navigation("Reviews");
+                });
+
+            modelBuilder.Entity("infrastructure.persistence.entities.CartEntity", b =>
+                {
+                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("infrastructure.persistence.entities.CategoryEntity", b =>
