@@ -45,6 +45,11 @@ namespace application.cases.Commands.Orders
                     Log.Warning($"Product with id: {item.ProductId} Not found");
                     throw new NotFoundException("Product not found");
                 }
+                if(product.Stock < item.Quantity)
+                {
+                    Log.Warning("Số lượng sản phẩm không đủ");
+                    throw new BussinesErrorException("Số lượng đặt vượt quá số lượng sản phẩm hiện có");
+                }
                 var create = OrderItem.Create
                 (
                     order.Id,

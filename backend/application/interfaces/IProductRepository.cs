@@ -1,6 +1,7 @@
 using System.Net.Http.Headers;
 using application.cases.Dtos;
 using domain.entities;
+using Microsoft.AspNetCore.Http;
 
 namespace application.interfaces
 {
@@ -11,5 +12,6 @@ namespace application.interfaces
         Task AddAsync(Products products);
         Task UpdateAsync(Products products);
         Task<bool> DeleteAsync(int Id);
+        Task<bool> UploadImage(IFormFile file);
     }
 }

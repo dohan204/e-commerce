@@ -1,0 +1,23 @@
+2026-03-08 16:04:25.964 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-03-08 16:04:26.032 +07:00 [INF] tìm thấy người dùng với id: 50886117-d8ea-4f10-a51d-0ed5c118ecbf
+2026-03-08 16:04:26.034 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-03-08 16:04:27.409 +07:00 [WRN] Không tìm thấy sản phẩm cần đánh giá
+2026-03-08 16:04:57.060 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-03-08 16:04:57.062 +07:00 [INF] tìm thấy người dùng với id: 50886117-d8ea-4f10-a51d-0ed5c118ecbf
+2026-03-08 16:04:57.063 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-03-08 16:04:57.292 +07:00 [INF] tìm thấy sản phẩm với id: 1
+2026-03-08 16:04:57.312 +07:00 [INF] Đầu vào hợp lệ, tiến hành tạo đánh giá
+2026-03-08 16:09:04.040 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-03-08 16:09:04.042 +07:00 [INF] tìm thấy người dùng với id: 50886117-d8ea-4f10-a51d-0ed5c118ecbf
+2026-03-08 16:09:04.045 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-03-08 16:09:04.086 +07:00 [WRN] Không tìm thấy sản phẩm cần đánh giá
+2026-03-08 16:09:25.635 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-03-08 16:09:25.637 +07:00 [INF] tìm thấy người dùng với id: 50886117-d8ea-4f10-a51d-0ed5c118ecbf
+2026-03-08 16:09:25.638 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-03-08 16:09:25.645 +07:00 [INF] tìm thấy sản phẩm với id: 3
+2026-03-08 16:09:25.647 +07:00 [INF] Đầu vào hợp lệ, tiến hành tạo đánh giá
+2026-03-08 16:16:56.879 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-03-08 16:16:56.924 +07:00 [INF] tìm thấy người dùng với id: 50886117-d8ea-4f10-a51d-0ed5c118ecbf
+2026-03-08 16:16:56.926 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-03-08 16:16:58.312 +07:00 [INF] tìm thấy sản phẩm với id: 3
+2026-03-08 16:16:58.325 +07:00 [INF] Đầu vào hợp lệ, tiến hành tạo đánh giá

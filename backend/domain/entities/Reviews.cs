@@ -3,19 +3,19 @@ using domain.exceptions;
 namespace domain.entities
 {
     public enum RatingsReview {so_good, good, normal, bad, too_bad }
-    public class Reviews: BaseEntity
+    public class Review: BaseEntity
     {
         public Guid UserId { get; private set; }
         public int ProductId { get; private set; }
-        public RatingsReview Rating {get; private set;} = RatingsReview.normal;
+        public decimal Rating {get; private set;}
         public string Comment {get; private set;} = string.Empty;
         public DateTime Created_At {get; private set;}
 
-        protected Reviews() {}
-        private Reviews(
+        protected Review() {}
+        private Review(
             Guid userId,
             int productId,
-            RatingsReview rating,
+            decimal rating,
             string comment
         )
         {
@@ -32,13 +32,13 @@ namespace domain.entities
             Created_At = DateTime.UtcNow;
         }
 
-        public static Reviews Create(Guid userId, int productId, RatingsReview rating, string comment)
+        public static Review Create(Guid userId, int productId, decimal rating, string comment)
         {
             if(string.IsNullOrEmpty(comment))
             {
                 throw new DomainException("NỘi dung Đánh giá không được để trống");
             } 
-            return new Reviews(userId, productId, rating, comment);
+            return new Review(userId, productId, rating, comment);
         }
     }
 }
