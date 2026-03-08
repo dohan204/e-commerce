@@ -1,11 +1,11 @@
 using System.Diagnostics.Contracts;
 using domain.exceptions;
+using domain.valuesObject;
 
 namespace domain.entities
 {
-    public class Address : BaseEntity
+    public class Address : ValueObject
     {
-        public Guid UserId { get; set; }
         // public string FullName {get; private set;} = string.Empty;
         public string Phone { get; private set; } = string.Empty;
         public string Province { get; private set; } = string.Empty;
@@ -15,11 +15,8 @@ namespace domain.entities
 
         public bool IsDefault { get; private set; } = false;
         private Address() { }
-        public Address(Guid id, string province, string district, string ward, string? details, string phone)
+        public Address(string province, string district, string ward, string? details, string phone)
         {
-            if (string.IsNullOrEmpty(id.ToString()))
-                throw new DomainException("User invalid");
-
             if (string.IsNullOrEmpty(province))
                 throw new DomainException("Province is not empty");
 
@@ -32,7 +29,6 @@ namespace domain.entities
             {
                 throw new DomainException("wards is not empty");
             }
-            UserId = id;
             Phone = phone;
             Province = province;
             District = district;
@@ -41,5 +37,13 @@ namespace domain.entities
         }
         public void SetDefault () => IsDefault = true;
         public void UnDefault () => IsDefault = false;
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return Phone;
+            yield return Province;
+            yield return District;
+            yield return Ward;
+            yield return Details;
+        }
     }
 }

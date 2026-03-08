@@ -1,0 +1,27 @@
+2026-03-08 15:32:28.021 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-03-08 15:32:28.093 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-03-08 15:36:22.770 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-03-08 15:36:22.816 +07:00 [INF] tìm thấy người dùng với id: 50886117-d8ea-4f10-a51d-0ed5c118ecbf
+2026-03-08 15:36:22.818 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-03-08 15:39:27.917 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-03-08 15:39:27.954 +07:00 [INF] tìm thấy người dùng với id: 50886117-d8ea-4f10-a51d-0ed5c118ecbf
+2026-03-08 15:39:27.956 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-03-08 15:39:29.644 +07:00 [INF] Đầu vào hợp lệ, tiến hành tạo đánh giá
+2026-03-08 15:40:56.672 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-03-08 15:40:56.722 +07:00 [INF] tìm thấy người dùng với id: 50886117-d8ea-4f10-a51d-0ed5c118ecbf
+2026-03-08 15:40:56.724 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-03-08 15:40:58.578 +07:00 [INF] Đầu vào hợp lệ, tiến hành tạo đánh giá
+2026-03-08 15:43:11.142 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-03-08 15:43:11.143 +07:00 [INF] tìm thấy người dùng với id: 50886117-d8ea-4f10-a51d-0ed5c118ecbf
+2026-03-08 15:43:11.144 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-03-08 15:43:11.183 +07:00 [INF] Đầu vào hợp lệ, tiến hành tạo đánh giá
+2026-03-08 15:47:39.672 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-03-08 15:47:39.811 +07:00 [INF] tìm thấy người dùng với id: 50886117-d8ea-4f10-a51d-0ed5c118ecbf
+2026-03-08 15:47:39.813 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-03-08 15:47:41.025 +07:00 [INF] tìm thấy sản phẩm với id: 1
+2026-03-08 15:47:41.037 +07:00 [INF] Đầu vào hợp lệ, tiến hành tạo đánh giá
+2026-03-08 15:51:26.384 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-03-08 15:51:26.417 +07:00 [INF] tìm thấy người dùng với id: 50886117-d8ea-4f10-a51d-0ed5c118ecbf
+2026-03-08 15:51:26.419 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-03-08 15:51:28.061 +07:00 [INF] tìm thấy sản phẩm với id: 1
+2026-03-08 15:51:28.073 +07:00 [INF] Đầu vào hợp lệ, tiến hành tạo đánh giá

@@ -57,7 +57,23 @@ namespace api.Controllers
             await _mediator.Send(command);
             return NoContent();
         }
+        [HttpPut("{id}/image")]
+        [Authorize]
+        public async Task<IActionResult> UpdateImage(int id, IFormFile file)
+        {
+            if(file is null || file.Length < 0) 
+                return BadRequest("No images providers");
 
+            // chuyển iformfile thành stream 
+            var command = new UpdateProductImageCommand
+            {
+                ProductId = id, 
+                ImageUrl = file.OpenReadStream(),
+                FileName = file.FileName
+            };
+            var imagePath = await _mediator.Send(command);
+            return Ok(new { imagePath });
+        }
         [HttpDelete]
         [Authorize]
         public async Task<IActionResult> Delete([FromBody] DeleteProductCommand command)
@@ -65,5 +81,6 @@ namespace api.Controllers
             await _mediator.Send(command);
             return NoContent();
         }
+
     }
 }

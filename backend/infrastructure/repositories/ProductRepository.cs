@@ -5,6 +5,7 @@ using domain.entities;
 using domain.enums;
 using infrastructure.dependency;
 using infrastructure.persistence.entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -60,6 +61,11 @@ namespace infrastructure.repositories
                 return false;
 
             _ctx.Products.Remove(product);
+            return true;
+        }
+        public async Task<bool> UploadImage(IFormFile file)
+        {
+            
             return true;
         }
     }

@@ -11,6 +11,7 @@ using application.cases.Commands.Categories;
 using application.cases.Commands.Orders;
 using Serilog;
 using application.cases.Queries.Carts;
+using application.cases.Commands.Reviews;
 namespace application
 {
     public static class AppDependency
@@ -23,8 +24,12 @@ namespace application
                 .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Hour)
                 .CreateLogger();
            // services.AddFluentValidationAutoValidation();
-            services.AddValidatorsFromAssembly(typeof(CreateProductCommand).Assembly);
+           // đăng ký nhiều cái validation trong project
+            services.AddValidatorsFromAssemblyContaining<ApplicationMarker>();
+            services.AddScoped<CreateReviewHandler>();
+            services.AddScoped<UpdateProductImageHandler>();
             services.AddScoped<GetCartByUserHandler>();
+
             services.AddScoped<CreateCategoryHandler>();
             services.AddScoped<CreateCategoryHandler>();
             services.AddScoped<CreateOrderHandler>();

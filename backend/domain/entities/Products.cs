@@ -96,6 +96,10 @@ namespace domain.entities
         {
             return input.ToLowerInvariant().Replace(" ", "-");
         }
+        public void UpdateImage(string filePath)
+        {
+            Images = filePath;
+        }
     }
 }
  

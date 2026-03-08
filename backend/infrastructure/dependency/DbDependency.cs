@@ -53,6 +53,12 @@ namespace infrastructure.dependency
                 cfg.CreateMap<CartItemEntity, CartItem>();
                 cfg.CreateMap<CartItem, CartItemEntity>();
                 
+
+                cfg.CreateMap<Review, ReviewEntity>()
+                    .ForMember(dest => dest.ProductEntityId, opt => opt.MapFrom(src => src.ProductId));
+
+                cfg.CreateMap<ReviewEntity, Review>()
+                    .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.ProductEntityId));
             });
             services.AddDbContext<ApplicationDbContext>(options =>
             {
@@ -108,6 +114,8 @@ namespace infrastructure.dependency
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<ICartRepository, CartRepository>();
+            services.AddScoped<IReviewRepository, ReviewRepository>();
+            services.AddScoped<IFileStorageService, FileStorageService>();
             services.AddScoped<JwtToken>();
             services.AddSingleton<EmailSender>();
             return services;

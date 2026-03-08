@@ -60,7 +60,7 @@ namespace infrastructure.repositories
             var result = await _userManager.CreateAsync(userApp, user.Password);
             if (!result.Succeeded)
                 throw new Exception(string.Join(",", result.Errors.Select(e => e.Description)));
-            await _userManager.AddToRoleAsync(userApp, "Customer");
+            // await _userManager.AddToRoleAsync(userApp, "Guest");
             var emailToken = await _userManager.GenerateEmailConfirmationTokenAsync(userApp);
 
             var tokenBytes = Encoding.UTF8.GetBytes(emailToken);
