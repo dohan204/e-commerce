@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aPlcaSDXO2I=",
+  "dgSpecHash": "KHgOoMzlLec=",
   "success": true,
-  "projectFilePath": "D:\\TMDT\\backend\\api\\api.csproj",
+  "projectFilePath": "D:\\e-commerce\\backend\\api\\api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\automapper\\16.0.0\\automapper.16.0.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
