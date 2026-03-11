@@ -17,8 +17,9 @@ namespace api.Controllers
             _mediator = mediator;
             _handler = handler;
         }
-        [HttpGet("alls")] 
-        public async Task<IActionResult> GetAll()
+        [HttpGet("alls")]
+        [ProducesResponseType(typeof(IReadOnlyList<Category>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GcetAll()
         {
             var categories = await _mediator.Send(new GetCategoriesQuery());
             if(categories.Count == 0)
@@ -30,6 +31,8 @@ namespace api.Controllers
             return Ok(categories);
         }
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(Category), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetByid(int id)
         {
             var categoryId = new GetCategoryQuery {Id = id};
@@ -37,6 +40,8 @@ namespace api.Controllers
             return Ok(category);
         }
         [HttpPost]
+        [ProducesResponseType(typeof(CreateCategoryCommand), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(CreateCategoryCommand), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Created([FromBody] CreateCategoryCommand command)
         {
             await _mediator.Send(command);
@@ -47,14 +52,17 @@ namespace api.Controllers
             });
         }
         [HttpPut]
+        [ProducesResponseType(typeof(UpdateCategoryCommand), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Updated([FromBody] UpdateCategoryCommand command)
         {
             await _mediator.Send(command);
             return NoContent();
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Deleted([FromQuery] int Id)
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> Deleted(int Id)
         {
             var command = new DeleteCategoryCommand {CategoryId = Id};
             await _mediator.Send(command);

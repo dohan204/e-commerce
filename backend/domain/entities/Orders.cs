@@ -32,10 +32,6 @@ namespace domain.entities
 
         public Order(
             Guid userId,
-            decimal totalAmount,
-            decimal discountAmount,
-            decimal shippingFee,
-            // string paymentMethod,
             string shippingAddress,
             int? voucherId,
             string? note
@@ -43,16 +39,8 @@ namespace domain.entities
         {
             if (userId == Guid.Empty)
                 throw new DomainException("User invalid");
-
-            if (totalAmount <= 0)
-                throw new DomainException("Total amount invalid");
             OrderCode = Guid.NewGuid().ToString().Substring(0, 10);
             UserId = userId;
-            TotalAmount = totalAmount;
-            DiscountAmount = discountAmount;
-            ShippingFee = shippingFee;
-            FinalAmount = totalAmount - discountAmount + shippingFee;
-
             PaymentMethod = PaymentMethod.cod;
             PaymentStatus = PaymentStatus.unpaid;
             Status = StatusOrder.pending;
@@ -66,10 +54,6 @@ namespace domain.entities
 
         public static Order Create(
             Guid userId,
-            decimal totalAmount,
-            decimal discountAmount,
-            decimal shippingFee,
-            // PaymentMethod paymentMethod,
             string shippingAddress,
             int? voucherId,
             string? note
@@ -77,10 +61,6 @@ namespace domain.entities
         {
             return new Order(
                 userId,
-                totalAmount,
-                discountAmount,
-                shippingFee,
-                // paymentMethod,
                 shippingAddress,
                 voucherId,
                 note
@@ -111,9 +91,23 @@ namespace domain.entities
 
         public void RecalculateAmount()
         {
-            var subTotal = Items.Sum(x => x.Quantity * x.Price);
-            TotalAmount = subTotal;
-            FinalAmount = subTotal - DiscountAmount + ShippingFee;
+            
+            TotalAmount = Items.Sum(x => x.Quantity * x.Price);
+            FinalAmount = TotalAmount - DiscountAmount + ShippingFee;
+        }
+
+        public void SetAmount(decimal total, decimal final)
+        {
+            TotalAmount = total;
+            FinalAmount = final;
+        }
+
+        public void ApplyDiscount(decimal discountAmount)
+        {
+            if(discountAmount < 0)
+                throw new DomainException("Disscount Invalid");
+            
+            DiscountAmount = discountAmount;
         }
         public void MarkPaymentSuccess()
         {

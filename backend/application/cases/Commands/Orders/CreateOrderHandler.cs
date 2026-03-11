@@ -2,6 +2,7 @@ using application.exceptions;
 using application.interfaces;
 using domain.entities;
 using MediatR;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
 
 namespace application.cases.Commands.Orders
@@ -11,11 +12,13 @@ namespace application.cases.Commands.Orders
         private readonly ICurrentUser currentUser;
         private readonly IOrderRepository _repository;
         private readonly IProductRepository _repoProduct;
-        public CreateOrderHandler(IOrderRepository orderRepository, ICurrentUser user, IProductRepository repoProduct)
+        private readonly IVoucherRepository _voucherRepository;
+        public CreateOrderHandler(IOrderRepository orderRepository, ICurrentUser user, IProductRepository repoProduct, IVoucherRepository voucherRepository)
         {
             _repository = orderRepository;
             currentUser = user;
             _repoProduct = repoProduct;
+            _voucherRepository = voucherRepository;
         }
 
         public async Task<Unit> Handle(CreateOrderCommand command, CancellationToken token)
@@ -25,13 +28,9 @@ namespace application.cases.Commands.Orders
             {
                 Log.Information($"Infor user: {user}");
             }
-
-            Log.Information("Start create Order with User and product", new {user = user, product = command.OrderCode});
+            // Log.Information("Start create Order with User and product", new {user = user, product = command.OrderCode});
             var order =  Order.Create(
                 user,
-                command.TotalAmount,
-                command.DiscountAmount,
-                command.ShippingFee,
                 command.ShippingAddress,
                 command.VoucherId > 0 ? command.VoucherId : null,
                 command.Note
@@ -55,7 +54,7 @@ namespace application.cases.Commands.Orders
                     order.Id,
                     product.Id,
                     item.Quantity,
-                    product.Price
+                    item.Price
                 );
                 order.Items.Add(create);
             }
@@ -63,8 +62,16 @@ namespace application.cases.Commands.Orders
 
             var totalAmount = order.Items.Sum(x => x.Quantity * x.Price);
             // trả ra số tiền cuối cùng
-            order.ReturnFinal(totalAmount - command.DiscountAmount + command.ShippingFee);
 
+            if(order.VoucherId.HasValue)
+            {
+                var voucher = await _voucherRepository.GetByIdAsync(order.VoucherId ?? 0);
+                if(voucher is null) 
+                    throw new NotFoundException("Voucher is not found");
+                var discountAmount = Voucher.CalculateDiscountVouchers(totalAmount, voucher.Value, DiscountTypes.Percentage);
+                order.ApplyDiscount(discountAmount);
+                order.ReturnFinal(totalAmount - discountAmount);
+            }
             Log.Information("Start insert Db,");
             await _repository.CreateAsync(order);
             return Unit.Value;

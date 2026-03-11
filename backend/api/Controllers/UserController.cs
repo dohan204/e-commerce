@@ -1,12 +1,15 @@
 using application.cases.Commands.Users;
 using application.cases.Queries.Users;
 using domain.entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Asn1.X509.Qualified;
 
 namespace api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly CreateUserHandler _createUserHandler;
@@ -20,6 +23,8 @@ namespace api.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(Guid id)
         {
             var result = await _handler.Handle(id);
@@ -29,6 +34,8 @@ namespace api.Controllers
         }
 
         [HttpPost("create")]
+        [ProducesResponseType(typeof(CreateUserCommand), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> CreateAsync(CreateUserCommand command) 
         {
             await _createUserHandler.Handle(command);
@@ -38,6 +45,7 @@ namespace api.Controllers
             });
         }
         [HttpGet("users")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetUsers()
         {
             var result = await _getAll.Handle();
