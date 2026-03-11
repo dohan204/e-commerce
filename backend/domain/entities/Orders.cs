@@ -44,7 +44,6 @@ namespace domain.entities
             PaymentMethod = PaymentMethod.cod;
             PaymentStatus = PaymentStatus.unpaid;
             Status = StatusOrder.pending;
-
             ShippingAddress = shippingAddress;
             VoucherId = voucherId;
             Note = note;
@@ -77,31 +76,29 @@ namespace domain.entities
         {
             var item = OrderItem.Update(productId, quantity, price);
             Items.Add(item);
-
             RecalculateAmount();
         }
         public void AddOrderItem(int productId, int quantity, decimal price)
         {
             var item = OrderItem.Create(this.Id, productId, quantity, price);
             Items.Add(item);
-
             RecalculateAmount();
         }
         
-
+        public void SetAddressToOrder(string address)
+        {
+            ShippingAddress = address;
+        }
         public void RecalculateAmount()
         {
-            
             TotalAmount = Items.Sum(x => x.Quantity * x.Price);
             FinalAmount = TotalAmount - DiscountAmount + ShippingFee;
         }
-
         public void SetAmount(decimal total, decimal final)
         {
             TotalAmount = total;
             FinalAmount = final;
         }
-
         public void ApplyDiscount(decimal discountAmount)
         {
             if(discountAmount < 0)
@@ -119,7 +116,6 @@ namespace domain.entities
         {
             PaymentStatus = PaymentStatus.failed;
         }
-
         public void StartShipping()
         {
             if (Status != StatusOrder.confirmed)
@@ -127,7 +123,6 @@ namespace domain.entities
 
             Status = StatusOrder.shipping;
         }
-
         public void Complete()
         {
             Status = StatusOrder.delivered;

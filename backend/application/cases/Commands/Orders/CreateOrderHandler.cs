@@ -13,12 +13,15 @@ namespace application.cases.Commands.Orders
         private readonly IOrderRepository _repository;
         private readonly IProductRepository _repoProduct;
         private readonly IVoucherRepository _voucherRepository;
-        public CreateOrderHandler(IOrderRepository orderRepository, ICurrentUser user, IProductRepository repoProduct, IVoucherRepository voucherRepository)
+        private readonly IAddressRepository _addressRepository;
+        public CreateOrderHandler(IOrderRepository orderRepository, ICurrentUser user, IProductRepository repoProduct, 
+        IVoucherRepository voucherRepository, IAddressRepository addressRepository)
         {
             _repository = orderRepository;
             currentUser = user;
             _repoProduct = repoProduct;
             _voucherRepository = voucherRepository;
+            _addressRepository = addressRepository;
         }
 
         public async Task<Unit> Handle(CreateOrderCommand command, CancellationToken token)
@@ -62,6 +65,12 @@ namespace application.cases.Commands.Orders
             }
 
             order.RecalculateAmount();
+
+            // lấy ra địa chỉ của người dùng 
+            var addressUser = await _addressRepository.GetByUserId(user);
+            
+            // tiến hành convert để chuyển nó vào địa chỉ giao hàng
+            order.SetAddressToOrder(addressUser.ToString());
             Log.Information("Start insert Db,");
             await _repository.CreateAsync(order);
             return Unit.Value;

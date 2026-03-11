@@ -12,6 +12,7 @@ using application.cases.Commands.Orders;
 using Serilog;
 using application.cases.Queries.Carts;
 using application.cases.Commands.Reviews;
+using application.cases.Commands.Addresses;
 namespace application
 {
     public static class AppDependency
@@ -26,6 +27,7 @@ namespace application
            // services.AddFluentValidationAutoValidation();
            // đăng ký nhiều cái validation trong project
             services.AddValidatorsFromAssemblyContaining<ApplicationMarker>();
+            services.AddScoped<CreateAddressHandler>();
             services.AddScoped<CreateReviewHandler>();
             services.AddScoped<UpdateProductImageHandler>();
             services.AddScoped<GetCartByUserHandler>();

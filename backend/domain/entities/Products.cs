@@ -27,7 +27,7 @@ namespace domain.entities
         public StatusProduct Status { get; set; } = StatusProduct.active;
         public DateTime Created_At {get; set;}
         private Products() {}
-        // public Products() {}
+        // public Products() {}c
         public Products(
             string name, 
             string description, 
