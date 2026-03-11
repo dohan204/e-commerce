@@ -1,5 +1,7 @@
+using System.Net.Mime;
 using application.cases.Commands.Orders;
 using application.cases.Queries.Orders;
+using domain.entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
@@ -24,6 +26,7 @@ namespace api.Controllers
             return Ok(order);
         }
         [HttpGet]
+        [ProducesResponseType<List<Order>>(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
             var orders = await _mediator.Send(new GetOrdersQuery());
@@ -36,6 +39,9 @@ namespace api.Controllers
             return Ok(orders);
         }
         [HttpPost]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Created([FromBody] CreateOrderCommand command)
         {
             await _mediator.Send(command);
@@ -46,6 +52,7 @@ namespace api.Controllers
             });
         }
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Delete(int id)
         {
             var command = new DeleteOrderCommand { Id = id};
@@ -53,6 +60,8 @@ namespace api.Controllers
             return NoContent();
         }
         [HttpPut]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Update([FromBody] UpdateOrderCommand command)
         {
             await _mediator.Send(command);

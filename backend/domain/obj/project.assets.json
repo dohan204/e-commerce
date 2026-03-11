@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\TMDT\\backend\\domain\\domain.csproj",
+      "projectUniqueName": "D:\\e-commerce\\backend\\domain\\domain.csproj",
       "projectName": "domain",
-      "projectPath": "D:\\TMDT\\backend\\domain\\domain.csproj",
+      "projectPath": "D:\\e-commerce\\backend\\domain\\domain.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "D:\\TMDT\\backend\\domain\\obj\\",
+      "outputPath": "D:\\e-commerce\\backend\\domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
