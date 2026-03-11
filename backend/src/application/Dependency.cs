@@ -13,7 +13,6 @@ using Serilog;
 using application.cases.Queries.Carts;
 using application.cases.Commands.Reviews;
 using application.cases.Commands.Addresses;
-using System.Runtime.InteropServices;
 namespace application
 {
     public static class AppDependency
