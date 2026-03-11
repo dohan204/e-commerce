@@ -49,29 +49,19 @@ namespace application.cases.Commands.Orders
                     Log.Warning("Số lượng sản phẩm không đủ");
                     throw new BussinesErrorException("Số lượng đặt vượt quá số lượng sản phẩm hiện có");
                 }
-                var create = OrderItem.Create
-                (
-                    order.Id,
-                    product.Id,
-                    item.Quantity,
-                    item.Price
-                );
-                order.Items.Add(create);
+                order.AddOrderItem(product.Id, item.Quantity, product.Price);
             }
-            // tính tổng số tiền trong đơn hàng 
-
-            var totalAmount = order.Items.Sum(x => x.Quantity * x.Price);
-            // trả ra số tiền cuối cùng
-
             if(order.VoucherId.HasValue)
             {
                 var voucher = await _voucherRepository.GetByIdAsync(order.VoucherId ?? 0);
                 if(voucher is null) 
                     throw new NotFoundException("Voucher is not found");
-                var discountAmount = Voucher.CalculateDiscountVouchers(totalAmount, voucher.Value, DiscountTypes.Percentage);
+                    
+                var discountAmount = Voucher.CalculateDiscountVouchers(order.TotalAmount, voucher.Value, DiscountTypes.Percentage);
                 order.ApplyDiscount(discountAmount);
-                order.ReturnFinal(totalAmount - discountAmount);
             }
+
+            order.RecalculateAmount();
             Log.Information("Start insert Db,");
             await _repository.CreateAsync(order);
             return Unit.Value;

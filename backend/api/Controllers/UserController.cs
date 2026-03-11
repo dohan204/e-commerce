@@ -21,7 +21,7 @@ namespace api.Controllers
             _createUserHandler = createUserHandler;
             _getAll = getAllUserQuery;
         }
-
+        
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

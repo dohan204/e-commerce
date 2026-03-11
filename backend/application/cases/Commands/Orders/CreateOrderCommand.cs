@@ -7,9 +7,6 @@ namespace application.cases.Commands.Orders
     {
         public string OrderCode {get; set;} = string.Empty;
         public Guid UserId {get; set;}
-        public decimal TotalAmount {get; set;}
-        public decimal DiscountAmount {get; set;}
-        public decimal ShippingFee {get; set;}
         public ICollection<CreateOrderItem> OrderItems {get; set;} = new List<CreateOrderItem>();
         public string Status {get; set;} = string.Empty;
         public string PaymentStatus {get; set;} = string.Empty;

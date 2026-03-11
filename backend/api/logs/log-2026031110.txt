@@ -1,0 +1,8 @@
+2026-03-11 10:01:24.703 +07:00 [INF] Infor user: 50886117-d8ea-4f10-a51d-0ed5c118ecbf
+2026-03-11 10:01:26.730 +07:00 [INF] Start insert Db,
+2026-03-11 10:08:20.284 +07:00 [INF] thực hiện validate đầu vào
+2026-03-11 10:08:20.305 +07:00 [INF] Validate thành công, tiến hành tạo voucher
+2026-03-11 10:08:20.306 +07:00 [INF] Gọi tới repository thực hiện insert
+2026-03-11 10:08:20.425 +07:00 [INF] Tạo voucher thành công
+2026-03-11 10:11:15.754 +07:00 [INF] Infor user: 50886117-d8ea-4f10-a51d-0ed5c118ecbf
+2026-03-11 10:11:17.223 +07:00 [INF] Start insert Db,
