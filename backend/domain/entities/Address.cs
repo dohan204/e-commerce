@@ -6,13 +6,13 @@ namespace domain.entities
 {
     public class Address : ValueObject
     {
+        public Guid UserId {get; set;}
         // public string FullName {get; private set;} = string.Empty;
         public string Phone { get; private set; } = string.Empty;
         public string Province { get; private set; } = string.Empty;
         public string District { get; private set; } = string.Empty;
         public string Ward { get; private set; } = string.Empty;
         public string? Details { get; private set; } = string.Empty;
-
         public bool IsDefault { get; private set; } = false;
         private Address() { }
         public Address(string province, string district, string ward, string? details, string phone)

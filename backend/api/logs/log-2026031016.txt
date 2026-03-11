@@ -1,0 +1,10 @@
+2026-03-10 16:20:41.664 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-03-10 16:20:41.711 +07:00 [INF] tìm thấy người dùng với id: 9acb7af8-da29-49bf-bd83-8a91dba016d2
+2026-03-10 16:20:41.712 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-03-10 16:20:43.690 +07:00 [INF] tìm thấy sản phẩm với id: 1
+2026-03-10 16:20:43.736 +07:00 [INF] Đầu vào hợp lệ, tiến hành tạo đánh giá
+2026-03-10 16:25:51.424 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-03-10 16:25:51.465 +07:00 [INF] tìm thấy người dùng với id: 9acb7af8-da29-49bf-bd83-8a91dba016d2
+2026-03-10 16:25:51.467 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-03-10 16:25:52.925 +07:00 [INF] tìm thấy sản phẩm với id: 1
+2026-03-10 16:25:52.938 +07:00 [INF] Đầu vào hợp lệ, tiến hành tạo đánh giá

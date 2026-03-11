@@ -194,3 +194,8 @@ D:\TMDT\backend\api\bin\Debug\net9.0\Serilog.dll
 D:\TMDT\backend\api\bin\Debug\net9.0\Serilog.Sinks.Console.dll
 D:\TMDT\backend\api\bin\Debug\net9.0\Serilog.Sinks.File.dll
 D:\TMDT\backend\api\obj\Debug\net9.0\api.sourcelink.json
+D:\TMDT\backend\api\bin\Debug\net9.0\Scrutor.dll
+D:\TMDT\backend\api\bin\Debug\net9.0\System.IO.Pipelines.dll
+D:\TMDT\backend\api\bin\Debug\net9.0\System.Text.Encodings.Web.dll
+D:\TMDT\backend\api\bin\Debug\net9.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+D:\TMDT\backend\api\bin\Debug\net9.0\runtimes\win\lib\net9.0\System.Text.Encodings.Web.dll

@@ -1,5 +1,6 @@
 using application.cases.Commands.Reviews;
 using application.cases.Queries.Reviews;
+using domain.entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,12 +19,16 @@ namespace api.Controllers
         }
         [HttpGet("{productId}")]
         [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAllReviewByProduct(int productId)
         {
             var reviews = await _mediator.Send(new GetReviewByProductQuery { ProductId = productId});
             return Ok(reviews);
         }
-        [HttpPost]
+        [HttpPost("create")]
+        [AllowAnonymous]
+        [ProducesResponseType(typeof(Review), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> CreateAsync([FromBody] CreateReviewCommand command)
         {
             await _mediator.Send(command);
@@ -32,8 +37,9 @@ namespace api.Controllers
                 message = "Created successfully."
             });
         }
-        [HttpPost]
+        [HttpDelete("{reviewId}")]
         [Authorize]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> DeleteAsync(int reviewId)
         {
             await _mediator.Send(new DeleteReviewCommand { ReviewId = reviewId});

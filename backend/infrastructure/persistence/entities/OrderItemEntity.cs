@@ -1,6 +1,8 @@
+using application.interfaces;
+
 namespace infrastructure.persistence.entities
 {
-    public class OrderItemEntity
+    public class OrderItemEntity : ISoftDelete
     {
         public int Id { get; set; }
         public int OrderId { get; set; }
@@ -9,5 +11,7 @@ namespace infrastructure.persistence.entities
         public ProductEntity Products {get; set;}
         public int Quantity {get; set;}
         public int Price {get; set;}
+               public bool IsDeleted {get; set;}
+        public DateTimeOffset? DeleteAt {get; set;}
     }
 }

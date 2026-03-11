@@ -1,3 +1,4 @@
+using application.exceptions;
 using application.interfaces;
 using MediatR;
 
@@ -12,7 +13,11 @@ namespace application.cases.Commands.Reviews
         }
         public async Task<bool> Handle(DeleteReviewCommand command, CancellationToken tokne)
         {
-            await _reviewRepository.DeleteAsync(command.ReviewId);
+            var isDelete = await _reviewRepository.DeleteAsync(command.ReviewId);
+            if(!isDelete)
+            {
+                throw new NotFoundException("Không tìm thấy bài đánh giá");
+            }
             return true;
         }
 

@@ -1,9 +1,11 @@
+using System.Net.Mime;
 using application.cases.Commands.Product;
 using application.cases.Dtos;
 using application.cases.Queries.Products;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace api.Controllers
 {
@@ -18,6 +20,8 @@ namespace api.Controllers
             _mediator = mediator;
         }
         [HttpGet("{id}")]
+        [ProducesResponseType<ProductViewDto>(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(int id)
         {
             var query = new GetProductCommand {Id = id};
@@ -26,6 +30,7 @@ namespace api.Controllers
         }
         [HttpGet]
         [AllowAnonymous]
+        [ProducesResponseType<ProductViewDto>(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
             var query = new GetProductsQuery();
@@ -40,6 +45,9 @@ namespace api.Controllers
         }
         [HttpPost]
         [Authorize]
+        [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Create([FromBody] CreateProductCommand command)
         {
             await _mediator.Send(command);
@@ -52,6 +60,8 @@ namespace api.Controllers
 
         [HttpPut]
         [Authorize]
+        [Consumes(MediaTypeNames.Application.Json)] // chỉ nhận dữ liệu kiểu json
+        [ProducesResponseType(StatusCodes.Status204NoContent)] // trả về status 204
         public async Task<IActionResult> Update([FromBody] UpdateProductCommand command)
         {
             await _mediator.Send(command);
@@ -59,10 +69,17 @@ namespace api.Controllers
         }
         [HttpPut("{id}/image")]
         [Authorize]
+        [Consumes("multipart/form-data")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> UpdateImage(int id, IFormFile file)
         {
             if(file is null || file.Length < 0) 
                 return BadRequest("No images providers");
+            string[] allowedExtension = new [] {".png", ".jpeg", ".png", ".webp"};
+            var extenstionFile = Path.GetExtension(file.FileName).ToLower();
+
+            if(!allowedExtension.Contains(extenstionFile))
+                return BadRequest("Chỉ file có tên jpeg, png và webp là được cho phép");
 
             // chuyển iformfile thành stream 
             var command = new UpdateProductImageCommand
@@ -76,6 +93,7 @@ namespace api.Controllers
         }
         [HttpDelete]
         [Authorize]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Delete([FromBody] DeleteProductCommand command)
         {
             await _mediator.Send(command);

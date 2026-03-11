@@ -59,6 +59,8 @@ namespace infrastructure.dependency
 
                 cfg.CreateMap<ReviewEntity, Review>()
                     .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.ProductEntityId));
+
+                cfg.CreateMap<Voucher, VoucherEntity>().ReverseMap();
             });
             services.AddDbContext<ApplicationDbContext>(options =>
             {
@@ -106,16 +108,25 @@ namespace infrastructure.dependency
             services.Configure<EmailOptions>(
                 configuration.GetSection("EmailSettings")
             );
+            services.AddMemoryCache();
             services.AddScoped<IEmailSender, EmailSender>();
             services.AddScoped<ICurrentUser, CurrentUser>();
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IAuthRepository, AuthRepository>();
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IOrderRepository, OrderRepository>();
-            services.AddScoped<ICartRepository, CartRepository>();
-            services.AddScoped<IReviewRepository, ReviewRepository>();
+            // services.AddScoped<IUserRepository, UserRepository>();
+            // services.AddScoped<IAuthRepository, AuthRepository>();
+            // services.AddScoped<ICategoryRepository, CategoryRepository>();
+            // services.AddScoped<IProductRepository, ProductRepository>();
+            // services.AddScoped<IOrderRepository, OrderRepository>();
+            // services.AddScoped<ICartRepository, CartRepository>();
+            // services.AddScoped<IReviewRepository, ReviewRepository>();
             services.AddScoped<IFileStorageService, FileStorageService>();
+            // services.AddScoped<IVoucherRepository, VoucherRepository>();
+
+            // tự động quét và đăng ký tất cả các cặp interface - implements
+            services.Scan(scan => scan
+                .FromAssemblyOf<UserRepository>() // lấ một class trong assembly hiện tại làm đại diện
+                .AddClasses(classes => classes.Where(e => e.Name.EndsWith("Repository")))  // lọc và lấy ra các class có đuôi là repository để đăng ký
+                .AsImplementedInterfaces() // map với interface đang được class triển khai đó 
+                .WithScopedLifetime()); // đăng ký vòng đời ở đây là scoped giống như đăng ký bình thường
             services.AddScoped<JwtToken>();
             services.AddSingleton<EmailSender>();
             return services;
