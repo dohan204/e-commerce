@@ -3,7 +3,7 @@ using application.interfaces;
 using application.cases.Dtos;
 namespace application.cases.Queries.Products
 {
-    public class GetProductsHandler : IRequestHandler<GetProductsQuery,IReadOnlyList<ProductViewDto>>
+    public class GetProductsHandler : IRequestHandler<GetProductsQuery,IEnumerable<ProductViewDto>>
     {
         private readonly IProductRepository _repository;
         public GetProductsHandler(IProductRepository repository)
@@ -11,7 +11,7 @@ namespace application.cases.Queries.Products
             _repository = repository;
         }
 
-        public async Task<IReadOnlyList<ProductViewDto>> Handle(GetProductsQuery query, CancellationToken token)
+        public async Task<IEnumerable<ProductViewDto>> Handle(GetProductsQuery query, CancellationToken token)
         {
             var products = await _repository.GetProductsAsync();
             return products;

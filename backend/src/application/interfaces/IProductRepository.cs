@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Http;
 
 namespace application.interfaces
 {
-    public interface IProductRepository
+    public interface IProductRepository 
     {
-        Task<IReadOnlyList<ProductViewDto>> GetProductsAsync();
+        Task<IEnumerable<ProductViewDto>> GetProductsAsync();
         Task<Products?> GetProductById(int id);
         Task AddAsync(Products products);
         Task UpdateAsync(Products products);

@@ -1,4 +1,5 @@
 using System.Net.Mime;
+using api.Helpers.Dtos;
 using application.cases.Commands.Product;
 using application.cases.Dtos;
 using application.cases.Queries.Products;
@@ -36,10 +37,10 @@ namespace api.Controllers
             var query = new GetProductsQuery();
             var products = await _mediator.Send(query);
             if(!products.Any())
-                return Ok(new
+                return Ok(new ApiResponse<IEnumerable<ProductViewDto>>
                 {
-                    message = "Chưa có sản phẩm nào",
-                    data = products
+                    Message = "Chưa có sản phẩm nào",
+                    Data = products
                 });
             return Ok(products);
         }
@@ -51,10 +52,10 @@ namespace api.Controllers
         public async Task<IActionResult> Create([FromBody] CreateProductCommand command)
         {
             await _mediator.Send(command);
-            return StatusCode(StatusCodes.Status201Created, new
+            return StatusCode(StatusCodes.Status201Created, new ActionResponse
             {
-                status = StatusCodes.Status201Created,
-                message = "Create Product successfully."
+                Status = StatusCodes.Status201Created,
+                Message = "Create Product successfully."
             });
         }
 

@@ -20,7 +20,7 @@ namespace infrastructure.repositories
             _ctx = ctx;
             _mapper = mapper;
         }
-        public async Task<IReadOnlyList<ProductViewDto>> GetProductsAsync()
+        public async Task<IEnumerable<ProductViewDto>> GetProductsAsync()
         {
             return await _ctx.Products.AsNoTracking()
                 .Select(p => new ProductViewDto

@@ -3,5 +3,5 @@ using MediatR;
 
 namespace application.cases.Queries.Products
 {
-    public class GetProductsQuery : IRequest<IReadOnlyList<ProductViewDto>> {}
+    public class GetProductsQuery : IRequest<IEnumerable<ProductViewDto>> {}
 }
