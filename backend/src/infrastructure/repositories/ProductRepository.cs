@@ -37,8 +37,7 @@ namespace infrastructure.repositories
         public async Task<Products?> GetProductById(int id)
         {
             var product = await _ctx.Products.FindAsync(id);
-            var productMapping = _mapper.Map<Products>(product);
-            return productMapping;
+            return _mapper.Map<Products>(product);
         }
         public async Task AddAsync(Products products)
         {
@@ -49,10 +48,11 @@ namespace infrastructure.repositories
         }
         public async Task UpdateAsync(Products product)
         {
-            var productDomain = _mapper.Map<ProductEntity>(product);
-            _ctx.Products.Update(productDomain);
+            var entity = await _ctx.Products.FindAsync(product.Id);
+
+            _mapper.Map(product, entity);
+
             await _ctx.SaveChangesAsync();
-            Log.Information("Updated products successfully");
         }
         public async Task<bool> DeleteAsync(int id)
         {
@@ -65,7 +65,7 @@ namespace infrastructure.repositories
         }
         public async Task<bool> UploadImage(IFormFile file)
         {
-            
+
             return true;
         }
     }

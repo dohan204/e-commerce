@@ -36,13 +36,11 @@ namespace api.Controllers
         {
             var query = new GetProductsQuery();
             var products = await _mediator.Send(query);
-            if(!products.Any())
-                return Ok(new ApiResponse<IEnumerable<ProductViewDto>>
-                {
-                    Message = "Chưa có sản phẩm nào",
-                    Data = products
-                });
-            return Ok(products);
+            return Ok(new ApiResponse<IEnumerable<ProductViewDto>>
+            {
+                Message = products.Any() ? "Lấy danh sách thành công" : "Chưa có sản phẩm nào!",
+                Data = products
+            });
         }
         [HttpPost]
         [Authorize]

@@ -178,6 +178,7 @@ namespace infrastructure.dependency
         public DbSet<VoucherEntity> Vouchers=> Set<VoucherEntity>();
         public DbSet<CartEntity> Carts=> Set<CartEntity>();
         public DbSet<CartItemEntity> CartItems=> Set<CartItemEntity>();
+        // public DbSet<WishlistEntity> Wishlists => Set<WishlistEntity>();
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             // lấy ra day sách được eeff theo dõi 
@@ -190,7 +191,6 @@ namespace infrastructure.dependency
                 {
                     entry.Entity.CreatedAt = now;
                 }
-                
                 entry.Entity.UpdatedAt = now;
             }
             return base.SaveChangesAsync(cancellationToken);

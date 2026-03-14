@@ -11,8 +11,8 @@ namespace domain.entities
         public string Comment {get; private set;} = string.Empty;
         public DateTime Created_At {get; private set;}
 
-        protected Review() {}
-        private Review(
+        private Review() {}
+        public Review(
             Guid userId,
             int productId,
             decimal rating,

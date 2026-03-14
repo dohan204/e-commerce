@@ -35,13 +35,13 @@ namespace infrastructure.repositories {
             var ordersDomain = _mapper.Map<List<Order>>(orders);
             return ordersDomain;
         }
-            public async Task UpdateAsync(Order order)
-            {
+        public async Task UpdateAsync(Order order)
+        {
                 var orderEntity = await _ctx.Orders.Include(e => e.Items).FirstOrDefaultAsync(e => e.Id == order.Id);
                 // _ctx.Orders.Update(updateOrder);
                 _mapper.Map(order, orderEntity);
                 await _ctx.SaveChangesAsync();
-            }
+        }
         public async Task<bool> DeleteAsync(int id)
         {
             var order = await _ctx.Orders.FindAsync(id);
@@ -51,5 +51,11 @@ namespace infrastructure.repositories {
             await _ctx.SaveChangesAsync();
             return true;
         }
+
+        public async Task Payment()
+        {
+            
+        }
+
     }
 }

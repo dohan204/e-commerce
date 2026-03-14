@@ -3,8 +3,8 @@ using domain.exceptions;
 namespace domain.entities
 {
     public enum StatusOrder { pending, confirmed, shipping, delivered, cancelled }
-    public enum PaymentMethod { cod, vnpay, momo, card }
-    public enum PaymentStatus { unpaid, paid, refunded, failed }
+    public enum PaymentMethod { cod = 1, vnpay = 2, momo = 3, card = 4 }
+    public enum PaymentStatus { unpaid, paid, refunded, failed, pending }
 
     public class Order : BaseEntity
     {
@@ -50,11 +50,32 @@ namespace domain.entities
             Items = new List<OrderItem>();
             CreatedAt = DateTime.UtcNow;
         }
-
+        public Order(
+            Guid userId,
+            string shippingAddress,
+            int? voucherId,
+            PaymentMethod paymentMethod,
+            string? note
+        )
+        {
+            if (userId == Guid.Empty)
+                throw new DomainException("User invalid");
+            OrderCode = Guid.NewGuid().ToString().Substring(0, 10);
+            UserId = userId;
+            PaymentMethod = paymentMethod;
+            PaymentStatus = PaymentStatus.unpaid;
+            Status = StatusOrder.pending;
+            ShippingAddress = shippingAddress;
+            VoucherId = voucherId;
+            Note = note;
+            Items = new List<OrderItem>();
+            CreatedAt = DateTime.UtcNow;
+        }
         public static Order Create(
             Guid userId,
             string shippingAddress,
             int? voucherId,
+            PaymentMethod paymentMethod,
             string? note
         )
         {
@@ -62,6 +83,7 @@ namespace domain.entities
                 userId,
                 shippingAddress,
                 voucherId,
+                paymentMethod,
                 note
             );
         }
@@ -133,12 +155,29 @@ namespace domain.entities
         {
             if (Status == StatusOrder.delivered)
                 throw new DomainException("Cannot cancel delivered order");
-
             Status = StatusOrder.cancelled;
         }
         public void ReturnFinal(decimal totalAmount)
         {
             FinalAmount = totalAmount;
+        }
+
+        // xử lý thanh tooán
+        public void SetPaymentMethod(PaymentMethod paymentMethod)
+        {
+            PaymentMethod = paymentMethod;
+        }
+        public void SetDefaultPaymentMethod()
+        {
+            PaymentMethod = PaymentMethod.cod;
+        }
+        public async Task HandlePayment()
+        {
+            PaymentStatus = PaymentStatus.pending;
+            await Task.Delay(TimeSpan.FromSeconds(5));
+
+            // thanh toán thành công
+            MarkPaymentSuccess();
         }
     }
 }

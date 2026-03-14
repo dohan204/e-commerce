@@ -43,8 +43,8 @@ namespace infrastructure.dependency
                 cfg.CreateMap<ProductEntity, Products>();
                 cfg.CreateMap<Products, ProductViewDto>();
 
-                cfg.CreateMap<Order, OrderEntity>();
-                cfg.CreateMap<OrderEntity, Order>();
+                cfg.CreateMap<Order, OrderEntity>()
+                    .ForMember(dest => dest.StatusOrdere, opt => opt.MapFrom(src => src.Status)).ReverseMap();
                 cfg.CreateMap<OrderItem, OrderItemEntity>();
                 cfg.CreateMap<OrderItemEntity, OrderItem>();
 

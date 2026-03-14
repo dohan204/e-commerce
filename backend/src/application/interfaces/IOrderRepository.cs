@@ -9,5 +9,7 @@ namespace application.interfaces
         Task CreateAsync(Order order);
         Task UpdateAsync(Order order);
         Task<bool> DeleteAsync(int id);
+        // Task CancelledOrder(Order order);
+        // Task Payment(PaymentMethod payment);
     }
 }

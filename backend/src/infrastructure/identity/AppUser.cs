@@ -16,6 +16,7 @@ namespace infrastructure.identity
         public string? Status { get; set; } = "Banned";
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
+        public virtual WishlistEntity Wishlist { get; set; }
         public ICollection<OrderEntity> Orders{ get; set; } = new List<OrderEntity>();
         public ICollection<AddressEntity> Addresses { get; set; } = new List<AddressEntity>();
         public ICollection<CartEntity> Carts { get; set; } = new List<CartEntity>();

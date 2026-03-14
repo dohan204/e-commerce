@@ -1,3 +1,4 @@
+using api.Helpers.Dtos;
 using application.cases.Commands.Reviews;
 using application.cases.Queries.Reviews;
 using domain.entities;
@@ -32,9 +33,10 @@ namespace api.Controllers
         public async Task<IActionResult> CreateAsync([FromBody] CreateReviewCommand command)
         {
             await _mediator.Send(command);
-            return StatusCode(StatusCodes.Status201Created, new
+            return StatusCode(StatusCodes.Status201Created, new ActionResponse
             {
-                message = "Created successfully."
+                Status = StatusCodes.Status201Created,
+                Message = "Created successfully."
             });
         }
         [HttpDelete("{reviewId}")]

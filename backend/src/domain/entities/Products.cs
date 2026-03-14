@@ -9,7 +9,7 @@ using domain.enums;
 using domain.exceptions;
 namespace domain.entities
 {
-    
+
     public class Products
     {
         public int Id { get; set; }
@@ -18,33 +18,33 @@ namespace domain.entities
         public string? Description { get; private set; }
         public decimal Price { get; private set; }
         public decimal? SalePrice { get; private set; }
-        public int Stock {get; private set;} = 0;
-        public int? Sold {get; private set;} = 0; // số lượng đẫ bán 
-        public int CategoryId {get; private set;}
+        public int Stock { get; private set; } = 0;
+        public int? Sold { get; private set; } = 0; // số lượng đẫ bán 
+        public int CategoryId { get; private set; }
         public string? Images { get; private set; }
         public decimal? AvgRating { get; private set; }
         public int? ReviewCount { get; private set; }
         public StatusProduct Status { get; set; } = StatusProduct.active;
-        public DateTime Created_At {get; set;}
-        private Products() {}
+        public DateTime Created_At { get; set; }
+        private Products() { }
         // public Products() {}c
         public Products(
-            string name, 
-            string description, 
-            decimal price, 
+            string name,
+            string description,
+            decimal price,
             int stock,
             int categoryId
             )
         {
-            if(string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(name))
             {
                 throw new DomainException("name is required");
             }
-            if(price <= 0)
+            if (price <= 0)
             {
                 throw new DomainException("product price must be than 0");
             }
-            if(stock <= 0)
+            if (stock <= 0)
             {
                 throw new DomainException("Stock must be than more 0");
             }
@@ -62,24 +62,47 @@ namespace domain.entities
             this.Created_At = DateTime.Now;
 
         }
-        public static Products Create(
-            string name, 
+        public Products(
+            int id,
+            string name,
             string description,
             decimal price,
-            int stock, 
+            int stock,
+            int categoryId
+        )
+        {
+            Id = id;
+            this.Name = name;
+            this.Description = description;
+            this.Price = price;
+            this.Stock = stock;
+            this.Sold = 0;
+            this.CategoryId = categoryId;
+            this.Images = string.Empty;
+            this.AvgRating = 0;
+            this.ReviewCount = 0;
+            this.SalePrice = 0;
+            this.Slug = GenerateSlug(name);
+            this.Created_At = DateTime.Now;
+        }
+        public static Products Create(
+            string name,
+            string description,
+            decimal price,
+            int stock,
             int categoryid
         )
         {
             return new Products(name, description, price, stock, categoryid);
         }
         public void Update(string? name
-        , string? description, 
-        decimal? price, 
-        int? stock, 
+        , string? description,
+        decimal? price,
+        int? stock,
         int? sold,
-        decimal? salePrice, 
-        int? categoryId, 
-        string? images,int? reviewCount, decimal? avgRating )
+        decimal? salePrice,
+        int? categoryId,
+        string? images, int? reviewCount, decimal? avgRating)
         {
             this.Name = name;
             this.Description = description;
@@ -88,7 +111,7 @@ namespace domain.entities
             this.CategoryId = (int)categoryId;
             this.Images = images;
             this.Sold = sold;
-            this.SalePrice =salePrice;
+            this.SalePrice = salePrice;
             this.ReviewCount = reviewCount;
             this.AvgRating = avgRating;
         }
@@ -100,6 +123,16 @@ namespace domain.entities
         {
             Images = filePath;
         }
+
+        public void UpdateStock(int stock)
+        {
+            Stock -= stock;
+            Sold += stock;
+        }
+        public void RestoreStock(int stock)
+        {
+            Stock += stock;
+            Sold -= stock;
+        }
     }
 }
- 

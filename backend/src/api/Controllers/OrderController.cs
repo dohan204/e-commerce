@@ -3,6 +3,7 @@ using application.cases.Commands.Orders;
 using application.cases.Queries.Orders;
 using domain.entities;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
 
@@ -10,6 +11,7 @@ namespace api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class OrderController : ControllerBase
     {
         private readonly CreateOrderHandler _handler;
@@ -70,5 +72,14 @@ namespace api.Controllers
             await _mediator.Send(command);
             return NoContent();
         }
+        [HttpPut("{orderId}/cancelled")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> UpdateStatus(int orderId)
+        {
+            var query = new UpdateStatusOrderCommand {OrderId = orderId };
+            await _mediator.Send(query);
+            return NoContent();
+        }
+
     }
 }

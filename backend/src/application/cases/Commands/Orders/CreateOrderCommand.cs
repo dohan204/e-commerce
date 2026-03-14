@@ -10,7 +10,7 @@ namespace application.cases.Commands.Orders
         public ICollection<CreateOrderItem> OrderItems {get; set;} = new List<CreateOrderItem>();
         public string Status {get; set;} = string.Empty;
         public string PaymentStatus {get; set;} = string.Empty;
-        public string PaymentMethod {get; set;} = string.Empty;
+        public int? PaymentMethod {get; set;} 
         public string ShippingAddress {get; set;} = string.Empty;
         public string? Note {get; set;} = string.Empty;
         public int? VoucherId {get; set;}

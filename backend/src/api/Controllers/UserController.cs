@@ -1,6 +1,8 @@
+using api.Helpers.Dtos;
 using application.cases.Commands.Users;
 using application.cases.Queries.Users;
 using domain.entities;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Org.BouncyCastle.Asn1.X509.Qualified;
@@ -15,11 +17,13 @@ namespace api.Controllers
         private readonly CreateUserHandler _createUserHandler;
         private readonly HandlerGetUserById _handler;
         private readonly GetAllUserQuery _getAll;
-        public UserController(HandlerGetUserById handler, CreateUserHandler createUserHandler, GetAllUserQuery getAllUserQuery)
+        private readonly IMediator _mediator;
+        public UserController(HandlerGetUserById handler, CreateUserHandler createUserHandler, GetAllUserQuery getAllUserQuery, IMediator mediator)
         {
             _handler = handler;
             _createUserHandler = createUserHandler;
             _getAll = getAllUserQuery;
+            _mediator = mediator;
         }
         
         [HttpGet("{id}")]
@@ -34,6 +38,7 @@ namespace api.Controllers
         }
 
         [HttpPost("create")]
+        [AllowAnonymous]
         [ProducesResponseType(typeof(CreateUserCommand), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> CreateAsync(CreateUserCommand command) 
@@ -56,6 +61,26 @@ namespace api.Controllers
                     data = result
                 });
             return Ok(result);
+        }
+
+        [HttpGet("{userId}/orders")]
+        [ProducesResponseType<IEnumerable<Order>>(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetOrderUser(Guid userId)
+        {
+            var query = new GetOrdersUserQuery { UserId = userId};
+            var result = await _mediator.Send(query);
+            if(!result.Any())
+                return Ok(new ApiResponse<IEnumerable<Order>>
+                {
+                    Message = $"Không có đơn hàng của người dùng {query}",
+                    Data = result
+                });
+
+            return Ok(new ApiResponse<IEnumerable<Order>>
+            {
+                Message = "Lấy dữ liệu thành công",
+                Data = result
+            });
         }
     }
 }

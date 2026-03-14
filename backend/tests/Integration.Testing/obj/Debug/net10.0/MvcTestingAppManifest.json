@@ -1,0 +1,6 @@
+{
+  "api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\e-commerce\\backend\\src\\api",
+  "application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\e-commerce\\backend\\src\\application",
+  "domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\e-commerce\\backend\\src\\domain",
+  "infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "D:\\e-commerce\\backend\\src\\infrastructure"
+}

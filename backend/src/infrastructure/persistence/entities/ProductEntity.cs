@@ -29,5 +29,7 @@ namespace infrastructure.persistence.entities
         public ICollection<CartItemEntity> Carts { get; set; } = new List<CartItemEntity>();
         public bool IsDeleted { get; set; }
         public DateTimeOffset? DeleteAt { get; set; }
+        public int WishlistId {get; set;}
+        public virtual ICollection<WishlistEntity> Wishlist {get; set;}
     }
 }

@@ -9,5 +9,6 @@ namespace domain.interfaces
         Task<bool> EmailExists(string email);
         Task<IReadOnlyList<User>> GetAllUserAsync();
         Task RemoveUser(Guid id);
+        Task<IEnumerable<Order>> GetAllOrderUser(Guid id);
     }
 }

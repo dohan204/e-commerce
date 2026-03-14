@@ -63,9 +63,10 @@ namespace UnitTests.Controllers
 
             // assert
             Assert.IsNotNull(result);
-
+            var returnedProduct = result.Value as ProductViewDto;
             Assert.AreEqual(200, result.StatusCode);
-            Assert.AreEqual(fakeProduct, result.Value);
+            Assert.AreEqual(fakeProduct, returnedProduct);
+            Assert.AreEqual(fakeProduct.Id, returnedProduct.Id);
         }
 
         [TestMethod]
@@ -160,6 +161,37 @@ namespace UnitTests.Controllers
             Assert.AreEqual("Create Product successfully.", response?.Message);
 
             _mediator.Verify(m => m.Send(command, default), Times.Once());
+        }
+
+        [TestMethod]
+        public async Task CreateProduct_ShouldThrowBadRequestException_WhenDataIsInvalid()
+        {
+            var command = new CreateProductCommand
+            {
+                Name = "",
+                Description = "Chưa có sản phẩm",
+                Price = 200,
+                CategoryId = 2,
+                Stock = 10
+            };
+
+            _mediator
+                .Setup(m => m.Send(It.IsAny<CreateProductCommand>(), default))
+                .ThrowsAsync(new BadRequestException("Tên sản phẩm không được để trống"));
+
+            // kiểm tra xem controller có ném đúng ra exception đó hay không 
+            var exception = await Assert.ThrowsExactlyAsync<BadRequestException>(async () => {
+                await _controller.Create(command);
+            });
+
+
+            // assert 
+            Assert.AreEqual("Tên sản phẩm không được để trống", exception.Message);
+            TestContext.WriteLine($"Test Case vừa xong: {TestContext.TestName}");
+            TestContext.WriteLine($"Kết quả cuẩ bài Test: {TestContext.CurrentTestOutcome}");
+            // đảm bảo mediar đã được gọi nhưng thất bại 
+            _mediator.Verify(m => m.Send(It.IsAny<CreateProductCommand>(), default), Times.Once());
+            
         }
     }
 }

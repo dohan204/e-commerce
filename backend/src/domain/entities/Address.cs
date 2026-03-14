@@ -45,7 +45,7 @@ namespace domain.entities
         => new Address(userid,provice, district, ward, phone);
 
         
-        public override string ToString()
+        public string AddressFull()
         {
            return $"{Details}, {Ward}, {District}, {Province}"; 
         }

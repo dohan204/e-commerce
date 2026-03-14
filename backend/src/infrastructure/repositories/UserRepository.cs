@@ -9,6 +9,7 @@ using domain.entities;
 using infrastructure.dependency;
 using Microsoft.EntityFrameworkCore;
 using application.exceptions;
+using AutoMapper;
 
 namespace infrastructure.repositories
 {
@@ -17,11 +18,13 @@ namespace infrastructure.repositories
         private readonly ApplicationDbContext _ctx;
         private readonly UserManager<AppUser> _userManager;
         private readonly IEmailSender emailSender;
-        public UserRepository(UserManager<AppUser> userManager, IEmailSender emailSender, ApplicationDbContext ctx)
+        private readonly IMapper _mapper;
+        public UserRepository(UserManager<AppUser> userManager, IEmailSender emailSender, ApplicationDbContext ctx, IMapper mapper)
         {
             _ctx = ctx;
             _userManager = userManager;
             this.emailSender = emailSender;
+            _mapper = mapper;
         }
         public async Task<User?> GetByIdAsync(Guid id)
         {
@@ -106,13 +109,21 @@ namespace infrastructure.repositories
         {
             var user = await _userManager.FindByIdAsync(userId.ToString());
 
-            if(user is not null)
+            if (user is not null)
             {
                 var result = await _userManager.DeleteAsync(user);
 
-                if(!result.Succeeded) 
+                if (!result.Succeeded)
                     throw new Exception($"Failed to remove user {userId}");
             }
+        }
+        // using this method for check history order
+        public async Task<IEnumerable<Order>> GetAllOrderUser(Guid userId)
+        {
+            var orders = await _ctx.Orders
+                .Where(o => o.UserId == userId)
+                .ToListAsync();
+            return _mapper.Map<IEnumerable<Order>>(orders);
         }
     }
 }

@@ -1,54 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\TMDT\\backend\\",
+  "WorkspaceRootPath": "D:\\e-commerce\\backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|infrastructure\\infrastructure.csproj|d:\\tmdt\\backend\\infrastructure\\dependency\\dbdependency.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|infrastructure\\infrastructure.csproj|solutionrelative:infrastructure\\dependency\\dbdependency.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3D745DFE-AF9A-E111-755D-FD3FFF280728}|src\\infrastructure\\infrastructure.csproj|d:\\e-commerce\\backend\\src\\infrastructure\\dependency\\dbdependency.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D745DFE-AF9A-E111-755D-FD3FFF280728}|src\\infrastructure\\infrastructure.csproj|solutionrelative:src\\infrastructure\\dependency\\dbdependency.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|domain\\domain.csproj|d:\\tmdt\\backend\\domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|domain\\domain.csproj|solutionrelative:domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|d:\\e-commerce\\backend\\src\\api\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|solutionrelative:src\\api\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|infrastructure\\infrastructure.csproj|d:\\tmdt\\backend\\infrastructure\\persistence\\entities\\categoryentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|infrastructure\\infrastructure.csproj|solutionrelative:infrastructure\\persistence\\entities\\categoryentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|domain\\domain.csproj|d:\\tmdt\\backend\\domain\\entities\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|domain\\domain.csproj|solutionrelative:domain\\entities\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B9D518ED-0CC3-4126-ADE6-705D205D0450}|infrastructure\\infrastructure.csproj|d:\\tmdt\\backend\\infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9D518ED-0CC3-4126-ADE6-705D205D0450}|infrastructure\\infrastructure.csproj|solutionrelative:infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|api\\api.csproj|d:\\tmdt\\backend\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}|api\\api.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|infrastructure\\infrastructure.csproj|d:\\tmdt\\backend\\infrastructure\\identity\\approle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|infrastructure\\infrastructure.csproj|solutionrelative:infrastructure\\identity\\approle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|infrastructure\\infrastructure.csproj|d:\\tmdt\\backend\\infrastructure\\identity\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|infrastructure\\infrastructure.csproj|solutionrelative:infrastructure\\identity\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|infrastructure\\infrastructure.csproj|d:\\tmdt\\backend\\infrastructure\\dependency\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|infrastructure\\infrastructure.csproj|solutionrelative:infrastructure\\dependency\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|domain\\domain.csproj|d:\\tmdt\\backend\\domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|domain\\domain.csproj|solutionrelative:domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|application\\application.csproj|d:\\tmdt\\backend\\application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|application\\application.csproj|solutionrelative:application\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|domain\\domain.csproj|d:\\tmdt\\backend\\domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|domain\\domain.csproj|solutionrelative:domain\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|d:\\e-commerce\\backend\\src\\api\\api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|solutionrelative:src\\api\\api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -82,159 +46,42 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CategoryEntity.cs",
-              "DocumentMoniker": "D:\\TMDT\\backend\\infrastructure\\persistence\\entities\\CategoryEntity.cs",
-              "RelativeDocumentMoniker": "infrastructure\\persistence\\entities\\CategoryEntity.cs",
-              "ToolTip": "D:\\TMDT\\backend\\infrastructure\\persistence\\entities\\CategoryEntity.cs",
-              "RelativeToolTip": "infrastructure\\persistence\\entities\\CategoryEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-28T07:53:04.454Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Products.cs",
-              "DocumentMoniker": "D:\\TMDT\\backend\\domain\\entities\\Products.cs",
-              "RelativeDocumentMoniker": "domain\\entities\\Products.cs",
-              "ToolTip": "D:\\TMDT\\backend\\domain\\entities\\Products.cs",
-              "RelativeToolTip": "domain\\entities\\Products.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAA0wAsAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T07:37:36.816Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AppRole.cs",
-              "DocumentMoniker": "D:\\TMDT\\backend\\infrastructure\\identity\\AppRole.cs",
-              "RelativeDocumentMoniker": "infrastructure\\identity\\AppRole.cs",
-              "ToolTip": "D:\\TMDT\\backend\\infrastructure\\identity\\AppRole.cs",
-              "RelativeToolTip": "infrastructure\\identity\\AppRole.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T07:29:13.853Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AppUser.cs",
-              "DocumentMoniker": "D:\\TMDT\\backend\\infrastructure\\identity\\AppUser.cs",
-              "RelativeDocumentMoniker": "infrastructure\\identity\\AppUser.cs",
-              "ToolTip": "D:\\TMDT\\backend\\infrastructure\\identity\\AppUser.cs",
-              "RelativeToolTip": "infrastructure\\identity\\AppUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T07:14:50.372Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "D:\\TMDT\\backend\\infrastructure\\dependency\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "infrastructure\\dependency\\ApplicationDbContext.cs",
-              "ToolTip": "D:\\TMDT\\backend\\infrastructure\\dependency\\ApplicationDbContext.cs",
-              "RelativeToolTip": "infrastructure\\dependency\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T07:13:06.101Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "DbDependency.cs",
-              "DocumentMoniker": "D:\\TMDT\\backend\\infrastructure\\dependency\\DbDependency.cs",
-              "RelativeDocumentMoniker": "infrastructure\\dependency\\DbDependency.cs",
-              "ToolTip": "D:\\TMDT\\backend\\infrastructure\\dependency\\DbDependency.cs*",
-              "RelativeToolTip": "infrastructure\\dependency\\DbDependency.cs*",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABkAAAAoAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\infrastructure\\dependency\\DbDependency.cs",
+              "RelativeDocumentMoniker": "src\\infrastructure\\dependency\\DbDependency.cs",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\infrastructure\\dependency\\DbDependency.cs",
+              "RelativeToolTip": "src\\infrastructure\\dependency\\DbDependency.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAQwC4AAABuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T07:08:11.389Z",
+              "WhenOpened": "2026-03-14T14:42:41.025Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "User.cs",
-              "DocumentMoniker": "D:\\TMDT\\backend\\domain\\entities\\User.cs",
-              "RelativeDocumentMoniker": "domain\\entities\\User.cs",
-              "ToolTip": "D:\\TMDT\\backend\\domain\\entities\\User.cs",
-              "RelativeToolTip": "domain\\entities\\User.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T07:04:32.235Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "domain.csproj",
-              "DocumentMoniker": "D:\\TMDT\\backend\\domain\\domain.csproj",
-              "RelativeDocumentMoniker": "domain\\domain.csproj",
-              "ToolTip": "D:\\TMDT\\backend\\domain\\domain.csproj",
-              "RelativeToolTip": "domain\\domain.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-02-26T07:03:06.289Z",
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\api\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "src\\api\\Controllers\\OrderController.cs",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\api\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "src\\api\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAgwFEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-14T14:34:40.464Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\TMDT\\backend\\api\\Program.cs",
-              "RelativeDocumentMoniker": "api\\Program.cs",
-              "ToolTip": "D:\\TMDT\\backend\\api\\Program.cs",
-              "RelativeToolTip": "api\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T07:30:34.268Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "D:\\TMDT\\backend\\application\\Class1.cs",
-              "RelativeDocumentMoniker": "application\\Class1.cs",
-              "ToolTip": "D:\\TMDT\\backend\\application\\Class1.cs",
-              "RelativeToolTip": "application\\Class1.cs",
+              "DocumentIndex": 2,
+              "Title": "api",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\api\\api.csproj",
+              "RelativeDocumentMoniker": "src\\api\\api.csproj",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\api\\api.csproj",
+              "RelativeToolTip": "src\\api\\api.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T07:02:32.765Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "D:\\TMDT\\backend\\domain\\Class1.cs",
-              "RelativeDocumentMoniker": "domain\\Class1.cs",
-              "ToolTip": "D:\\TMDT\\backend\\domain\\Class1.cs",
-              "RelativeToolTip": "domain\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T07:02:12.187Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "D:\\TMDT\\backend\\infrastructure\\Class1.cs",
-              "RelativeDocumentMoniker": "infrastructure\\Class1.cs",
-              "ToolTip": "D:\\TMDT\\backend\\infrastructure\\Class1.cs",
-              "RelativeToolTip": "infrastructure\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-26T07:01:51.787Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-14T14:34:04.171Z",
+              "EditorCaption": ""
             }
           ]
         }

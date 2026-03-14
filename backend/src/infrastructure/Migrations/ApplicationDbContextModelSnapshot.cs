@@ -553,6 +553,9 @@ namespace infrastructure.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("WishlistId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
@@ -644,6 +647,39 @@ namespace infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Vouchers", "MySchema");
+                });
+
+            modelBuilder.Entity("infrastructure.persistence.entities.WishlistEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductsId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductsId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("WishlistEntity", "MySchema");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -805,6 +841,25 @@ namespace infrastructure.Migrations
                     b.Navigation("ProductEntity");
                 });
 
+            modelBuilder.Entity("infrastructure.persistence.entities.WishlistEntity", b =>
+                {
+                    b.HasOne("infrastructure.persistence.entities.ProductEntity", "Products")
+                        .WithMany("Wishlist")
+                        .HasForeignKey("ProductsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("infrastructure.identity.AppUser", "User")
+                        .WithOne("Wishlist")
+                        .HasForeignKey("infrastructure.persistence.entities.WishlistEntity", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Products");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("infrastructure.identity.AppUser", b =>
                 {
                     b.Navigation("Addresses");
@@ -814,6 +869,9 @@ namespace infrastructure.Migrations
                     b.Navigation("Orders");
 
                     b.Navigation("Reviews");
+
+                    b.Navigation("Wishlist")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("infrastructure.persistence.entities.CartEntity", b =>
@@ -838,6 +896,8 @@ namespace infrastructure.Migrations
                     b.Navigation("OrderItems");
 
                     b.Navigation("Reviews");
+
+                    b.Navigation("Wishlist");
                 });
 
             modelBuilder.Entity("infrastructure.persistence.entities.VoucherEntity", b =>

@@ -23,6 +23,16 @@ namespace domain.entities
             MaxUsage = maxUsage;
             ExpiryDate = expiryDate;
         }
+        public Voucher(int id,string discountType, decimal value, decimal minOrder, int maxUsage, DateTime expiryDate)
+        {
+            Id = id;
+            Code = Guid.NewGuid().ToString().Substring(0, 12);
+            DiscountType = discountType;
+            Value = value;
+            MinOrder = minOrder;
+            MaxUsage = maxUsage;
+            ExpiryDate = expiryDate;
+        }
 
         public static Voucher Create(string discountType, decimal value, decimal minOrder, int maxUsage, DateTime expiryDate) 
         => new Voucher(discountType, value, minOrder, maxUsage, expiryDate);
