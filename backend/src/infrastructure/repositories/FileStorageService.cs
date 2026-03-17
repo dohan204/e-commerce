@@ -14,7 +14,7 @@ namespace infrastructure.repositories
 
         public async Task<string> SaveFileAsync(Stream streamFile, string fileName)
         {
-            // Lấy phần mở rộng của file
+            // Lấy phần mở rộng của file sau dấu .
             var extension = Path.GetExtension(fileName);
 
             // tạo tên unique 
@@ -23,8 +23,11 @@ namespace infrastructure.repositories
             var filePath = Path.Combine(_filePaht, uniqueName);
 
             // ghi file vào ổ đĩa
-            using var output = new FileStream(filePath, FileMode.Create);
-            await streamFile.CopyToAsync(output);
+            using (streamFile)
+            {
+                using var output = new FileStream(filePath, FileMode.Create);
+                await streamFile.CopyToAsync(output);
+            }
 
             // trả về đường dẫn tương đối để lưu db
             return $"images/{uniqueName}";
@@ -32,9 +35,13 @@ namespace infrastructure.repositories
 
         public async Task DeleteFileAsync(string fileName)
         {
-            var fullPath = Path.Combine(Directory.GetCurrentDirectory(), fileName);
-            if(File.Exists(fullPath))
-                File.Delete(fullPath);
+            var actualFileName = Path.GetFileName(fileName);
+            var fullPath = Path.Combine(_filePaht, actualFileName);
+
+            if (File.Exists(fullPath))
+            {
+                await Task.Run(() => File.Delete(fullPath));
+            }
         }
     }
 }

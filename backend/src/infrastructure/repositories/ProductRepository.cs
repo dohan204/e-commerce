@@ -29,9 +29,9 @@ namespace infrastructure.repositories
                     Name = p.Name,
                     Description = p.Description,
                     Price = p.Price,
-                    SalePrice = (decimal)p.SalePrice,
+                    SalePrice = (decimal)p.SalePrice!,
                     ImageUrl = p.ImageUrl,
-                    AvgRating = (decimal)p.AvgRating,
+                    AvgRating = (decimal)p.AvgRating!,
                 }).ToListAsync();
         }
         public async Task<Products?> GetProductById(int id)
@@ -63,10 +63,20 @@ namespace infrastructure.repositories
             _ctx.Products.Remove(product);
             return true;
         }
-        public async Task<bool> UploadImage(IFormFile file)
+        public async Task<object?> GetFullDashboardStatsAsync()
         {
+            var stats = await _ctx.Products
+                .AsNoTracking()
+                .GroupBy(e => 1)
+                .Select(e => new
+                {
+                    TotalProducts = e.Count(),
+                    TotalStock = e.Sum(e => e.Stock),
+                    TotalSold = e.Sum(e => e.Sold),
+                    TotalRevenua = e.Sum(e => (decimal?)(e.Price * e.Sold)),
+                }).FirstOrDefaultAsync();
 
-            return true;
+            return stats;
         }
     }
 }

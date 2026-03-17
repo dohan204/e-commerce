@@ -20,6 +20,8 @@ using Serilog;
 using domain.entities;
 using application.cases.Dtos;
 using infrastructure.persistence.entities;
+using infrastructure.cache;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace infrastructure.dependency
 {
@@ -120,7 +122,16 @@ namespace infrastructure.dependency
             // services.AddScoped<IReviewRepository, ReviewRepository>();
             services.AddScoped<IFileStorageService, FileStorageService>();
             // services.AddScoped<IVoucherRepository, VoucherRepository>();
+            services.AddScoped<ProductRepository>();
+            services.AddScoped<IProductRepository>(options =>
+            {
+                var dbRepo = options.GetRequiredService<ProductRepository>();
 
+                var cache = options.GetRequiredService<IMemoryCache>();
+                var config = options.GetRequiredService<IConfiguration>();
+
+                return new ProductCacheRepository(cache, config, dbRepo);
+            });
             // tự động quét và đăng ký tất cả các cặp interface - implements
             services.Scan(scan => scan
                 .FromAssemblyOf<UserRepository>() // lấ một class trong assembly hiện tại làm đại diện

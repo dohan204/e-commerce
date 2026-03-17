@@ -10,5 +10,6 @@ namespace domain.interfaces
         Task<IReadOnlyList<User>> GetAllUserAsync();
         Task RemoveUser(Guid id);
         Task<IEnumerable<Order>> GetAllOrderUser(Guid id);
+        Task<int> GetCountUser();
     }
 }

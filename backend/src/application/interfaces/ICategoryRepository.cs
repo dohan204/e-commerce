@@ -1,4 +1,5 @@
 using application.cases.Dtos;
+using application.helpers;
 using domain.entities;
 
 namespace application.interfaces
@@ -10,5 +11,7 @@ namespace application.interfaces
         Task CreateAsync(Category category);
         Task UpdateAsync(Category category);
         Task<bool> DeleteAsync(int id);
+        Task<int> GetCountAsync();
+        // Task<PagedResult<Category>> Pagination(int page, int pageSize);
     }
 }

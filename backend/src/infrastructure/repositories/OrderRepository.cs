@@ -52,10 +52,7 @@ namespace infrastructure.repositories {
             return true;
         }
 
-        public async Task Payment()
-        {
-            
-        }
+        
 
     }
 }

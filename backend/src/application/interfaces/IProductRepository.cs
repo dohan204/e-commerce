@@ -5,13 +5,14 @@ using Microsoft.AspNetCore.Http;
 
 namespace application.interfaces
 {
-    public interface IProductRepository 
+    public interface IProductRepository
     {
         Task<IEnumerable<ProductViewDto>> GetProductsAsync();
         Task<Products?> GetProductById(int id);
         Task AddAsync(Products products);
         Task UpdateAsync(Products products);
         Task<bool> DeleteAsync(int Id);
-        Task<bool> UploadImage(IFormFile file);
+        // Task<bool> UploadImage(int productId,IFormFile file);
+        Task<object?> GetFullDashboardStatsAsync();
     }
 }

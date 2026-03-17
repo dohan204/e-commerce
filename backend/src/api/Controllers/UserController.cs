@@ -82,5 +82,17 @@ namespace api.Controllers
                 Data = result
             });
         }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetCount()
+        {
+            var user = await _mediator.Send(new GetCountUserQuery {});
+            return Ok(new ApiResponse<int>
+            {
+                Message = "Lấy dữ liệu thành công",
+                Data = user
+            });
+        }
     }
 }

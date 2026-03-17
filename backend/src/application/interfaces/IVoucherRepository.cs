@@ -7,5 +7,6 @@ namespace application.interfaces
         Task CreateAsync(Voucher vourchers);
         Task<Voucher> GetByIdAsync(int id);
         Task<IReadOnlyCollection<Voucher>> GetVouchersAsync();
+        Task<int> GetCountVoucher();
     }
 }

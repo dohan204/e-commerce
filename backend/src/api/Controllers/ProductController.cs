@@ -31,7 +31,7 @@ namespace api.Controllers
         }
         [HttpGet]
         [AllowAnonymous]
-        [ProducesResponseType<ProductViewDto>(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
             var query = new GetProductsQuery();
@@ -69,12 +69,12 @@ namespace api.Controllers
         [HttpPut("{id}/image")]
         [Authorize]
         [Consumes("multipart/form-data")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> UpdateImage(int id, IFormFile file)
         {
-            if(file is null || file.Length < 0) 
+            if(file is null || file.Length <= 0) 
                 return BadRequest("No images providers");
-            string[] allowedExtension = new [] {".png", ".jpeg", ".png", ".webp"};
+            string[] allowedExtension = new [] {".png", ".jpeg", ".jpg", ".webp"};
             var extenstionFile = Path.GetExtension(file.FileName).ToLower();
 
             if(!allowedExtension.Contains(extenstionFile))
@@ -99,5 +99,16 @@ namespace api.Controllers
             return NoContent();
         }
 
+        [HttpGet("dataoverview")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllData()
+        {
+            var data = await _mediator.Send(new GetProductDataDashboardQuery {});
+            return Ok(new ApiResponse<object?>
+            {
+                Message = "Lấy dữ liệu thành công",
+                Data = data
+            });
+        }
     }
 }

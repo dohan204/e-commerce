@@ -34,5 +34,12 @@ namespace infrastructure.repositories
             await _context.Vouchers.AddAsync(voucherCreae);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<int> GetCountVoucher()
+        {
+            return await _context.Vouchers
+                .Where(e => e.ExpiryDate > DateTime.UtcNow && e.MaxUsage > 0)
+                .CountAsync();
+        }
     }
 }

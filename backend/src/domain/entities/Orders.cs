@@ -115,6 +115,7 @@ namespace domain.entities
         {
             TotalAmount = Items.Sum(x => x.Quantity * x.Price);
             FinalAmount = TotalAmount - DiscountAmount + ShippingFee;
+            if(FinalAmount < 0) FinalAmount = 0;
         }
         public void SetAmount(decimal total, decimal final)
         {

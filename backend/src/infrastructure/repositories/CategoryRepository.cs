@@ -1,4 +1,5 @@
 using application.cases.Dtos;
+using application.helpers;
 using application.interfaces;
 using AutoMapper;
 using domain.entities;
@@ -23,7 +24,24 @@ namespace infrastructure.repositories
             var categoriesView = _mapper.Map<IReadOnlyList<CategoryViewDto>>(categories);
             return categoriesView;
         }
+        // public async Task<PagedResult<Category>> Pagination(int page, int pageSize)
+        // {
+        //     var query = _ctx.Categories.AsQueryable();
+        
+        //     var total = await query.CountAsync(); 
 
+        //     var result = await query
+        //         .OrderBy(e => e.Id)
+        //         .AsNoTracking()
+        //         .Skip((page - 1) * pageSize)
+        //         .Take(pageSize)
+        //         .ToListAsync();
+        //     return new PagedResult<Category>
+        //     {
+        //         Items = result,
+
+        //     };
+        // }
         public async Task<Category?> GetCategoryAsync(int id)
         {
             var category = await _ctx.Categories.FindAsync(id);
@@ -50,6 +68,10 @@ namespace infrastructure.repositories
             _ctx.Categories.Remove(category);
             await _ctx.SaveChangesAsync();
             return true;
+        }
+        public async Task<int> GetCountAsync()
+        {
+            return await _ctx.Categories.AsNoTracking().CountAsync();
         }
     }
 }

@@ -17,12 +17,14 @@ namespace infrastructure.repositories
     {
         private readonly ApplicationDbContext _ctx;
         private readonly UserManager<AppUser> _userManager;
+        private readonly RoleManager<AppRole> _roleManager;
         private readonly IEmailSender emailSender;
         private readonly IMapper _mapper;
-        public UserRepository(UserManager<AppUser> userManager, IEmailSender emailSender, ApplicationDbContext ctx, IMapper mapper)
+        public UserRepository(UserManager<AppUser> userManager, IEmailSender emailSender, ApplicationDbContext ctx, IMapper mapper, RoleManager<AppRole> role)
         {
             _ctx = ctx;
             _userManager = userManager;
+            _roleManager = role;
             this.emailSender = emailSender;
             _mapper = mapper;
         }
@@ -63,7 +65,16 @@ namespace infrastructure.repositories
             var result = await _userManager.CreateAsync(userApp, user.Password);
             if (!result.Succeeded)
                 throw new Exception(string.Join(",", result.Errors.Select(e => e.Description)));
-            // await _userManager.AddToRoleAsync(userApp, "Guest");
+            var roleName = "User";
+            if(!await _roleManager.RoleExistsAsync(roleName))
+            {
+                var roleDefault = new AppRole
+                {
+                    Name = roleName
+                };
+                var role = await _roleManager.CreateAsync(roleDefault);
+            }
+            await _userManager.AddToRoleAsync(userApp, roleName);
             var emailToken = await _userManager.GenerateEmailConfirmationTokenAsync(userApp);
 
             var tokenBytes = Encoding.UTF8.GetBytes(emailToken);
@@ -124,6 +135,11 @@ namespace infrastructure.repositories
                 .Where(o => o.UserId == userId)
                 .ToListAsync();
             return _mapper.Map<IEnumerable<Order>>(orders);
+        }
+
+        public async Task<int> GetCountUser()
+        {
+            return await _ctx.Users.CountAsync();
         }
     }
 }

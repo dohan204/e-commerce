@@ -9,6 +9,15 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "Allowfrontend", policy =>
+    {
+        policy.WithOrigins("http://localhost:5174", "http://localhost:5173")
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
 // Add services to the container.
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
@@ -75,6 +84,7 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+app.UseCors("Allowfrontend");
 app.Use((context, next) =>
 {
     Console.WriteLine(context.Request.Path);

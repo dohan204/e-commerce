@@ -32,6 +32,10 @@ namespace application.cases.Commands.Orders
             if(!Guid.TryParse(currentUser.UserId, out var user))
                 throw new UnauthorizeException("Invalid user");
             // Log.Information("Start create Order with User and product", new {user = user, product = command.OrderCode});
+            // lấy ra địa chỉ của người dùng 
+            var addressUser = await _addressRepository.GetByUserId(user);
+            // tiến hành convert để chuyển nó vào địa chỉ giao hàng
+            // order.SetAddressToOrder(addressUser.AddressFull());
             var order =  Order.Create(
                 user,
                 command.ShippingAddress,
@@ -57,6 +61,8 @@ namespace application.cases.Commands.Orders
                 product.UpdateStock(item.Quantity);
                 await _repoProduct.UpdateAsync(product);
             }
+
+            order.RecalculateAmount();
             if(order.VoucherId.HasValue)
             {
                 var voucher = await _voucherRepository.GetByIdAsync(order.VoucherId ?? 0);
@@ -65,19 +71,15 @@ namespace application.cases.Commands.Orders
 
                 if(voucher.ExpiryDate < DateTime.UtcNow) 
                     throw new BussinesErrorException("Voucher đã hết hạn");
-                    
+                if(order.TotalAmount < voucher.MinOrder)
+                {
+                    throw new BussinesErrorException("Đơn hàng không đủ điều kiện để app mã");
+                }
                 var discountAmount = Voucher.CalculateDiscountVouchers(order.TotalAmount, voucher.Value, DiscountTypes.Percentage);
                 order.ApplyDiscount(discountAmount);
             }
 
             order.RecalculateAmount();
-
-            // lấy ra địa chỉ của người dùng 
-            var addressUser = await _addressRepository.GetByUserId(user);
-            
-            // tiến hành convert để chuyển nó vào địa chỉ giao hàng
-            order.SetAddressToOrder(addressUser.AddressFull());
-
 
             if(command.PaymentMethod.HasValue)
             {
