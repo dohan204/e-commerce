@@ -8,5 +8,7 @@ namespace application.interfaces
         Task<Voucher> GetByIdAsync(int id);
         Task<IReadOnlyCollection<Voucher>> GetVouchersAsync();
         Task<int> GetCountVoucher();
+        Task<bool> DeleteAsync(int id);
+        Task<bool> UpdateAsync(Voucher vourchers);
     }
 }

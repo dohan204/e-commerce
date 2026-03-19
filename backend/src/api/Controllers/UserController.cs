@@ -11,7 +11,7 @@ namespace api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    // [Authorize]
     public class UserController : ControllerBase
     {
         private readonly CreateUserHandler _createUserHandler;
@@ -62,7 +62,14 @@ namespace api.Controllers
                 });
             return Ok(result);
         }
-
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var command = new RemoveUserCommand {id = id};
+            await _mediator.Send(command);
+            return NoContent();
+        }
         [HttpGet("{userId}/orders")]
         [ProducesResponseType<IEnumerable<Order>>(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetOrderUser(Guid userId)

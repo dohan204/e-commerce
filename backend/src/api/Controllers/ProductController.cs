@@ -3,6 +3,7 @@ using api.Helpers.Dtos;
 using application.cases.Commands.Product;
 using application.cases.Dtos;
 using application.cases.Queries.Products;
+using application.interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +26,7 @@ namespace api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(int id)
         {
-            var query = new GetProductCommand {Id = id};
+            var query = new GetProductCommand { Id = id };
             var product = await _mediator.Send(query);
             return Ok(product);
         }
@@ -72,29 +73,30 @@ namespace api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> UpdateImage(int id, IFormFile file)
         {
-            if(file is null || file.Length <= 0) 
+            if (file is null || file.Length <= 0)
                 return BadRequest("No images providers");
-            string[] allowedExtension = new [] {".png", ".jpeg", ".jpg", ".webp"};
+            string[] allowedExtension = new[] { ".png", ".jpeg", ".jpg", ".webp" };
             var extenstionFile = Path.GetExtension(file.FileName).ToLower();
 
-            if(!allowedExtension.Contains(extenstionFile))
+            if (!allowedExtension.Contains(extenstionFile))
                 return BadRequest("Chỉ file có tên jpeg, png và webp là được cho phép");
 
             // chuyển iformfile thành stream 
             var command = new UpdateProductImageCommand
             {
-                ProductId = id, 
+                ProductId = id,
                 ImageUrl = file.OpenReadStream(),
                 FileName = file.FileName
             };
             var imagePath = await _mediator.Send(command);
             return Ok(new { imagePath });
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         [Authorize]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> Delete([FromBody] DeleteProductCommand command)
+        public async Task<IActionResult> Delete(int id)
         {
+            var command = new DeleteProductCommand { Id = id };
             await _mediator.Send(command);
             return NoContent();
         }
@@ -103,8 +105,27 @@ namespace api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAllData()
         {
-            var data = await _mediator.Send(new GetProductDataDashboardQuery {});
+            var data = await _mediator.Send(new GetProductDataDashboardQuery { });
             return Ok(new ApiResponse<object?>
+            {
+                Message = "Lấy dữ liệu thành công",
+                Data = data
+            });
+        }
+
+
+        [HttpGet("topSales")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetTopSale()
+        {
+            var data = await _mediator.Send(new GetTopSaleProductQuery());
+            if (!data.Any())
+                return Ok(new ApiResponse<IEnumerable<TopProductSale>>
+                {
+                    Message = "Không có dữ liệu",
+                    Data = data
+                });
+            return Ok(new ApiResponse<IEnumerable<TopProductSale>>
             {
                 Message = "Lấy dữ liệu thành công",
                 Data = data

@@ -10,7 +10,7 @@ using Org.BouncyCastle.Asn1.Cms;
 namespace api.Controllers
 {
     [ApiController]
-    [Authorize]
+    // [Authorize]
     [Route("api/[controller]")]
     public class VoucherController : ControllerBase
     {
@@ -70,6 +70,14 @@ namespace api.Controllers
                 Message = "lấy dữ liệu thành công",
                 Data = count
             });
+        }
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            var command = new DeleteVoucherCommand { Id = id };
+            await _mediator.Send(command);
+            return NoContent();
         }
     }
 }

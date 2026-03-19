@@ -3,8 +3,10 @@ import TableCustom, { type ColumnConfig } from '@/components/TableData'
 import Create from './Create'
 import useFetch from '@/hooks/use-fetch'
 import { type response, HeaderName } from './DataTable';
+import { API_ENDPOINTS } from '@/constants/urls';
 export default function Category() {
-    const { data, loading, error, refresh } = useFetch<response>('http://localhost:5255/api/category/alls');
+    const url = API_ENDPOINTS.CATEGORY.GETALL
+    const { data, refresh } = useFetch<response>(url);
     const processData = data.map(u => ({
         ...u,
         image: (u.image === null || u.image === '') ? "Chưa có hình ảnh" : u.image

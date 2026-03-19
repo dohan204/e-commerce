@@ -1,3 +1,4 @@
+import { authService } from '@/services/authService';
 import React, { useState, useEffect } from 'react'
 
 function useFetchs<T>(url: string) {
@@ -8,7 +9,13 @@ function useFetchs<T>(url: string) {
     // console.log("helo anh em")
     const fetchData = async () => {
         try {
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    "Authorization": `${authService.getToken()}`
+                }
+            });
+            console.log(authService.getToken())
             if (!response.ok)
                 throw new Error(response.statusText);
 

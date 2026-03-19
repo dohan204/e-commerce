@@ -48,9 +48,6 @@ namespace infrastructure.repositories
 
         public async Task<Guid> CreatedAsync(User user)
         {
-
-            if (await EmailExists(user.Email))
-                throw new Exception("Email đã tồn tại kh thể đăng ký");
             string randomName = Guid.NewGuid().ToString("N").Substring(0, 10);
             // var userCreate = User.Create(userRequest.UserName, userRequest.Email, userRequest.Password);
 
@@ -116,17 +113,17 @@ namespace infrastructure.repositories
         }
 
 
-        public async Task RemoveUser(Guid userId)
+        public async Task<bool> RemoveUser(Guid userId)
         {
             var user = await _userManager.FindByIdAsync(userId.ToString());
 
-            if (user is not null)
-            {
-                var result = await _userManager.DeleteAsync(user);
-
-                if (!result.Succeeded)
-                    throw new Exception($"Failed to remove user {userId}");
-            }
+            if(user is null) 
+                return false;
+            
+            user.IsDeleted = true;
+            user.DeleteAt = DateTime.UtcNow;
+            await _ctx.SaveChangesAsync();
+            return true;
         }
         // using this method for check history order
         public async Task<IEnumerable<Order>> GetAllOrderUser(Guid userId)

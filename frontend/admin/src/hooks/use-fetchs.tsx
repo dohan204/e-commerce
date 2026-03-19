@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 
-function useFetch<T>(url: string) {
+function useFetchSingle<T>(url: string) {
     const [data, setData] = useState<T | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<Error | null>(null);
-
     // console.log("helo anh em")
     const fetchData = async () => {
         try {
@@ -30,4 +29,4 @@ function useFetch<T>(url: string) {
     return { data, loading, error, refresh: fetchData}
 }
 
-export default useFetch
+export default useFetchSingle

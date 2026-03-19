@@ -29,6 +29,9 @@ namespace infrastructure.repositories
                     Name = p.Name,
                     Description = p.Description,
                     Price = p.Price,
+                    Stock = p.Stock,
+                    Sold = p.Sold,
+                    ReviewCount = p.ReviewCount,
                     SalePrice = (decimal)p.SalePrice!,
                     ImageUrl = p.ImageUrl,
                     AvgRating = (decimal)p.AvgRating!,
@@ -60,7 +63,9 @@ namespace infrastructure.repositories
             if (product is null)
                 return false;
 
-            _ctx.Products.Remove(product);
+            product.IsDeleted = true;
+            product.DeleteAt = DateTime.UtcNow;
+            await _ctx.SaveChangesAsync();
             return true;
         }
         public async Task<object?> GetFullDashboardStatsAsync()
@@ -75,8 +80,20 @@ namespace infrastructure.repositories
                     TotalSold = e.Sum(e => e.Sold),
                     TotalRevenua = e.Sum(e => (decimal?)(e.Price * e.Sold)),
                 }).FirstOrDefaultAsync();
-
             return stats;
+        }
+
+        public async Task<IEnumerable<TopProductSale>> GetTopProductSalesAsync()
+        {
+            return await _ctx.Products.AsNoTracking()
+                .GroupBy(e => e.Name)
+                .Select(e => new TopProductSale
+                {
+                    Name = e.Key,
+                    Quantity = e.Sum(e => e.Sold)
+                })
+                .OrderByDescending(e => e.Quantity)
+                .ToListAsync();
         }
     }
 }

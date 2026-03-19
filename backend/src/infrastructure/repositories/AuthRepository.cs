@@ -34,7 +34,9 @@ namespace infrastructure.repositories
             var result = await _userManager.CheckPasswordAsync(user, command.password);
             if(!result) 
                 throw new UnauthorizeException("Tài khoản hoặc mật khẩu không đúng");
-            var token = _token.GenerateToken(user);
+
+            var role = await _userManager.GetRolesAsync(user);
+            var token = _token.GenerateToken(user, role);
             return new ResponseLogin(token);
         }
         public async Task<bool> ConfirmEmail(string userId, string token)

@@ -2,6 +2,13 @@ using domain.entities;
 
 namespace application.interfaces
 {
+    public class RevenueDto
+    {
+        public DateTime Date {get; set;}
+        public decimal Value {get; set;}
+    }
+
+
     public interface IOrderRepository
     {
         Task<Order> GetOrderByIdAsync(int id);
@@ -9,7 +16,6 @@ namespace application.interfaces
         Task CreateAsync(Order order);
         Task UpdateAsync(Order order);
         Task<bool> DeleteAsync(int id);
-        // Task CancelledOrder(Order order);
-        // Task Payment(PaymentMethod payment);
+        Task<IEnumerable<RevenueDto>> GetDecimalAsync();
     }
 }

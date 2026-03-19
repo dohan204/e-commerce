@@ -1,6 +1,8 @@
 using System.Net.Mime;
+using api.Helpers.Dtos;
 using application.cases.Commands.Orders;
 using application.cases.Queries.Orders;
+using application.interfaces;
 using domain.entities;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -11,7 +13,7 @@ namespace api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    // [Authorize]
     public class OrderController : ControllerBase
     {
         private readonly CreateOrderHandler _handler;
@@ -74,12 +76,33 @@ namespace api.Controllers
         }
         [HttpPut("{orderId}/cancelled")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> UpdateStatus(int orderId)
+        public async Task<IActionResult> CancellOrder(int orderId)
         {
             var query = new UpdateStatusOrderCommand {OrderId = orderId };
             await _mediator.Send(query);
             return NoContent();
         }
 
+        [HttpPut("{orderId}/updateStatus")] 
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> UpdateStatus(int orderId,[FromBody] UpdateStatusDto status)
+        {
+            var command = new UpdateStatusCommand { orderId = orderId, Status = status.Status};
+            await _mediator.Send(command);
+            return NoContent();  
+        }
+        [HttpGet("revenues")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetRevenue()
+        {
+            var query = new GetTotalRevenueQuery();
+            var data = await _mediator.Send(query);
+            return Ok(new ApiResponse<IEnumerable<RevenueDto>>
+            {
+                Message = "Lấy dữ liệu thành công",
+                Data = data
+            });
+        }
     }
+    
 }

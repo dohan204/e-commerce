@@ -23,6 +23,10 @@ namespace application.cases.Commands.Vouchers
             var valid = await _validator.ValidateAsync(command);
             if(!valid.IsValid) 
                 throw new BussinesErrorException(string.Join(",", valid.Errors.Select(e => e.ErrorMessage)));
+
+            if(!Enum.IsDefined(typeof(DiscountTypes), command.DiscountType))
+                throw new BussinesErrorException("Kiểu giảm Giá không hợp lệ");
+            
             Log.Information("Validate thành công, tiến hành tạo voucher");
             var voucher = Voucher.Create(command.DiscountType, command.Value, command.MinOrder, command.MaxUsage, command.ExpiryDate);
             Log.Information("Gọi tới repository thực hiện insert");

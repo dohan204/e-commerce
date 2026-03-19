@@ -1,3 +1,4 @@
+using domain.enums;
 using domain.exceptions;
 
 namespace domain.entities
@@ -157,6 +158,11 @@ namespace domain.entities
             if (Status == StatusOrder.delivered)
                 throw new DomainException("Cannot cancel delivered order");
             Status = StatusOrder.cancelled;
+        }
+
+        public void UpdateStatus(StatusOrder status)
+        {
+            Status = status;
         }
         public void ReturnFinal(decimal totalAmount)
         {

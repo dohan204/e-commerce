@@ -50,8 +50,8 @@ export default function OverViewDashboard() {
     
     const SkeletionLoad = () => (
         Array.from({length : 8}).map((item, i) => (
-            <div key={i} className='w-full min-h-[160px] sm:min-h-[200px] p-6 flex flex-col items-center justify-center shadow-xl bg-gray-200 hover:bg-blue-400 rounded-xl transition-all'>
-                <Skeleton className='h-4 w-56' />
+            <div key={i} className='w-full min-h-[160px] sm:min-h-[200px] p-6 flex flex-col gap-2 items-center justify-center shadow-xl bg-gray-100 hover:bg-blue-400 rounded-xl transition-all'>
+                <Skeleton className='h-8 w-56' />
                 <Skeleton className='h-4 w-20' />c
             </div>
         ))

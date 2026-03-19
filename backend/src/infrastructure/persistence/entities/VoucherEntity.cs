@@ -13,7 +13,7 @@ namespace infrastructure.persistence.entities
         public ICollection<OrderEntity> Orders { get; set; } = new List<OrderEntity>();
         public DateTime ExpiryDate {get; set;}
         public DateTime CreatedAt {get; set;}
-               public bool IsDeleted {get; set;}
+        public bool IsDeleted {get; set;}
         public DateTimeOffset? DeleteAt {get; set;}
         public DateTime? UpdatedAt {get; set;}
 

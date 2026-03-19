@@ -51,8 +51,19 @@ namespace infrastructure.repositories {
             await _ctx.SaveChangesAsync();
             return true;
         }
+        public async Task<IEnumerable<RevenueDto>> GetDecimalAsync()
+        {
+            return await _ctx.Orders.AsNoTracking()
+                .GroupBy(e => e.CreatedAt.Date)
+                .Select(g => new RevenueDto
+                {
+                    Date = g.Key,
+                    Value = g.Sum(e => e.FinalAmount)
+                }).ToListAsync();
+        }
 
         
-
     }
+
+    
 }

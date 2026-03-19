@@ -1,4 +1,4 @@
-import { LayoutDashboard, Users, Package, Tags, Carrot, Notebook, NotebookIcon, View, FolderLockIcon } from "lucide-react"
+import { LayoutDashboard, Users, Package, Tags, Carrot, Notebook, NotebookIcon, View, FolderLockIcon, ChartNoAxesCombined, LayersPlus } from "lucide-react"
 import { Link, useLocation } from "react-router" // Thêm useLocation để check route
 
 import { 
@@ -16,10 +16,10 @@ const menuItems = [
   { title: "Categories", icon: Tags, url: "/categories" },
   { title: "Products", icon: Package, url: "/products" },
   { title: "Users", icon: Users, url: "/users" },
-  { title: "Carts", icon: Carrot, url: "/carts"},
   { title: "Vouchers", icon: Notebook, url: '/vouchers'},
   { title: "Orders", icon: NotebookIcon, url: '/orders'},
-  { title: "Review", icon: View, url: '/reviews'},
+  { title: 'Revenue', icon: ChartNoAxesCombined, url: '/revenue'},
+  { title: 'Reports', icon: LayersPlus , url: '/reports'},
   { title: "Logout", icon: FolderLockIcon, url: '/login'}
 ]
 

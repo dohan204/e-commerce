@@ -9,10 +9,12 @@ namespace application.cases.Commands.Orders
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IProductRepository _productRepository;
-        public UpdateStatusOrderHandler(IOrderRepository orderRepository, IProductRepository productRepository)
+        private readonly IVoucherRepository _voucherRepository;
+        public UpdateStatusOrderHandler(IOrderRepository orderRepository, IProductRepository productRepository, IVoucherRepository voucherRepository)
         {
             _orderRepository = orderRepository;
             _productRepository = productRepository;
+            _voucherRepository = voucherRepository;
         }
 
         public async Task<Unit> Handle(UpdateStatusOrderCommand command, CancellationToken token)
@@ -25,7 +27,12 @@ namespace application.cases.Commands.Orders
             }
 
             order.Cancel();
+            var voucher = await _voucherRepository.GetByIdAsync(order.VoucherId ?? 0);
+            if(voucher is null) 
+                Log.Warning("Không có voucher để restore");
 
+            voucher?.Restore();
+            await _voucherRepository.UpdateAsync(voucher!);
             // lấy ra sản phẩm trong đơn hàng để restovef 
             foreach(var orderitem in order.Items)
             {

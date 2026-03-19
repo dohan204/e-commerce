@@ -3,17 +3,17 @@ import { createRoot } from "react-dom/client"
 
 import "./index.css"
 import App from "./App.tsx"
-import { ThemeProvider } from "@/components/theme-provider.tsx"
 import { createBrowserRouter, RouterProvider } from "react-router"
 import Dashboard from "./pages/dashboards/index.tsx"
 import Order from "./pages/orders/index.tsx"
 import Category from "./pages/categories/index.tsx"
 import User from "./pages/users/index.tsx"
-import Product from "./pages/products/index.tsx"
+import Products from "./pages/products/index.tsx"
 import Voucher from "./pages/vouchers/index.tsx"
-import Cart from "./pages/carts/index.tsx"
-import Review from "./pages/reviews/index.tsx"
 import Login from "./pages/Auth/index.tsx"
+import Revenue from "./pages/Revenue/index.tsx"
+import Report from "./pages/reports/index.tsx"
+
 const router = createBrowserRouter([
   {
     path: '/login',
@@ -41,21 +41,20 @@ const router = createBrowserRouter([
       },
       {
         path: '/products',
-        element: <Product />
+        element: <Products />
       },
       {
         path: '/vouchers',
         element: <Voucher />
       },
       {
-        path: '/carts',
-        element: <Cart />
+        path: '/revenue',
+        element: <Revenue />
       },
       {
-        path: '/reviews',
-        element: <Review />
-      },
-
+        path: '/reports',
+        element: <Report />
+      }
     ]
   }
 ])

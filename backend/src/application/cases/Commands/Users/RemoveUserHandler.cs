@@ -4,23 +4,19 @@ using MediatR;
 
 namespace application.cases.Commands.Users
 {
-    public class RemoveUserHandler
+    public class RemoveUserHandler : IRequestHandler<RemoveUserCommand,bool>
     {
         private readonly IUserRepository userRepository;
         public RemoveUserHandler(IUserRepository userRepository)
         {
             this.userRepository = userRepository;
         }
-        public async Task<Unit> Handle(RemoveUserCommand command, CancellationToken cancellationToken)
+        public async Task<bool> Handle(RemoveUserCommand command, CancellationToken cancellationToken)
         {
-            var user = await userRepository.GetByIdAsync(command.id);
-
-            if(user is null) 
-                throw new NotFoundException("Không tìm thấy user cần xóa");
-            
-            await userRepository.RemoveUser(user.UserId);
-
-            return Unit.Value;
+            var isDelete = await userRepository.RemoveUser(command.id);
+            if(!isDelete)
+                throw new NotFoundException("Không tìm thấy Người dùng");
+            return true;
         }
     }
 }

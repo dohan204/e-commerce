@@ -19,6 +19,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from 'zod'
 import { authService } from '@/services/authService'
 import { toast } from 'sonner'
+import { API_ENDPOINTS } from '@/constants/urls'
 
 // Shadcn thường không có sẵn component Field/FieldError trừ khi ông tự build 
 // hoặc dùng gói Form chuyên dụng của nó. Tôi sẽ dùng Label + Span lỗi cho đơn giản.
@@ -40,11 +41,11 @@ export default function Create({refresh}: {refresh: () => void}) {
       name: ''
     }
   })
-
+  const url = API_ENDPOINTS.CATEGORY.CREATE
   const onSubmit = async (data: FormValues) => {
     setLoading(true)
     try {
-        await fetch('http://localhost:5255/api/category', {
+        await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
@@ -64,10 +65,6 @@ export default function Create({refresh}: {refresh: () => void}) {
         setLoading(false)
     }
   }
-  // const status = () => {
-  //   if(success)
-  //     toast.success("Tạo mới thành công!");
-  // }
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>

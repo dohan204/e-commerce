@@ -5,6 +5,11 @@ using Microsoft.AspNetCore.Http;
 
 namespace application.interfaces
 {
+    public class TopProductSale
+    {
+        public string Name { get; set; }
+        public int? Quantity { get; set; }
+    }
     public interface IProductRepository
     {
         Task<IEnumerable<ProductViewDto>> GetProductsAsync();
@@ -14,5 +19,7 @@ namespace application.interfaces
         Task<bool> DeleteAsync(int Id);
         // Task<bool> UploadImage(int productId,IFormFile file);
         Task<object?> GetFullDashboardStatsAsync();
+
+        Task<IEnumerable<TopProductSale>> GetTopProductSalesAsync();
     }
 }

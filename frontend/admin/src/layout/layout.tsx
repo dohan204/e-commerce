@@ -1,9 +1,11 @@
 import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/appp-sidebar"
-import { Outlet } from "react-router"
+import { Outlet, useLocation } from "react-router"
 import { Toaster } from "sonner"
 
 export default function Layout() {
+  const navigation = useLocation();
+  console.log(navigation.pathname);
   return (
     <SidebarProvider>
       <div className="flex min-h-screen w-full bg-[#f8fafc]">
@@ -15,7 +17,9 @@ export default function Layout() {
           {/* Header để chứa nút toggle */}
           <header className="flex h-16 items-center gap-4 border-b bg-white px-6">
             <SidebarTrigger />
-            <h1 className="font-semibold text-slate-800">Dashboard / Categories</h1>
+            <h1 className="font-semibold text-slate-800">
+              Admin / {navigation.pathname === '/' ? 'Dashboard' : navigation.pathname.slice(1)}
+            </h1>
           </header>
 
           {/* Nội dung chính - Nơi nhét cái Table vào */}

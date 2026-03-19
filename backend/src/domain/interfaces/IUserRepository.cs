@@ -8,7 +8,7 @@ namespace domain.interfaces
         Task<Guid> CreatedAsync(User user);
         Task<bool> EmailExists(string email);
         Task<IReadOnlyList<User>> GetAllUserAsync();
-        Task RemoveUser(Guid id);
+        Task<bool> RemoveUser(Guid id);
         Task<IEnumerable<Order>> GetAllOrderUser(Guid id);
         Task<int> GetCountUser();
     }

@@ -54,5 +54,8 @@ namespace infrastructure.cache
         => await GetOrCreateAsync("datadashboard", 
             () => _productRepository.GetFullDashboardStatsAsync());
 
+        public async Task<IEnumerable<TopProductSale>> GetTopProductSalesAsync() => 
+        await GetOrCreateAsync("topSales", 
+        () => _productRepository.GetTopProductSalesAsync() ?? Task.FromResult(Enumerable.Empty<TopProductSale>()));
     }
 }

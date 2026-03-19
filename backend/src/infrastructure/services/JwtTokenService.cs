@@ -14,7 +14,7 @@ namespace infrastructure.services
         {
             _config = config;
         }
-        public string GenerateToken(AppUser user)
+        public string GenerateToken(AppUser user, IList<string> roleUser)
         {
             // tạo danh sách claim
             var claims = new List<Claim>()
@@ -23,10 +23,13 @@ namespace infrastructure.services
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Email, user.Email!),
                 new Claim("FullName", user.FullName),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
             
-
+            foreach(var role in roleUser)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role.ToString()));
+            }
             // lấy key từ cấu hình
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"] ?? string.Empty));
 

@@ -179,6 +179,9 @@ namespace infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTimeOffset?>("DeleteAt")
+                        .HasColumnType("datetimeoffset");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(256)
@@ -189,6 +192,9 @@ namespace infrastructure.Migrations
 
                     b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -676,8 +682,7 @@ namespace infrastructure.Migrations
 
                     b.HasIndex("ProductsId");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("WishlistEntity", "MySchema");
                 });
@@ -850,8 +855,8 @@ namespace infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("infrastructure.identity.AppUser", "User")
-                        .WithOne("Wishlist")
-                        .HasForeignKey("infrastructure.persistence.entities.WishlistEntity", "UserId")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -869,9 +874,6 @@ namespace infrastructure.Migrations
                     b.Navigation("Orders");
 
                     b.Navigation("Reviews");
-
-                    b.Navigation("Wishlist")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("infrastructure.persistence.entities.CartEntity", b =>

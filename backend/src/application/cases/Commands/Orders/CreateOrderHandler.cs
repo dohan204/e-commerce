@@ -77,6 +77,8 @@ namespace application.cases.Commands.Orders
                 }
                 var discountAmount = Voucher.CalculateDiscountVouchers(order.TotalAmount, voucher.Value, DiscountTypes.Percentage);
                 order.ApplyDiscount(discountAmount);
+                voucher.Use();
+                await _voucherRepository.UpdateAsync(voucher);
             }
 
             order.RecalculateAmount();

@@ -41,5 +41,25 @@ namespace infrastructure.repositories
                 .Where(e => e.ExpiryDate > DateTime.UtcNow && e.MaxUsage > 0)
                 .CountAsync();
         }
+
+        public async Task<bool> DeleteAsync(int id)
+        {
+            var isDelete = await _context.Vouchers.FindAsync(id);
+            if(isDelete is null)
+            return false;
+
+            isDelete.IsDeleted = true;
+            isDelete.DeleteAt = DateTime.UtcNow;
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> UpdateAsync(Voucher voucher)
+        {
+            var vou = await _context.Vouchers.FindAsync(voucher.Id);
+            _mapper.Map(voucher, vou);
+            await _context.SaveChangesAsync();
+            return true;
+        }
     }
 }

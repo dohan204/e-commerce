@@ -1,5 +1,5 @@
 // import React from 'react'
-import TableCustom, { type ColumnConfig } from '@/components/TableData'
+import { type ColumnConfig } from '@/components/TableData'
 
 export const HeaderName: ColumnConfig<any>[] = [
   { header: 'Mã', key: "id", className: 'w-[100px] font-medium' },
@@ -14,6 +14,3 @@ export type response = {
   image: string,
   slug: string
 }
-
-
-// export default DataTable
