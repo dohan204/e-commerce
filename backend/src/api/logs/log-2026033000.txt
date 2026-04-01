@@ -1,0 +1,9 @@
+2026-03-30 00:03:42.675 +07:00 [INF] NotificationHub: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-30 00:03:43.385 +07:00 [INF] NotificationHub: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-30 00:03:51.938 +07:00 [INF] NotificationHub: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-30 00:09:20.386 +07:00 [INF] Cập nhật thành công Trạng thái đơn hàng: $11
+2026-03-30 00:10:00.117 +07:00 [INF] Cập nhật thành công Trạng thái đơn hàng: $12
+2026-03-30 00:10:00.119 +07:00 [INF] Cập nhật thành công Trạng thái đơn hàng: $12
+2026-03-30 00:10:12.514 +07:00 [INF] Cập nhật thành công Trạng thái đơn hàng: $13
+2026-03-30 00:20:42.453 +07:00 [WRN] Product with id: 1004 Not found
+2026-03-30 00:21:03.380 +07:00 [WRN] Product with id: 1004 Not found

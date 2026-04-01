@@ -13,6 +13,7 @@ namespace application.interfaces
     {
         Task<Order> GetOrderByIdAsync(int id);
         Task<IReadOnlyList<Order>> GetAll();
+        Task<IEnumerable<Order>> GetOrdersByUserIdAsync(Guid userId);
         Task CreateAsync(Order order);
         Task UpdateAsync(Order order);
         Task<bool> DeleteAsync(int id);

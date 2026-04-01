@@ -1,9 +1,0 @@
-2026-03-16 12:40:01.683 +07:00 [INF] Bắt đầu tìm kiếm voucher..
-2026-03-16 12:40:47.742 +07:00 [WRN] Danh sách Voucher trống
-2026-03-16 12:42:56.230 +07:00 [WRN] Danh sách Voucher trống
-2026-03-16 12:49:33.006 +07:00 [INF] thực hiện validate đầu vào
-2026-03-16 12:49:33.071 +07:00 [INF] Validate thành công, tiến hành tạo voucher
-2026-03-16 12:49:33.076 +07:00 [INF] Gọi tới repository thực hiện insert
-2026-03-16 12:49:33.710 +07:00 [INF] Tạo voucher thành công
-2026-03-16 12:49:53.404 +07:00 [INF] Bắt đầu tìm kiếm voucher..
-2026-03-16 12:49:53.406 +07:00 [INF] Thành công, trả về voucher..

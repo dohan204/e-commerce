@@ -1,0 +1,30 @@
+2026-03-31 16:10:59.895 +07:00 [INF] NotificationHub: 
+2026-03-31 16:11:01.857 +07:00 [INF] NotificationHub: 
+2026-03-31 16:11:24.153 +07:00 [INF] NotificationHub: 
+2026-03-31 16:13:20.551 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-03-31 16:13:31.014 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-03-31 16:13:44.609 +07:00 [INF] Start insert Db,
+2026-03-31 16:13:47.597 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-03-31 16:13:49.235 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-03-31 16:13:49.589 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-03-31 16:20:53.995 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-03-31 16:20:54.787 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-03-31 16:21:01.463 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-03-31 16:21:52.233 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-03-31 16:30:12.596 +07:00 [INF] Start insert Db,
+2026-03-31 16:32:16.793 +07:00 [INF] Cập nhật thành công Trạng thái đơn hàng: $15
+2026-03-31 16:32:16.793 +07:00 [INF] Cập nhật thành công Trạng thái đơn hàng: $15
+2026-03-31 16:32:30.576 +07:00 [INF] NotificationHub: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-31 16:32:32.551 +07:00 [INF] NotificationHub: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-31 16:32:32.907 +07:00 [INF] NotificationHub: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-31 16:47:08.227 +07:00 [INF] NotificationHub: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-31 16:47:08.903 +07:00 [INF] NotificationHub: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-31 16:47:08.923 +07:00 [INF] NotificationHub: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-31 16:47:09.188 +07:00 [INF] NotificationHub: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-31 16:49:00.881 +07:00 [INF] NotificationHub: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-31 16:49:01.385 +07:00 [INF] NotificationHub: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-31 16:49:28.333 +07:00 [INF] Cập nhật thành công Trạng thái đơn hàng: $15
+2026-03-31 16:52:54.381 +07:00 [INF] NotificationHub: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-31 16:52:54.689 +07:00 [INF] NotificationHub: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-31 16:53:35.664 +07:00 [INF] NotificationHub: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-31 16:53:47.815 +07:00 [INF] NotificationHub: ec6eda79-468f-4f89-86c7-91d0a5497b8a

@@ -1525,6 +1525,7 @@
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": "9.0.11",
+          "Realtime": "1.0.0",
           "Serilog": "4.3.1",
           "Serilog.Sinks.Console": "6.1.1",
           "Serilog.Sinks.File": "7.0.0",
@@ -1593,6 +1594,19 @@
         },
         "runtime": {
           "bin/placeholder/infrastructure.dll": {}
+        }
+      },
+      "Realtime/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Realtime.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Realtime.dll": {}
         }
       }
     }
@@ -3605,6 +3619,11 @@
       "type": "project",
       "path": "../../src/infrastructure/infrastructure.csproj",
       "msbuildProject": "../../src/infrastructure/infrastructure.csproj"
+    },
+    "Realtime/1.0.0": {
+      "type": "project",
+      "path": "../../src/Realtime/Realtime.csproj",
+      "msbuildProject": "../../src/Realtime/Realtime.csproj"
     }
   },
   "projectFileDependencyGroups": {

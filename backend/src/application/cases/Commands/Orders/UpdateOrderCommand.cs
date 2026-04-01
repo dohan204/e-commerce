@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using MediatR;
 
 namespace application.cases.Commands.Orders
@@ -19,7 +20,10 @@ namespace application.cases.Commands.Orders
     public class UpdateOrderItemCommand
     {
         public int OrderId {get;}
+        [JsonPropertyName("productId")]
         public int ProductId {get; set;}
+        [JsonPropertyName("productName")]
+        public string ProductName {get; set;}
         public int Quantity {get; set;}
         public decimal Price {get; set;}
     }

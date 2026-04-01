@@ -5,15 +5,26 @@ namespace domain.entities
     public class CartItem : BaseEntity
     {
         public int ProductId {get; private set;}
+        public string Name {get; private set;}
         public int Quantity {get; private set;}
-        public decimal UnitPrice {get; private set;}
+        public decimal Price {get; private set;}
+        public string ImageUrl {get; private set;}
+
 
         private CartItem() {}
-        public CartItem(int productId, int quantity, decimal unitPrice)
+        public CartItem(int productId, int quantity, decimal price)
         {
             ProductId = productId;
             Quantity = quantity;
-            UnitPrice = unitPrice;
+            Price = price;
+        }
+        public CartItem(int productId, string productName, int quantity, decimal price, string imageUrl)
+        {
+            ProductId = productId;
+            Name = productName;
+            Quantity = quantity;
+            Price = price;
+            ImageUrl = imageUrl;
         }
         public static CartItem Created(int productId, int quantity, decimal price)
         {

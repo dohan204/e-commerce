@@ -882,3 +882,7 @@ D:\e-commerce\backend\src\api\bin\Debug\net9.0\refs\System.Xml.XmlSerializer.dll
 D:\e-commerce\backend\src\api\bin\Debug\net9.0\refs\System.Xml.XPath.dll
 D:\e-commerce\backend\src\api\bin\Debug\net9.0\refs\System.Xml.XPath.XDocument.dll
 D:\e-commerce\backend\src\api\bin\Debug\net9.0\refs\WindowsBase.dll
+D:\e-commerce\backend\src\api\bin\Debug\net9.0\Newtonsoft.Json.dll
+D:\e-commerce\backend\src\api\bin\Debug\net9.0\System.Net.WebSockets.WebSocketProtocol.dll
+D:\e-commerce\backend\src\api\bin\Debug\net9.0\Realtime.dll
+D:\e-commerce\backend\src\api\bin\Debug\net9.0\Realtime.pdb

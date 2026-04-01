@@ -44,6 +44,25 @@ namespace api.Controllers
                 });
             return Ok(orders);
         }
+        [HttpGet("user/{userId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetOrdersByUser(Guid userId)
+        {
+            var orders = await _mediator.Send(new GetOrdersByUserQuery(userId));
+            if(!orders.Any())
+            {
+                return Ok(new ApiResponse<IEnumerable<Order>>
+                {
+                    Message = "No orders found for this user",
+                    Data = orders
+                });
+            }
+            return Ok(new ApiResponse<IEnumerable<Order>>
+            {
+                Message = "Orders retrieved successfully",
+                Data = orders
+            });
+        }
         [HttpPost]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status201Created)]

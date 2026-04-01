@@ -8,9 +8,6 @@ namespace application.validations
     {
         public AddressValidation()
         {
-            RuleFor(e => e.UserId)
-                .NotNull().WithMessage("Mã người dùng không được null")
-                .NotEmpty().WithMessage("Mã người dùng không được bỏ trống");
 
             RuleFor(e => e.Province)
                 .NotEmpty().WithMessage("Tên thành phố không được để trống");

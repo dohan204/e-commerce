@@ -35,6 +35,15 @@ namespace infrastructure.repositories {
             var ordersDomain = _mapper.Map<List<Order>>(orders);
             return ordersDomain;
         }
+
+        public async Task<IEnumerable<Order>> GetOrdersByUserIdAsync(Guid userId)
+        {
+            var orders = await _ctx.Orders.Include(e => e.Items)
+                .Where(e => e.UserId == userId && !e.IsDeleted)
+                .AsNoTracking().ToListAsync();
+            var ordersDomain = _mapper.Map<List<Order>>(orders);
+            return ordersDomain;
+        }
         public async Task UpdateAsync(Order order)
         {
                 var orderEntity = await _ctx.Orders.Include(e => e.Items).FirstOrDefaultAsync(e => e.Id == order.Id);

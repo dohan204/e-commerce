@@ -7,16 +7,12 @@
       "RelativeMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|solutionrelative:src\\api\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5BDAB160-5258-45DA-1CDF-4BFCF367E785}|src\\application\\application.csproj|d:\\e-commerce\\backend\\src\\application\\cases\\commands\\orders\\updatestatushandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5BDAB160-5258-45DA-1CDF-4BFCF367E785}|src\\application\\application.csproj|solutionrelative:src\\application\\cases\\commands\\orders\\updatestatushandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|d:\\e-commerce\\backend\\src\\api\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|solutionrelative:src\\api\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|d:\\e-commerce\\backend\\src\\api\\helpers\\dtos\\updatestatusdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|solutionrelative:src\\api\\helpers\\dtos\\updatestatusdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5BDAB160-5258-45DA-1CDF-4BFCF367E785}|src\\application\\application.csproj|d:\\e-commerce\\backend\\src\\application\\cases\\commands\\orders\\updatestatuscommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5BDAB160-5258-45DA-1CDF-4BFCF367E785}|src\\application\\application.csproj|solutionrelative:src\\application\\cases\\commands\\orders\\updatestatuscommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|d:\\e-commerce\\backend\\src\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|solutionrelative:src\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|d:\\e-commerce\\backend\\src\\api\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,6 +31,54 @@
       "RelativeMoniker": "D:0:0:{87EDA1D2-4B5B-E524-38CE-D0BFCA5F4D6B}|src\\domain\\domain.csproj|solutionrelative:src\\domain\\entities\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|d:\\e-commerce\\backend\\src\\api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|solutionrelative:src\\api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D745DFE-AF9A-E111-755D-FD3FFF280728}|src\\infrastructure\\infrastructure.csproj|d:\\e-commerce\\backend\\src\\infrastructure\\services\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D745DFE-AF9A-E111-755D-FD3FFF280728}|src\\infrastructure\\infrastructure.csproj|solutionrelative:src\\infrastructure\\services\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5BDAB160-5258-45DA-1CDF-4BFCF367E785}|src\\application\\application.csproj|d:\\e-commerce\\backend\\src\\application\\cases\\commands\\carts\\createcarthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5BDAB160-5258-45DA-1CDF-4BFCF367E785}|src\\application\\application.csproj|solutionrelative:src\\application\\cases\\commands\\carts\\createcarthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D745DFE-AF9A-E111-755D-FD3FFF280728}|src\\infrastructure\\infrastructure.csproj|d:\\e-commerce\\backend\\src\\infrastructure\\services\\currentuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D745DFE-AF9A-E111-755D-FD3FFF280728}|src\\infrastructure\\infrastructure.csproj|solutionrelative:src\\infrastructure\\services\\currentuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5BDAB160-5258-45DA-1CDF-4BFCF367E785}|src\\application\\application.csproj|d:\\e-commerce\\backend\\src\\application\\dependency.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5BDAB160-5258-45DA-1CDF-4BFCF367E785}|src\\application\\application.csproj|solutionrelative:src\\application\\dependency.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|d:\\e-commerce\\backend\\src\\api\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|solutionrelative:src\\api\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5BDAB160-5258-45DA-1CDF-4BFCF367E785}|src\\application\\application.csproj|d:\\e-commerce\\backend\\src\\application\\cases\\commands\\product\\updateproducthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5BDAB160-5258-45DA-1CDF-4BFCF367E785}|src\\application\\application.csproj|solutionrelative:src\\application\\cases\\commands\\product\\updateproducthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5BDAB160-5258-45DA-1CDF-4BFCF367E785}|src\\application\\application.csproj|d:\\e-commerce\\backend\\src\\application\\cases\\commands\\categories\\createcategoryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5BDAB160-5258-45DA-1CDF-4BFCF367E785}|src\\application\\application.csproj|solutionrelative:src\\application\\cases\\commands\\categories\\createcategoryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5BDAB160-5258-45DA-1CDF-4BFCF367E785}|src\\application\\application.csproj|d:\\e-commerce\\backend\\src\\application\\cases\\commands\\categories\\createcategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5BDAB160-5258-45DA-1CDF-4BFCF367E785}|src\\application\\application.csproj|solutionrelative:src\\application\\cases\\commands\\categories\\createcategorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5BDAB160-5258-45DA-1CDF-4BFCF367E785}|src\\application\\application.csproj|d:\\e-commerce\\backend\\src\\application\\cases\\commands\\orders\\updatestatushandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5BDAB160-5258-45DA-1CDF-4BFCF367E785}|src\\application\\application.csproj|solutionrelative:src\\application\\cases\\commands\\orders\\updatestatushandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|d:\\e-commerce\\backend\\src\\api\\helpers\\dtos\\updatestatusdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|solutionrelative:src\\api\\helpers\\dtos\\updatestatusdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5BDAB160-5258-45DA-1CDF-4BFCF367E785}|src\\application\\application.csproj|d:\\e-commerce\\backend\\src\\application\\cases\\commands\\orders\\updatestatuscommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5BDAB160-5258-45DA-1CDF-4BFCF367E785}|src\\application\\application.csproj|solutionrelative:src\\application\\cases\\commands\\orders\\updatestatuscommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|d:\\e-commerce\\backend\\src\\api\\api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{CBAFC0F9-5B69-AE5B-776E-B650E010DF04}|src\\api\\api.csproj|solutionrelative:src\\api\\api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
@@ -46,7 +90,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -71,38 +115,51 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UpdateStatusHandler.cs",
-              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\application\\cases\\Commands\\Orders\\UpdateStatusHandler.cs",
-              "RelativeDocumentMoniker": "src\\application\\cases\\Commands\\Orders\\UpdateStatusHandler.cs",
-              "ToolTip": "D:\\e-commerce\\backend\\src\\application\\cases\\Commands\\Orders\\UpdateStatusHandler.cs",
-              "RelativeToolTip": "src\\application\\cases\\Commands\\Orders\\UpdateStatusHandler.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAASwCMAAAAIAAAAAAAAAA==",
+              "Title": "CartController.cs",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\api\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "src\\api\\Controllers\\CartController.cs",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\api\\Controllers\\CartController.cs",
+              "RelativeToolTip": "src\\api\\Controllers\\CartController.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAewB8AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T14:07:14.663Z",
+              "WhenOpened": "2026-03-25T06:31:26.926Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\api\\Program.cs",
+              "RelativeDocumentMoniker": "src\\api\\Program.cs",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\api\\Program.cs",
+              "RelativeToolTip": "src\\api\\Program.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAnwGIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T08:26:17.381Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DbDependency.cs",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\infrastructure\\dependency\\DbDependency.cs",
+              "RelativeDocumentMoniker": "src\\infrastructure\\dependency\\DbDependency.cs",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\infrastructure\\dependency\\DbDependency.cs",
+              "RelativeToolTip": "src\\infrastructure\\dependency\\DbDependency.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAnwFAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-14T14:42:41.025Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "UpdateStatusCommand.cs",
-              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\application\\cases\\Commands\\Orders\\UpdateStatusCommand.cs",
-              "RelativeDocumentMoniker": "src\\application\\cases\\Commands\\Orders\\UpdateStatusCommand.cs",
-              "ToolTip": "D:\\e-commerce\\backend\\src\\application\\cases\\Commands\\Orders\\UpdateStatusCommand.cs",
-              "RelativeToolTip": "src\\application\\cases\\Commands\\Orders\\UpdateStatusCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T14:06:58.507Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "ProductController.cs",
               "DocumentMoniker": "D:\\e-commerce\\backend\\src\\api\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "src\\api\\Controllers\\ProductController.cs",
               "ToolTip": "D:\\e-commerce\\backend\\src\\api\\Controllers\\ProductController.cs",
               "RelativeToolTip": "src\\api\\Controllers\\ProductController.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAADgvyMAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAjwLgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-18T11:56:05.366Z",
               "EditorCaption": ""
@@ -115,46 +172,20 @@
               "RelativeDocumentMoniker": "src\\api\\Controllers\\OrderController.cs",
               "ToolTip": "D:\\e-commerce\\backend\\src\\api\\Controllers\\OrderController.cs",
               "RelativeToolTip": "src\\api\\Controllers\\OrderController.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAADgv1cAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAADEAAAAAAAAAAAAkwEYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-14T14:34:40.464Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UpdateStatusDto.cs",
-              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\api\\Helpers\\Dtos\\UpdateStatusDto.cs",
-              "RelativeDocumentMoniker": "src\\api\\Helpers\\Dtos\\UpdateStatusDto.cs",
-              "ToolTip": "D:\\e-commerce\\backend\\src\\api\\Helpers\\Dtos\\UpdateStatusDto.cs",
-              "RelativeToolTip": "src\\api\\Helpers\\Dtos\\UpdateStatusDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T14:08:05.27Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Products.cs",
-              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\domain\\entities\\Products.cs",
-              "RelativeDocumentMoniker": "src\\domain\\entities\\Products.cs",
-              "ToolTip": "D:\\e-commerce\\backend\\src\\domain\\entities\\Products.cs",
-              "RelativeToolTip": "src\\domain\\entities\\Products.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBYAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-14T14:48:52.108Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "ProductRepository.cs",
               "DocumentMoniker": "D:\\e-commerce\\backend\\src\\infrastructure\\repositories\\ProductRepository.cs",
               "RelativeDocumentMoniker": "src\\infrastructure\\repositories\\ProductRepository.cs",
               "ToolTip": "D:\\e-commerce\\backend\\src\\infrastructure\\repositories\\ProductRepository.cs",
               "RelativeToolTip": "src\\infrastructure\\repositories\\ProductRepository.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAEwBUAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAjwBcAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-18T12:01:20.098Z",
               "EditorCaption": ""
@@ -162,19 +193,164 @@
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "DbDependency.cs",
-              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\infrastructure\\dependency\\DbDependency.cs",
-              "RelativeDocumentMoniker": "src\\infrastructure\\dependency\\DbDependency.cs",
-              "ToolTip": "D:\\e-commerce\\backend\\src\\infrastructure\\dependency\\DbDependency.cs",
-              "RelativeToolTip": "src\\infrastructure\\dependency\\DbDependency.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAASwEUAAAAMAAAAAAAAAA==",
+              "Title": "Products.cs",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\domain\\entities\\Products.cs",
+              "RelativeDocumentMoniker": "src\\domain\\entities\\Products.cs",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\domain\\entities\\Products.cs",
+              "RelativeToolTip": "src\\domain\\entities\\Products.cs",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAnwIgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-14T14:42:41.025Z",
+              "WhenOpened": "2026-03-14T14:48:52.108Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\api\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "src\\api\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\api\\Controllers\\UserController.cs",
+              "RelativeToolTip": "src\\api\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T05:49:39.274Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CreateCartHandler.cs",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\application\\cases\\Commands\\Carts\\CreateCartHandler.cs",
+              "RelativeDocumentMoniker": "src\\application\\cases\\Commands\\Carts\\CreateCartHandler.cs",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\application\\cases\\Commands\\Carts\\CreateCartHandler.cs",
+              "RelativeToolTip": "src\\application\\cases\\Commands\\Carts\\CreateCartHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T06:35:03.104Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "JwtTokenService.cs",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\infrastructure\\services\\JwtTokenService.cs",
+              "RelativeDocumentMoniker": "src\\infrastructure\\services\\JwtTokenService.cs",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\infrastructure\\services\\JwtTokenService.cs",
+              "RelativeToolTip": "src\\infrastructure\\services\\JwtTokenService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwA8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T06:36:23.939Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CurrentUser.cs",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\infrastructure\\services\\CurrentUser.cs",
+              "RelativeDocumentMoniker": "src\\infrastructure\\services\\CurrentUser.cs",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\infrastructure\\services\\CurrentUser.cs",
+              "RelativeToolTip": "src\\infrastructure\\services\\CurrentUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T06:35:29.497Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Dependency.cs",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\application\\Dependency.cs",
+              "RelativeDocumentMoniker": "src\\application\\Dependency.cs",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\application\\Dependency.cs",
+              "RelativeToolTip": "src\\application\\Dependency.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T08:26:08.332Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\api\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "src\\api\\Controllers\\CategoryController.cs",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\api\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "src\\api\\Controllers\\CategoryController.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAgwDAAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T07:55:07.276Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CreateCategoryCommand.cs",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\application\\cases\\Commands\\Categories\\CreateCategoryCommand.cs",
+              "RelativeDocumentMoniker": "src\\application\\cases\\Commands\\Categories\\CreateCategoryCommand.cs",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\application\\cases\\Commands\\Categories\\CreateCategoryCommand.cs",
+              "RelativeToolTip": "src\\application\\cases\\Commands\\Categories\\CreateCategoryCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T07:56:38.145Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CreateCategoryHandler.cs",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\application\\cases\\Commands\\Categories\\CreateCategoryHandler.cs",
+              "RelativeDocumentMoniker": "src\\application\\cases\\Commands\\Categories\\CreateCategoryHandler.cs",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\application\\cases\\Commands\\Categories\\CreateCategoryHandler.cs",
+              "RelativeToolTip": "src\\application\\cases\\Commands\\Categories\\CreateCategoryHandler.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBQAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T07:57:20.378Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "UpdateProductHandler.cs",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\application\\cases\\Commands\\Product\\UpdateProductHandler.cs",
+              "RelativeDocumentMoniker": "src\\application\\cases\\Commands\\Product\\UpdateProductHandler.cs",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\application\\cases\\Commands\\Product\\UpdateProductHandler.cs",
+              "RelativeToolTip": "src\\application\\cases\\Commands\\Product\\UpdateProductHandler.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBMAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T07:57:32.638Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "UpdateStatusCommand.cs",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\application\\cases\\Commands\\Orders\\UpdateStatusCommand.cs",
+              "RelativeDocumentMoniker": "src\\application\\cases\\Commands\\Orders\\UpdateStatusCommand.cs",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\application\\cases\\Commands\\Orders\\UpdateStatusCommand.cs",
+              "RelativeToolTip": "src\\application\\cases\\Commands\\Orders\\UpdateStatusCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T14:06:58.507Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "UpdateStatusHandler.cs",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\application\\cases\\Commands\\Orders\\UpdateStatusHandler.cs",
+              "RelativeDocumentMoniker": "src\\application\\cases\\Commands\\Orders\\UpdateStatusHandler.cs",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\application\\cases\\Commands\\Orders\\UpdateStatusHandler.cs",
+              "RelativeToolTip": "src\\application\\cases\\Commands\\Orders\\UpdateStatusHandler.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAASwCMAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T14:07:14.663Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "UpdateStatusDto.cs",
+              "DocumentMoniker": "D:\\e-commerce\\backend\\src\\api\\Helpers\\Dtos\\UpdateStatusDto.cs",
+              "RelativeDocumentMoniker": "src\\api\\Helpers\\Dtos\\UpdateStatusDto.cs",
+              "ToolTip": "D:\\e-commerce\\backend\\src\\api\\Helpers\\Dtos\\UpdateStatusDto.cs",
+              "RelativeToolTip": "src\\api\\Helpers\\Dtos\\UpdateStatusDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T14:08:05.27Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
               "Title": "api.csproj",
               "DocumentMoniker": "D:\\e-commerce\\backend\\src\\api\\api.csproj",
               "RelativeDocumentMoniker": "src\\api\\api.csproj",

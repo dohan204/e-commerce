@@ -1,21 +1,29 @@
-import React, { type ReactNode, type ComponentProps } from 'react'
-import { cn } from "@/lib/utils" // Thường có sẵn trong dự án shadcn/ui
+import { type ReactNode, type ComponentProps } from 'react'
+import { cn } from "@/lib/utils"
 
-// Kế thừa tất cả thuộc tính của thẻ div (onClick, onMouseEnter, style,...)
 interface CustomCardProps extends ComponentProps<"div"> {
-  children: ReactNode;
+  title: string;
+  value?: number | string;
+  icon?: ReactNode;
 }
 
-const CustomCard = ({ children, className, ...props }: CustomCardProps) => {
+const CustomCard = ({ title, value, icon, className, ...props }: CustomCardProps) => {
   return (
-    <div 
+    <div
       className={cn(
-        className='w-full min-h-[160px] sm:min-h-[200px] p-6 flex flex-col items-center justify-center shadow-xl bg-gray-100 hover:bg-blue-400 rounded-xl transition-all', 
-        className // Cho phép ghi đè hoặc thêm class từ bên ngoài
+        "w-full min-h-[140px] p-5 rounded-2xl shadow-md bg-emerald-500 text-white flex items-center justify-between transition-all hover:scale-[1.02] hover:shadow-xl",
+        className
       )}
-      {...props} // Truyền các props còn lại (như onClick, id...) vào thẻ div
+      {...props}
     >
-        {children}
+      <div className="flex flex-col gap-1">
+        <p className="text-sm opacity-80">{title}</p>
+        <h2 className="text-2xl font-bold">{value ?? 0}</h2>
+      </div>
+
+      <div className="bg-white/20 p-3 rounded-full">
+        {icon}
+      </div>
     </div>
   )
 }

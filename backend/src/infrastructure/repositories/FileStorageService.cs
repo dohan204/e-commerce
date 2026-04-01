@@ -5,38 +5,41 @@ namespace infrastructure.repositories
 
     public class FileStorageService : IFileStorageService
     {
-        private readonly string _filePaht;
+        private readonly string _rootPath;
         public FileStorageService(IWebHostEnvironment web)
         {
-            _filePaht = Path.Combine(web.WebRootPath, "images");
-            Directory.CreateDirectory(_filePaht);
+            // Dùng ContentRootPath cho an toàn, hoặc check null WebRootPath
+            var baseRoot = web.WebRootPath ?? web.ContentRootPath;
+            _rootPath = Path.Combine(baseRoot, "uploads");
+
+            // Đừng quên tạo thư mục nếu nó chưa tồn tại nhé
+            if (!Directory.Exists(_rootPath))
+            {
+                Directory.CreateDirectory(_rootPath);
+            }
         }
 
         public async Task<string> SaveFileAsync(Stream streamFile, string fileName)
         {
-            // Lấy phần mở rộng của file sau dấu .
-            var extension = Path.GetExtension(fileName);
+            if (streamFile == null) throw new ArgumentNullException(nameof(streamFile));
+            if (string.IsNullOrEmpty(fileName)) throw new ArgumentNullException(nameof(fileName));
+            if (string.IsNullOrEmpty(_rootPath)) throw new Exception("Root path is not initialized!");
 
-            // tạo tên unique 
-            var uniqueName = $"{Guid.NewGuid()}{extension}";
+            var uniqueFileName = $"{Guid.NewGuid()}{Path.GetExtension(fileName)}";
+            var filePath = Path.Combine(_rootPath, uniqueFileName);
 
-            var filePath = Path.Combine(_filePaht, uniqueName);
-
-            // ghi file vào ổ đĩa
-            using (streamFile)
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
             {
-                using var output = new FileStream(filePath, FileMode.Create);
-                await streamFile.CopyToAsync(output);
+                await streamFile.CopyToAsync(fileStream);
             }
 
-            // trả về đường dẫn tương đối để lưu db
-            return $"images/{uniqueName}";
+            return $"/uploads/{uniqueFileName}";
         }
 
         public async Task DeleteFileAsync(string fileName)
         {
             var actualFileName = Path.GetFileName(fileName);
-            var fullPath = Path.Combine(_filePaht, actualFileName);
+            var fullPath = Path.Combine(_rootPath, actualFileName);
 
             if (File.Exists(fullPath))
             {

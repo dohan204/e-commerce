@@ -1,0 +1,19 @@
+2026-03-31 14:18:50.671 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-03-31 14:18:50.687 +07:00 [INF] tìm thấy người dùng với id: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-31 14:18:50.692 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-03-31 14:18:50.834 +07:00 [INF] tìm thấy sản phẩm với id: 15
+2026-03-31 14:25:46.276 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-03-31 14:25:46.279 +07:00 [INF] tìm thấy người dùng với id: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-31 14:25:46.280 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-03-31 14:25:46.282 +07:00 [INF] tìm thấy sản phẩm với id: 15
+2026-03-31 14:27:20.792 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-03-31 14:27:20.797 +07:00 [INF] tìm thấy người dùng với id: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-31 14:27:20.799 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-03-31 14:27:20.800 +07:00 [INF] tìm thấy sản phẩm với id: 15
+2026-03-31 14:28:32.029 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-03-31 14:28:32.031 +07:00 [INF] tìm thấy người dùng với id: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-31 14:28:32.032 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-03-31 14:28:32.033 +07:00 [INF] tìm thấy sản phẩm với id: 15
+2026-03-31 14:28:32.036 +07:00 [INF] Đầu vào hợp lệ, tiến hành tạo đánh giá
+2026-03-31 14:33:06.747 +07:00 [INF] NotificationHub: ec6eda79-468f-4f89-86c7-91d0a5497b8a
+2026-03-31 14:46:26.933 +07:00 [INF] NotificationHub: ec6eda79-468f-4f89-86c7-91d0a5497b8a

@@ -6,7 +6,7 @@ namespace domain.entities
     {
         public Guid UserId { get; private set; }
         public int TotalQuantity => _cart.Sum(e => e.Quantity);
-        public decimal TotalPrice => _cart.Sum(e => e.Quantity * e.UnitPrice);
+        public decimal TotalPrice => _cart.Sum(e => e.Quantity * e.Price);
         private readonly List<CartItem> _cart = new ();
         public IReadOnlyCollection<CartItem> Items => _cart;
         // public int QuantityProduct { get;private set; }

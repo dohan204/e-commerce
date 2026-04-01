@@ -1,5 +1,5 @@
 import { authService } from '@/services/authService';
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 
 function useFetchs<T>(url: string) {
     const [data, setData] = useState<T[]>([]);
@@ -7,12 +7,13 @@ function useFetchs<T>(url: string) {
     const [error, setError] = useState<Error | null>(null);
 
     // console.log("helo anh em")
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
+        setLoading(true);
         try {
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
-                    "Authorization": `${authService.getToken()}`
+                    "Authorization": `Bearer ${authService.getToken()}`
                 }
             });
             console.log(authService.getToken())
@@ -29,7 +30,7 @@ function useFetchs<T>(url: string) {
         } finally {
             setLoading(false);
         }
-    }
+    }, [])
 
     useEffect(() => {
         fetchData();

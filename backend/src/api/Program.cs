@@ -1,3 +1,4 @@
+using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Threading.RateLimiting;
 using api.Exceptions;
@@ -5,17 +6,23 @@ using api.Helpers.Dtos.config;
 using application;
 using infrastructure.dependency;
 using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.Extensions.FileProviders;
+using Realtime;
+using Realtime.Hubs;
 using Serilog;
 
+
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "Allowfrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:5174", "http://localhost:5173")
+        policy.WithOrigins("http://localhost:5174", "http://localhost:5173", "http://localhost:3000")
             .AllowAnyMethod()
-            .AllowAnyHeader();
+            .AllowAnyHeader()
+            .AllowCredentials();
     });
 });
 // Add services to the container.
@@ -26,12 +33,14 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 builder.Services.AddControllers();
 // using dj
+// Thêm dòng này vào phần builder.Services
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddRealtime();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-builder.Services.AddAuthentication();
-builder.Services.AddAuthorization();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails(); // hiển thị chi tiết khi api trả về response
 
@@ -71,9 +80,7 @@ builder.Services.AddRateLimiter(options =>
             RetryAfSeconds = context.Lease.TryGetMetadata(MetadataName.RetryAfter, out var retryAfter)
                       ? retryAfter.TotalSeconds : 0
         };
-        await context.HttpContext.Response.WriteAsJsonAsync(response, cancellationtoken);
-
-        
+        await context.HttpContext.Response.WriteAsJsonAsync(response, cancellationtoken); 
     };
 }
 );
@@ -95,6 +102,17 @@ app.UseExceptionHandler();
 // app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(builder.Environment.ContentRootPath, "uploads")
+    ),
+    RequestPath = "/uploads"
+});
+
+app.MapHub<NotificationHub>("/notificationHub");
 
 app.MapControllers();
 

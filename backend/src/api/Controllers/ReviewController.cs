@@ -24,7 +24,11 @@ namespace api.Controllers
         public async Task<IActionResult> GetAllReviewByProduct(int productId)
         {
             var reviews = await _mediator.Send(new GetReviewByProductQuery { ProductId = productId});
-            return Ok(reviews);
+            return Ok(new ApiResponse<IReadOnlyList<Review>>
+            {
+                Message = "Get data successfully.",
+                Data = reviews
+            });
         }
         [HttpPost("create")]
         [AllowAnonymous]

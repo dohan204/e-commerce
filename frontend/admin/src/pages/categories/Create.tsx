@@ -25,16 +25,17 @@ import { API_ENDPOINTS } from '@/constants/urls'
 // hoặc dùng gói Form chuyên dụng của nó. Tôi sẽ dùng Label + Span lỗi cho đơn giản.
 
 const formSchema = z.object({
-  name: z.string().min(1, { message: "Tên không được để trống" })
+  name: z.string().min(1, { message: "Tên không được để trống" }),
+  image: z.any()
 })
 
 type FormValues = z.infer<typeof formSchema>
 
-export default function Create({refresh}: {refresh: () => void}) {
-    const [open, setOpen] = useState<boolean>(false);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<Error | null>(null);
-    // const [success, setSuccess] = useState<boolean>(false);
+export default function Create({ refresh }: { refresh: () => void }) {
+  const [open, setOpen] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+  // const [success, setSuccess] = useState<boolean>(false);
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -43,26 +44,32 @@ export default function Create({refresh}: {refresh: () => void}) {
   })
   const url = API_ENDPOINTS.CATEGORY.CREATE
   const onSubmit = async (data: FormValues) => {
+
+    const formData = new FormData();
+
+    formData.append('name', data.name);
+    if(data.image)
+      formData.append('file', data.image)
     setLoading(true)
     try {
-        await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json',
-                'Authorization': `Bearer ${authService.getToken()}`
-            },
-            body: JSON.stringify(data)
-        });
-        toast.success('Tạo mới thành công', {position: 'top-center'});
-        refresh();
-        setOpen(false)
-        form.reset();
-        
+      await fetch(url, {
+        method: 'POST',
+        headers: {
+          // 'Content-type': 'application/json',
+          'Authorization': `Bearer ${authService.getToken()}`
+        },
+        body: formData
+      });
+      toast.success('Tạo mới thành công', { position: 'top-center' });
+      refresh();
+      setOpen(false)
+      form.reset();
+
     } catch (error) {
-        setError(error as Error)
-        toast.error('Tạo thất bại!')
+      setError(error as Error)
+      toast.error('Tạo thất bại!')
     } finally {
-        setLoading(false)
+      setLoading(false)
     }
   }
   return (
@@ -99,6 +106,24 @@ export default function Create({refresh}: {refresh: () => void}) {
                       {fieldState.error.message}
                     </p>
                   )}
+                </div>
+              )}
+            />
+            <Controller
+              name="image"
+              control={form.control}
+              render={({ field: { onChange, value, ...field } }) => (
+                <div className='grid gap-2'>
+                  <Label>Hình ảnh</Label>
+                  <Input
+                    type='file'
+                    accept='image/*'
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) onChange(file)
+                    }}
+                    {...field}
+                  />
                 </div>
               )}
             />

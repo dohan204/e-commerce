@@ -1,5 +1,6 @@
 using System.Net.Mime;
 using application.cases.Commands.Addresses;
+using application.cases.Queries.Addresses;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +29,13 @@ namespace api.Controllers
             {
                 message = "Create addres success"
             });
+        }
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetAddress(Guid userId)
+        {
+            var query = new GetAddressUserQuery { UserId = userId};
+            var addres = await _mediator.Send(query);
+            return Ok(addres);
         }
     }
 }

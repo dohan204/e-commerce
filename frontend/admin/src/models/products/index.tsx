@@ -3,6 +3,13 @@ export interface BaseResponse<T> {
   message: string,
   data: T[]
 }
+
+export interface PagedResult<T> {
+  items: T[],
+  page: number,
+  pageSize: number,
+  total: number,
+}
 export interface Product {
   id: number,
   name: string,
@@ -11,6 +18,7 @@ export interface Product {
   sold: number
   price: number,
   salePrice: number | null,
+  categoryId: number,
   imageUrl: string | null,
   avgRating: number,
   reviewCount: number

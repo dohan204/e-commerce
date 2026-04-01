@@ -8,6 +8,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace api.Controllers
 {
@@ -44,12 +45,15 @@ namespace api.Controllers
             });
         }
         [HttpPost]
-        [Authorize]
-        [Consumes(MediaTypeNames.Application.Json)]
+        // [Authorize]
+        [Consumes("multipart/form-data")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Create([FromBody] CreateProductCommand command)
+        public async Task<IActionResult> Create([FromForm] CreateProductCommand command, IFormFile file)
         {
+
+            command.ImageUrl = file.OpenReadStream();
+            command.FileName = file.FileName;
             await _mediator.Send(command);
             return StatusCode(StatusCodes.Status201Created, new ActionResponse
             {
@@ -59,27 +63,29 @@ namespace api.Controllers
         }
 
         [HttpPut]
-        [Authorize]
-        [Consumes(MediaTypeNames.Application.Json)] // chỉ nhận dữ liệu kiểu json
+        // [Authorize]
+        [Consumes("multipart/form-data")]
+        // chỉ nhận dữ liệu kiểu json
         [ProducesResponseType(StatusCodes.Status204NoContent)] // trả về status 204
-        public async Task<IActionResult> Update([FromBody] UpdateProductCommand command)
+        public async Task<IActionResult> Update([FromForm] UpdateProductCommand command, IFormFile file)
         {
+
+            // Kiểm tra xem file có thực sự tới được Controller không
+            if (file == null || file.Length == 0)
+                return BadRequest("File gửi lên bị null rồi bạn ơi!");
+
+            // TẠO OBJECT MỚI HOẶC GÁN VÀO COMMAND HIỆN TẠI
+            command.ImageUrl = file.OpenReadStream(); // DÒNG QUAN TRỌNG NHẤT
+            command.FileName = file.FileName;
+
             await _mediator.Send(command);
             return NoContent();
         }
         [HttpPut("{id}/image")]
-        [Authorize]
-        [Consumes("multipart/form-data")]
+        // [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> UpdateImage(int id, IFormFile file)
         {
-            if (file is null || file.Length <= 0)
-                return BadRequest("No images providers");
-            string[] allowedExtension = new[] { ".png", ".jpeg", ".jpg", ".webp" };
-            var extenstionFile = Path.GetExtension(file.FileName).ToLower();
-
-            if (!allowedExtension.Contains(extenstionFile))
-                return BadRequest("Chỉ file có tên jpeg, png và webp là được cho phép");
 
             // chuyển iformfile thành stream 
             var command = new UpdateProductImageCommand
@@ -92,7 +98,7 @@ namespace api.Controllers
             return Ok(new { imagePath });
         }
         [HttpDelete("{id}")]
-        [Authorize]
+        // [Authorize]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Delete(int id)
         {
@@ -128,6 +134,52 @@ namespace api.Controllers
             return Ok(new ApiResponse<IEnumerable<TopProductSale>>
             {
                 Message = "Lấy dữ liệu thành công",
+                Data = data
+            });
+        }
+
+        [HttpGet("pagination")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> Pagination(int page, int pageSize, string? search, int? categoryId)
+        {
+            var query = new GetPaginationQuery { Page = page, PageSize = pageSize, Search = search, CategoryId = categoryId };
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet("search")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> Search([FromQuery] string search)
+        {
+            var query = new GetSearchProductQuery { Search = search};
+            var result = await _mediator.Send(query);
+            if(!result.Any())
+                return Ok(new ApiResponse<IEnumerable<ProductViewDto>>
+                {
+                    Message = "Khong co du lieu",
+                    Data = result
+                });
+            return Ok(new ApiResponse<IEnumerable<ProductViewDto>>
+            {
+                Message = "lấy du liêu thành công",
+                Data = result
+            });
+        }
+
+        [HttpGet("sales")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> Sales()
+        {
+            var data = await _mediator.Send(new GetSales());
+           if(!data.Any())
+                return Ok(new ApiResponse<IEnumerable<ProductViewDto>>
+                {
+                    Message = "Khong co du lieu",
+                    Data = data
+                });
+            return Ok(new ApiResponse<IEnumerable<ProductViewDto>>
+            {
+                Message = "lấy du liêu thành công",
                 Data = data
             });
         }

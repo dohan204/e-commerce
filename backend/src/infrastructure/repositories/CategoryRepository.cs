@@ -65,7 +65,8 @@ namespace infrastructure.repositories
         public async Task<bool> DeleteAsync(int id)
         {
             var category = await _ctx.Categories.FindAsync(id);
-            _ctx.Categories.Remove(category);
+            category.IsDeleted = true;
+            category.DeleteAt = DateTime.UtcNow;
             await _ctx.SaveChangesAsync();
             return true;
         }

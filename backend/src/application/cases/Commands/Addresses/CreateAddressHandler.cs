@@ -21,7 +21,7 @@ namespace application.cases.Commands.Addresses
         }
         public async Task<Unit> Handle(CreateAddressCommand command, CancellationToken cancellation)
         {
-            if(Guid.TryParse(currentUser.UserId, out var userId))
+            if(!Guid.TryParse(currentUser.UserId, out var userId))
                 throw new UnauthorizeException("User invalie");
             var inputCreatedValidate = await validator.ValidateAsync(command);
             if(!inputCreatedValidate.IsValid)

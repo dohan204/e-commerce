@@ -26,11 +26,14 @@ function Order() {
     orderCode: item.id + "-" + item.orderCode,
     userId: item.userId.slice(-12),
     status: convertStatus[item.status],
+    totalAmount: item.totalAmount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }),
+    finalAmount: item.finalAmount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }),
     createdAt: new Date(item.createdAt).toLocaleDateString('vi-VN'),
     completedAt: item.completedAt === null ? "Chưa Hoàn thành" : new Date(item.completedAt).toLocaleDateString('vi-VN'),
     itemCount: item.items.length
   }))
 
+  console.log(dataConvert)
   const headerTable: ColumnConfig<any>[] = [
     { header: 'Mã đơn', key: 'orderCode' },
     { header: 'Mã người dùng', key: 'userId' },

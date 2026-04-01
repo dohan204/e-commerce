@@ -95,15 +95,15 @@ namespace domain.entities
             ShippingAddress = shippingAddress;
             Note = note;
         }
-        public void UpdateOrderItem(int productId, int quantity, decimal price)
+        public void UpdateOrderItem(int productId, string productName, int quantity, decimal price)
         {
-            var item = OrderItem.Update(productId, quantity, price);
+            var item = OrderItem.Update(productId, productName, quantity, price);
             Items.Add(item);
             RecalculateAmount();
         }
-        public void AddOrderItem(int productId, int quantity, decimal price)
+        public void AddOrderItem(int productId, string productName, int quantity, decimal price)
         {
-            var item = OrderItem.Create(this.Id, productId, quantity, price);
+            var item = OrderItem.Create(this.Id, productId, productName, quantity, price);
             Items.Add(item);
             RecalculateAmount();
         }
@@ -147,11 +147,7 @@ namespace domain.entities
 
             Status = StatusOrder.shipping;
         }
-        public void Complete()
-        {
-            Status = StatusOrder.delivered;
-            CompletedAt = DateTime.UtcNow;
-        }
+
 
         public void Cancel()
         {
@@ -163,6 +159,8 @@ namespace domain.entities
         public void UpdateStatus(StatusOrder status)
         {
             Status = status;
+            if(StatusOrder.delivered == status)
+                CompletedAt = DateTime.UtcNow;
         }
         public void ReturnFinal(decimal totalAmount)
         {

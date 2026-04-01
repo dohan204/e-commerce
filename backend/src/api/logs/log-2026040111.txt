@@ -1,0 +1,6 @@
+2026-04-01 11:25:31.992 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-01 11:25:32.390 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-01 11:29:23.467 +07:00 [INF] Cập nhật số lượng trong giỏ hàng.
+2026-04-01 11:29:23.834 +07:00 [INF] Cập nhật Thành công.
+2026-04-01 11:29:23.839 +07:00 [INF] Thêm sản phẩm vào đơn hàng thành công: 38-1-15600000.00
+2026-04-01 11:29:23.856 +07:00 [INF] thêm thành công.

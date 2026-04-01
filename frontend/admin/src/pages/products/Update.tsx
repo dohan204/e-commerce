@@ -10,7 +10,7 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog'
 import React, { useState, type ReactNode } from 'react'
-import type { response } from '.'
+
 import { Controller, useForm } from 'react-hook-form'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -24,6 +24,11 @@ import {
   SelectValue
 } from '@/components/ui/select'
 import useFetchs from '@/hooks/use-fetch'
+import type { Product } from '@/models/products'
+import { API_ENDPOINTS } from '@/constants/urls'
+import { authService } from '@/services/authService'
+import { toast } from 'sonner'
+// import { categories } from '../categories/DataTable'
 
 /* ✅ FIX schema */
 const schema = z.object({
@@ -43,15 +48,15 @@ type ModelUpdate = z.infer<typeof schema>
 
 export default function Update({
   children,
-  item
+  item,
+  refresh,
+  categories
 }: {
   children: ReactNode
-  item: response
+  item: any,
+  refresh: () => void,
+  categories?: any[]
 }) {
-  const { data = [] } = useFetchs<response>(
-    'http://localhost:5255/api/category/alls'
-  )
-
   const form = useForm<ModelUpdate>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -62,15 +67,15 @@ export default function Update({
       salePrice: item.salePrice ?? 0,
       stock: item.stock ?? 0,
 
-      /* ❌ fix bug ngu vl lúc nãy */
-      categoryId: item.id
+      
+      categoryId: item.categoryId
     }
   })
 
   const [open, setOpen] = useState(false)
 
   /* ✅ handle submit */
-  const onSubmit = (values: ModelUpdate) => {
+  const onSubmit = async (values: ModelUpdate) => {
     console.log('form values:', values)
 
     /* 🔥 nếu có file → dùng FormData */
@@ -87,8 +92,26 @@ export default function Update({
     if (values.imageFile) {
       formData.append('file', values.imageFile)
     }
+    console.log('formData entries:', Array.from(formData.entries()))
+    try {
+      const response = await fetch(API_ENDPOINTS.PRODUCT.UPDATE, {
+        method: 'PUT',
+        headers: {
+          // 'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authService.getToken()}`
+        },
+        body: formData
+      })
 
-    // 👉 call API ở đây
+      if (!response.ok)
+        throw new Error("update failed");
+
+      toast.success("Cập nhật thành công", { position: 'top-center' });
+      refresh();
+      setOpen(false);
+    } catch (err) {
+      toast.error("Cập nhật thất bại", { position: 'top-center' })
+    }
   }
 
   return (
@@ -169,23 +192,27 @@ export default function Update({
             <Controller
               name="imageFile"
               control={form.control}
-              render={({ field }) => (
+              render={({ field: { onChange, value, ...field } }) => (
                 <div className="grid gap-2">
                   <Label>Hình ảnh</Label>
 
-                  {/* 🔥 hiển thị ảnh cũ */}
-                  {item.imageUrl && (
+                  {/* Hiển thị ảnh: Ưu tiên ảnh mới chọn (preview), nếu không có thì hiện ảnh cũ */}
+                  {(value || item.imageUrl) && (
                     <img
-                      src={item.imageUrl}
-                      className="w-20 h-20 object-cover rounded"
+                      src={value ? URL.createObjectURL(value) : item.imageUrl}
+                      alt="Preview"
+                      className="w-20 h-20 object-cover rounded border"
                     />
                   )}
 
                   <Input
                     type="file"
-                    onChange={(e) =>
-                      field.onChange(e.target.files?.[0])
-                    }
+                    accept="image/*" // Chỉ cho phép chọn file ảnh
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) onChange(file); // Cập nhật file vào form state
+                    }}
+                    {...field} // Spread các props còn lại nhưng không bao gồm value
                   />
                 </div>
               )}
@@ -208,7 +235,7 @@ export default function Update({
                       <SelectValue placeholder="Chọn danh mục" />
                     </SelectTrigger>
                     <SelectContent>
-                      {data.map((c) => (
+                      {categories?.map((c) => (
                         <SelectItem
                           key={c.id}
                           value={c.id.toString()}

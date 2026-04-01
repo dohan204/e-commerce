@@ -1,0 +1,5 @@
+2026-03-30 23:37:14.363 +07:00 [INF] Create product successfully.
+2026-03-30 23:38:08.078 +07:00 [INF] Product Update: 16 - iPhone XS Max  - 600000 - 15 - 0 - 0 - 16 - /uploads/6910ce1f-c02e-4075-97d8-706933a1aaa1.jpg
+2026-03-30 23:40:00.731 +07:00 [INF] Product Update: 16 - iPhone XS Max  - 600000 - 15 - 0 - 0 - 16 - /uploads/e58d3ec2-1e5a-4a4c-8081-652aebd8c6b9.jpg
+2026-03-30 23:45:44.413 +07:00 [INF] Product Update: 16 - iPhone XS Max  - 600000 - 15 - 0 - 0 - 16 - /uploads/14a31b6c-6302-4a20-964e-e822d2dd4dc8.jpg
+2026-03-30 23:55:20.672 +07:00 [INF] Product Update: 16 - iPhone XS Max  - 600000 - 15 - 0 - 0 - 1015 - /uploads/aff589c1-f339-4dbc-ae06-98cdcd96eaf6.jpg

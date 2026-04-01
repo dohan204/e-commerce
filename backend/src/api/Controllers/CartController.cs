@@ -44,11 +44,11 @@ namespace api.Controllers
             await _mediator.Send(command);
             return NoContent();
         }
-        [HttpDelete]
+        [HttpDelete("{ProductId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> Delete([FromQuery] Guid UserId, [FromQuery] int ProductId)
+        public async Task<IActionResult> Delete(int ProductId)
         {
-            var command = new DeleteCartItemCommand {UserId = UserId, ProductId = ProductId};
+            var command = new DeleteCartItemCommand {ProductId = ProductId};
             await _mediator.Send(command);
             return NoContent();
         }

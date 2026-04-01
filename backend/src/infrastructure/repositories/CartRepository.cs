@@ -29,9 +29,11 @@ namespace infrastructure.repositories
 
         public async Task<Cart?> GetCartByUserAsync(Guid userid)
         {
-            var userCart = await _ctx.Carts.Include(e => e.Items).FirstOrDefaultAsync(e => e.UserId == userid);
+            var userCart = await _ctx.Carts
+            .Include(e => e.Items)
+            .ThenInclude(e => e.Product)
+            .FirstOrDefaultAsync(e => e.UserId == userid);
             var cartMapping = _mapper.Map<Cart>(userCart);
-            Console.WriteLine(cartMapping.Items.Count);
             return cartMapping;
         }
         public async Task UpdateAsync(Cart cart)
@@ -46,7 +48,6 @@ namespace infrastructure.repositories
             // lay ra san pham cos co cung userId va cung productId 
             var cartItems = await _ctx.Set<CartItemEntity>()
                 .FirstOrDefaultAsync(e => e.Cart.UserId == userId && e.ProductId == productId);
-            
             if(cartItems is null)
                 return false;
             // thucj hien xoa mem

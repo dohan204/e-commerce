@@ -75,6 +75,12 @@ namespace infrastructure.dependency
                 .Property(e => e.Email)
                 .IsRequired();
             
+            builder.Entity<AppUser>()
+                .HasMany(e => e.Notifications)
+                .WithOne(e => e.AppUser)
+                .HasForeignKey(e => e.UserId)
+                .OnDelete(deleteBehavior: DeleteBehavior.Cascade);
+            
             builder.Entity<CartEntity>()
                 .ToTable("Carts");
 
@@ -165,10 +171,8 @@ namespace infrastructure.dependency
                 .Property(e => e.Rating)
                 .HasColumnType("decimal(15,2)");
 
+
         }
-        // public DbSet<AppUser> Users => Set<AppUser>();
-        // public DbSet<AppRole> Roles => Set<AppRole>();
-        // public DbSet<Products> Products => Set<Products>();
         public DbSet<CategoryEntity> Categories => Set<CategoryEntity>();
         public DbSet<ProductEntity> Products=> Set<ProductEntity>();
         public DbSet<ReviewEntity> Reviews => Set<ReviewEntity>();
@@ -178,6 +182,7 @@ namespace infrastructure.dependency
         public DbSet<VoucherEntity> Vouchers=> Set<VoucherEntity>();
         public DbSet<CartEntity> Carts=> Set<CartEntity>();
         public DbSet<CartItemEntity> CartItems=> Set<CartItemEntity>();
+        public DbSet<NotificationEntity> Notifications => Set<NotificationEntity>();
         // public DbSet<WishlistEntity> Wishlists => Set<WishlistEntity>();
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

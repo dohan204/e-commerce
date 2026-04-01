@@ -24,5 +24,6 @@ namespace infrastructure.identity
         public ICollection<AddressEntity> Addresses { get; set; } = new List<AddressEntity>();
         public ICollection<CartEntity> Carts { get; set; } = new List<CartEntity>();
         public ICollection<ReviewEntity> Reviews {get; set; } = new List<ReviewEntity>();
+        public ICollection<NotificationEntity> Notifications { get; set; } = new List<NotificationEntity>();
     }
 }

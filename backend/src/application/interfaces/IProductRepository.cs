@@ -1,5 +1,6 @@
 using System.Net.Http.Headers;
 using application.cases.Dtos;
+using application.helpers;
 using domain.entities;
 using Microsoft.AspNetCore.Http;
 
@@ -21,5 +22,8 @@ namespace application.interfaces
         Task<object?> GetFullDashboardStatsAsync();
 
         Task<IEnumerable<TopProductSale>> GetTopProductSalesAsync();
+        Task<PagedResult<ProductViewDto>> PaginationProduct(int page, int pageSize, string? search, int? categoryid);
+        Task<IEnumerable<ProductViewDto>> SearchProductAsync(string search);
+        Task<IEnumerable<ProductViewDto>> GetSales();
     }
 }

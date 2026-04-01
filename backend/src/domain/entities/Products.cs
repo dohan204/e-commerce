@@ -22,6 +22,7 @@ namespace domain.entities
         public int? Sold { get; private set; } = 0; // số lượng đẫ bán 
         public int CategoryId { get; private set; }
         public string? Images { get; private set; }
+        public string? Tag {get; private set; } 
         public decimal? AvgRating { get; private set; }
         public int? ReviewCount { get; private set; }
         public StatusProduct Status { get; set; } = StatusProduct.active;
@@ -33,7 +34,9 @@ namespace domain.entities
             string description,
             decimal price,
             int stock,
-            int categoryId
+            int categoryId,
+            string? images,
+            string? tag
             )
         {
             if (string.IsNullOrEmpty(name))
@@ -54,13 +57,13 @@ namespace domain.entities
             this.Stock = stock;
             this.Sold = 0;
             this.CategoryId = categoryId;
-            this.Images = string.Empty;
+            this.Images = images ?? string.Empty;
             this.AvgRating = 0;
             this.ReviewCount = 0;
             this.SalePrice = 0;
             this.Slug = GenerateSlug(name);
             this.Created_At = DateTime.Now;
-
+            Tag = tag;
         }
         public Products(
             int id,
@@ -68,7 +71,9 @@ namespace domain.entities
             string description,
             decimal price,
             int stock,
-            int categoryId
+            int categoryId,
+            string imageUrl,
+            string? tag
         )
         {
             Id = id;
@@ -78,22 +83,25 @@ namespace domain.entities
             this.Stock = stock;
             this.Sold = 0;
             this.CategoryId = categoryId;
-            this.Images = string.Empty;
+            this.Images = imageUrl;
             this.AvgRating = 0;
             this.ReviewCount = 0;
             this.SalePrice = 0;
             this.Slug = GenerateSlug(name);
             this.Created_At = DateTime.Now;
+            this.Tag = tag;
         }
         public static Products Create(
             string name,
             string description,
             decimal price,
             int stock,
-            int categoryid
+            int categoryid,
+            string imageUrl,
+            string? tag
         )
         {
-            return new Products(name, description, price, stock, categoryid);
+            return new Products(name, description, price, stock, categoryid, imageUrl, tag);
         }
         public void Update(string? name
         , string? description,
@@ -102,18 +110,16 @@ namespace domain.entities
         int? sold,
         decimal? salePrice,
         int? categoryId,
-        string? images, int? reviewCount, decimal? avgRating)
+        string filePath)
         {
-            this.Name = name;
+            this.Name = name!;
             this.Description = description;
-            this.Price = (decimal)price;
-            this.Stock = (int)stock;
+            this.Price = (decimal)price!;
+            this.Stock = (int)stock!;
             this.CategoryId = (int)categoryId;
-            this.Images = images;
             this.Sold = sold;
             this.SalePrice = salePrice;
-            this.ReviewCount = reviewCount;
-            this.AvgRating = avgRating;
+            this.Images = filePath;
         }
         private string GenerateSlug(string input)
         {

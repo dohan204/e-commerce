@@ -4,12 +4,12 @@ import { Label } from '@/components/ui/label'
 import useFetchSingle from '@/hooks/use-fetchs'
 import type { OrderResponse } from '@/models/orders'
 import React, { type ReactNode } from 'react'
-import type { res } from '../products'
 import { API_ENDPOINTS } from '@/constants/urls'
+import type { BaseResponse, Product } from '@/models/products'
 
 
 const DetailsOrder = ({ item, children }: { item: OrderResponse, children: ReactNode }) => {
-    const { data } = useFetchSingle<res>(API_ENDPOINTS.PRODUCT.GETALL);
+    const { data } = useFetchSingle<BaseResponse<Product>>(API_ENDPOINTS.PRODUCT.GETALL);
     const productMap = Object.fromEntries(
         data?.data.map(p => [p.id, p.name]) || []
     );

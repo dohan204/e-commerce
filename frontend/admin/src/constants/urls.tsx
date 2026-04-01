@@ -22,11 +22,22 @@ export const API_ENDPOINTS = {
         GETALL: `${apiUrl}/product`,
         GETID: (id: number) => `${apiUrl}/product/${id}`,
         GETDATASUMARY: `${apiUrl}/product/dataoverview`,
-        GETTOPSALE: `${apiUrl}/product/topSales`
+        GETTOPSALE: `${apiUrl}/product/topSales`,
+        PAGINATION: (page: number, pageSize: number, search?: string, cid?: number) => {
+            let url = `${apiUrl}/product/pagination?page=${page}&pageSize=${pageSize}`;
+
+            if (search) url += `&search=${search}`;
+
+            // luôn add categoryId (kể cả undefined)
+            url += `&categoryId=${cid ?? ''}`;
+
+            return url;
+        }
     },
     CATEGORY: {
         CREATE: `${apiUrl}/category`,
-        GETALL: `${apiUrl}/category/alls`
+        GETALL: `${apiUrl}/category/alls`,
+        DELETE: (id: number) => `${apiUrl}/category/${id}`
     },
     ORDER: {
         GETALL: `${apiUrl}/order`,

@@ -17,6 +17,7 @@ namespace infrastructure.persistence.entities
         public int Stock { get; set; }
         public int? Sold { get; set; }
         public int CategoryId { get; set; }
+        public string? Tag {get; set;}
         public CategoryEntity CategoryEntity { get; set; }
         public string? ImageUrl { get; set; }
         public decimal? AvgRating { get; set; }

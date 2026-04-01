@@ -23,7 +23,7 @@ namespace application.cases.Commands.Orders
             order.Items.Clear(); // xóa hết các items cũ đi 
             foreach(var item in command.UpdateOrderItem)
             {
-                var itemUpdate = OrderItem.Update(item.ProductId, item.Quantity, item.Price);
+                var itemUpdate = OrderItem.Update(item.ProductId, item.ProductName, item.Quantity, item.Price);
                 order.Items.Add(itemUpdate);
             }
 

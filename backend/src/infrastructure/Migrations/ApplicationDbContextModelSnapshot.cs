@@ -400,6 +400,44 @@ namespace infrastructure.Migrations
                     b.ToTable("Categories", "MySchema");
                 });
 
+            modelBuilder.Entity("infrastructure.persistence.entities.NotificationEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTimeOffset?>("DeleteAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notifications", "MySchema");
+                });
+
             modelBuilder.Entity("infrastructure.persistence.entities.OrderEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -779,6 +817,17 @@ namespace infrastructure.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("infrastructure.persistence.entities.NotificationEntity", b =>
+                {
+                    b.HasOne("infrastructure.identity.AppUser", "AppUser")
+                        .WithMany("Notifications")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("infrastructure.persistence.entities.OrderEntity", b =>
                 {
                     b.HasOne("infrastructure.identity.AppUser", "AppUser")
@@ -870,6 +919,8 @@ namespace infrastructure.Migrations
                     b.Navigation("Addresses");
 
                     b.Navigation("Carts");
+
+                    b.Navigation("Notifications");
 
                     b.Navigation("Orders");
 

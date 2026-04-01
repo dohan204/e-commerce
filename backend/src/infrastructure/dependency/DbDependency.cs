@@ -34,26 +34,33 @@ namespace infrastructure.dependency
                 .WriteTo.Console()
                 .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Hour)
                 .CreateLogger();
-
+            services.AddHttpContextAccessor();
             services.AddAutoMapper(cfg =>
             {
                 cfg.CreateMap<CategoryEntity, CategoryViewDto>();
                 cfg.CreateMap<Category, CategoryEntity>();
                 cfg.CreateMap<CategoryEntity, Category>();
 
-                cfg.CreateMap<Products, ProductEntity>();
+                cfg.CreateMap<Products, ProductEntity>()
+                    .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Images));
                 cfg.CreateMap<ProductEntity, Products>();
                 cfg.CreateMap<Products, ProductViewDto>();
-
+                cfg.CreateMap<ProductEntity, ProductViewDto>().ReverseMap();
+                
                 cfg.CreateMap<Order, OrderEntity>()
                     .ForMember(dest => dest.StatusOrdere, opt => opt.MapFrom(src => src.Status)).ReverseMap();
                 cfg.CreateMap<OrderItem, OrderItemEntity>();
-                cfg.CreateMap<OrderItemEntity, OrderItem>();
+                cfg.CreateMap<OrderItemEntity, OrderItem>()
+                    .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Products.Name));
 
                 cfg.CreateMap<CartEntity, Cart>();
                 cfg.CreateMap<Cart, CartEntity>();
-                cfg.CreateMap<CartItemEntity, CartItem>();
-                cfg.CreateMap<CartItem, CartItemEntity>();
+                cfg.CreateMap<CartItemEntity, CartItem>()
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Product.Name))
+                    .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Product.ImageUrl))
+                    .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.UnitPrice));
+                cfg.CreateMap<CartItem, CartItemEntity>()
+                    .ForMember(dest => dest.UnitPrice, opt => opt.MapFrom(src => src.Price));
                 
 
                 cfg.CreateMap<Review, ReviewEntity>()
@@ -63,6 +70,10 @@ namespace infrastructure.dependency
                     .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.ProductEntityId));
 
                 cfg.CreateMap<Voucher, VoucherEntity>().ReverseMap();
+
+                cfg.CreateMap<Address, AddressEntity>().ReverseMap();
+
+                cfg.CreateMap<Notification, NotificationEntity>().ReverseMap();
             });
             services.AddDbContext<ApplicationDbContext>(options =>
             {
@@ -104,6 +115,19 @@ namespace infrastructure.dependency
                     ValidIssuer = configuration.GetValue<string>("Jwt:Issuer"),
                     ValidAudience = configuration.GetValue<string>("Jwt:Audience"),
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetValue<string>("Jwt:Key") ?? string.Empty))
+                };
+                options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        var accessToken = context.Request.Query["access_token"];
+                        var path = context.HttpContext.Request.Path;
+                        if(!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/notificationHub"))
+                        {
+                            context.Token = accessToken;
+                        }
+                        return Task.CompletedTask;
+                    }
                 };
             });
 

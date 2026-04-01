@@ -1,4 +1,5 @@
 using application.cases.Dtos;
+using application.helpers;
 using application.interfaces;
 using AutoMapper;
 using domain.entities;
@@ -7,6 +8,7 @@ using infrastructure.dependency;
 using infrastructure.persistence.entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
 using Serilog;
 
 namespace infrastructure.repositories
@@ -33,6 +35,7 @@ namespace infrastructure.repositories
                     Sold = p.Sold,
                     ReviewCount = p.ReviewCount,
                     SalePrice = (decimal)p.SalePrice!,
+                    CategoryId = p.CategoryId,
                     ImageUrl = p.ImageUrl,
                     AvgRating = (decimal)p.AvgRating!,
                 }).ToListAsync();
@@ -90,10 +93,54 @@ namespace infrastructure.repositories
                 .Select(e => new TopProductSale
                 {
                     Name = e.Key,
-                    Quantity = e.Sum(e => e.Sold)
+                    Quantity = e.Sum(e => e.Sold),
                 })
                 .OrderByDescending(e => e.Quantity)
                 .ToListAsync();
+        }
+        public async Task<PagedResult<ProductViewDto>> PaginationProduct(int page, int pageSize, string? search, int? categoryId)
+        {
+            var products = _ctx.Products.AsNoTracking().AsQueryable();
+
+            if(!string.IsNullOrEmpty(search))
+                products = products.Where(e => e.Name.Contains(search) || e.Tag.Contains(search));
+
+            if(categoryId.HasValue)
+                products = products.Where(e => e.CategoryId == categoryId.Value);
+
+            var total = await products.CountAsync();
+
+            var items = await products
+                .OrderBy(e => e.Id)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+            var dataMapping = _mapper.Map<IEnumerable<ProductViewDto>>(items);
+            return new PagedResult<ProductViewDto>
+            {
+                Total = total,
+                Items = dataMapping,
+                Page = page,
+                PageSize = pageSize
+            };
+        }
+
+        public async Task<IEnumerable<ProductViewDto>> SearchProductAsync(string search)
+        {
+            var product = await _ctx.Products.AsNoTracking()
+            .Where(e => e.Name.Contains(search) || e.CategoryEntity.Name.Contains(search))
+            .ToListAsync();
+            
+            return _mapper.Map<IEnumerable<ProductViewDto>>(product);
+        }
+
+        public async Task<IEnumerable<ProductViewDto>> GetSales()
+        {
+            var products = await _ctx.Products.AsNoTracking()
+                .OrderByDescending(e => e.Sold)
+                .Take(15)
+                .ToListAsync();
+            return _mapper.Map<IEnumerable<ProductViewDto>>(products);
         }
     }
 }

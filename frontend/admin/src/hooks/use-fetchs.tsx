@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-function useFetchSingle<T>(url: string) {
+function useFetchSingle<T>(url: string, deps: any[] = []) {
     const [data, setData] = useState<T | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<Error | null>(null);
@@ -25,7 +25,7 @@ function useFetchSingle<T>(url: string) {
 
     useEffect(() => {
         fetchData();
-    }, [url])
+    }, [url]);
     return { data, loading, error, refresh: fetchData}
 }
 

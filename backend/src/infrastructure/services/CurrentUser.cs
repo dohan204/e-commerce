@@ -11,7 +11,10 @@ namespace infrastructure.services
         {
             _httpContext = httpContext;
         }
-        public string UserId 
-         => _httpContext.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? string.Empty;
+        public string UserId
+         => _httpContext.HttpContext?.User?.FindFirst("id")?.Value // Thử key "id"
+        ?? _httpContext.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value
+        ?? _httpContext.HttpContext?.User?.FindFirst("sub")?.Value // Thử key "sub"
+        ?? string.Empty;
     }
 }

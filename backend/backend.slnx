@@ -4,6 +4,7 @@
     <Project Path="src/application/application.csproj" />
     <Project Path="src/domain/domain.csproj" />
     <Project Path="src/infrastructure/infrastructure.csproj" />
+    <Project Path="src/Realtime/Realtime.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Integration.Testing/Integration.Testing.csproj" />

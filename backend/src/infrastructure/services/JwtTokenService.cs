@@ -17,11 +17,12 @@ namespace infrastructure.services
         public string GenerateToken(AppUser user, IList<string> roleUser)
         {
             // tạo danh sách claim
-            var claims = new List<Claim>()
+            var claims = new List<Claim>
             {
+                new Claim("id", user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Email, user.Email!),
+                new Claim("email", user.Email!),
                 new Claim("FullName", user.FullName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };

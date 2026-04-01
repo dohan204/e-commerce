@@ -9,6 +9,9 @@ namespace application.cases.Commands.Product
         public string Description {get; set;} = string.Empty;
         public decimal Price {get; set;} = decimal.Zero;
         public int Stock {get; set; }
-        public int CategoryId {get; set;} 
+        public int CategoryId {get; set;}
+        public string Tag {get; set;} = string.Empty;
+        public Stream? ImageUrl {get; set;}
+        public string? FileName {get; set;} 
     }
 }

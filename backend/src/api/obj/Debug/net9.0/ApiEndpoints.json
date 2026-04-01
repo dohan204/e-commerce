@@ -31,6 +31,22 @@
     ]
   },
   {
+    "ContainingType": "api.Controllers.AddressController",
+    "Method": "GetAddress",
+    "RelativePath": "api/Address/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "api.Controllers.AuthController",
     "Method": "ConfirmEmail",
     "RelativePath": "api/Auth/email-confirm",
@@ -127,20 +143,15 @@
   {
     "ContainingType": "api.Controllers.CartController",
     "Method": "Delete",
-    "RelativePath": "api/Cart",
+    "RelativePath": "api/Cart/{ProductId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "UserId",
-        "Type": "System.Guid",
-        "IsRequired": false
-      },
-      {
         "Name": "ProductId",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
@@ -195,9 +206,59 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "command",
-        "Type": "application.cases.Commands.Categories.CreateCategoryCommand",
-        "IsRequired": true
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image.CanRead",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image.CanWrite",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image.CanSeek",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image.CanTimeout",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image.Length",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image.Position",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image.ReadTimeout",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image.WriteTimeout",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -514,6 +575,44 @@
     ]
   },
   {
+    "ContainingType": "api.Controllers.OrderController",
+    "Method": "GetRevenue",
+    "RelativePath": "api/Order/revenues",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "api.Controllers.OrderController",
+    "Method": "GetOrdersByUser",
+    "RelativePath": "api/Order/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "api.Controllers.ProductController",
     "Method": "GetAll",
     "RelativePath": "api/Product",
@@ -538,9 +637,84 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "command",
-        "Type": "application.cases.Commands.Product.CreateProductCommand",
-        "IsRequired": true
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Price",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "Stock",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "CategoryId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Tag",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrl.CanRead",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrl.CanWrite",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrl.CanSeek",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrl.CanTimeout",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrl.Length",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrl.Position",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrl.ReadTimeout",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrl.WriteTimeout",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -569,9 +743,104 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "command",
-        "Type": "application.cases.Commands.Product.UpdateProductCommand",
-        "IsRequired": true
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Price",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "SalePrice",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Stock",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Sold",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CategoryId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrl.CanRead",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrl.CanWrite",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrl.CanSeek",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrl.CanTimeout",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrl.Length",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrl.Position",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrl.ReadTimeout",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImageUrl.WriteTimeout",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "AvgRating",
+        "Type": "System.Nullable\u00601[[System.Decimal, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ReviewCount",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -670,6 +939,97 @@
     "ContainingType": "api.Controllers.ProductController",
     "Method": "GetAllData",
     "RelativePath": "api/Product/dataoverview",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "api.Controllers.ProductController",
+    "Method": "Pagination",
+    "RelativePath": "api/Product/pagination",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "categoryId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "api.Controllers.ProductController",
+    "Method": "Sales",
+    "RelativePath": "api/Product/sales",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "api.Controllers.ProductController",
+    "Method": "Search",
+    "RelativePath": "api/Product/search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "api.Controllers.ProductController",
+    "Method": "GetTopSale",
+    "RelativePath": "api/Product/topSales",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -984,6 +1344,28 @@
           "text/json"
         ],
         "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "api.Controllers.VoucherController",
+    "Method": "DeleteAsync",
+    "RelativePath": "api/Voucher/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
       }
     ]
   },

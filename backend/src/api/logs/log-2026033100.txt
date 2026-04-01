@@ -1,0 +1,20 @@
+2026-03-31 00:43:36.577 +07:00 [INF] Create product: Macbook M4 2025 pro - Điện thoại cao cấp - 3434545 - 21 - 1015 - /uploads/fe623c00-28e0-427d-b6f8-2abf150b6ba8.webp
+2026-03-31 00:43:37.164 +07:00 [INF] Create product successfully.
+2026-03-31 00:48:55.401 +07:00 [INF] Create product: iPhone 11 - by han - 4300000 - 20 - 1015 - /uploads/d8bafde7-04e1-44bb-9b5c-a0fd736ada0f.webp
+2026-03-31 00:48:55.430 +07:00 [INF] Create product successfully.
+2026-03-31 00:49:53.102 +07:00 [INF] Create product: iPhone 11 Pro - by han - 5000000 - 20 - 1015 - /uploads/af9e45a0-3804-4688-971c-46cfeeec6eec.webp
+2026-03-31 00:49:53.146 +07:00 [INF] Create product successfully.
+2026-03-31 00:50:23.401 +07:00 [INF] Create product: iPhone 11 Pro Max - by han - 6000000 - 20 - 1015 - /uploads/02908acf-542e-476d-966a-0147794e12d8.webp
+2026-03-31 00:50:23.425 +07:00 [INF] Create product successfully.
+2026-03-31 00:50:55.970 +07:00 [INF] Create product: iPhone 12 - by han - 4500000 - 20 - 1015 - /uploads/b3aebe6a-5c0f-4c24-ac46-3e21af5362d5.webp
+2026-03-31 00:50:55.983 +07:00 [INF] Create product successfully.
+2026-03-31 00:51:28.746 +07:00 [INF] Create product: iPhone 12 Pro - by han - 6000000 - 30 - 1015 - /uploads/95a9ffd2-0d9c-4ed9-9e44-33dcedce09f9.jpg
+2026-03-31 00:51:28.771 +07:00 [INF] Create product successfully.
+2026-03-31 00:51:54.950 +07:00 [INF] Create product: iPhone 12 Pro Max - by han - 10000000 - 15 - 1015 - /uploads/9a3c4ef0-7169-4c64-bfce-c42a812babee.webp
+2026-03-31 00:51:54.961 +07:00 [INF] Create product successfully.
+2026-03-31 00:52:48.356 +07:00 [INF] Create product: iPhone 13 - by han - 7000000 - 10 - 1015 - /uploads/0699e217-395b-4343-bb7b-ff2052f496eb.jpg
+2026-03-31 00:52:48.384 +07:00 [INF] Create product successfully.
+2026-03-31 00:53:26.820 +07:00 [INF] Create product: iPhone 13 Pro - by han - 8000000 - 5 - 1015 - /uploads/325b7ebb-adea-49c2-b886-0bc1dce2fc63.jpg
+2026-03-31 00:53:26.848 +07:00 [INF] Create product successfully.
+2026-03-31 00:53:54.226 +07:00 [INF] Create product: iPhone 13 Pro Max - by han - 12000000 - 20 - 1015 - /uploads/b57da24b-b9d7-4eed-bce3-c1ac6922fd5e.jpg
+2026-03-31 00:53:54.239 +07:00 [INF] Create product successfully.
