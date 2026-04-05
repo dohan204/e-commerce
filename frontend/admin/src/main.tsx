@@ -13,7 +13,8 @@ import Voucher from "./pages/vouchers/index.tsx"
 import Login from "./pages/Auth/index.tsx"
 import Revenue from "./pages/Revenue/index.tsx"
 import Report from "./pages/reports/index.tsx"
-
+import { QueryClient, QueryClientProvider, useQueryClient } from "@tanstack/react-query"
+const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     path: '/login',
@@ -60,7 +61,10 @@ const router = createBrowserRouter([
 ])
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+
+      <RouterProvider router={router} />
+    </QueryClientProvider>
     {/* <App /> */}
     {/* </RouterProvider> */}
   </StrictMode>

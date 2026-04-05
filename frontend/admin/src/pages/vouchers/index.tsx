@@ -1,15 +1,22 @@
 import type { ColumnConfig } from '@/components/TableData'
 import TableCustom from '@/components/TableData'
 import { API_ENDPOINTS } from '@/constants/urls'
-import useFetchSingle from '@/hooks/use-fetchs'
 import type { VoucherResponse, Vouchers } from '@/models/vouchers'
 import { Create } from './Create'
 import { Plus, Trash } from 'lucide-react'
 import Delete from './Delete'
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
 
 const Voucher = () => {
 
-  const {data, refresh} = useFetchSingle<Vouchers>(API_ENDPOINTS.VOUCHER.GETALL);
+  const {data, isRefetching} = useQuery({
+    queryKey: ['vouchers'],
+    queryFn: async (): Promise<Vouchers> => {
+      const response = await axios.get<Vouchers>(API_ENDPOINTS.VOUCHER.GETALL);
+      return response.data;
+    }
+  })
   if(data === null || data === undefined) 
     return;
 
@@ -28,7 +35,7 @@ const Voucher = () => {
     {header: 'Số lần sử dụng', key: 'maxUsage'},
     {header: 'Hạn sử dụng', key: 'expiryDate'},
     {header: 'Thao tác', key: 'action', render: (item) => <div>
-      <Delete refresh={refresh} item={item}>
+      <Delete item={item}>
         <Trash />
       </Delete>
     </div>},
@@ -40,7 +47,7 @@ const Voucher = () => {
           <h3 className='text-header'>Danh sách Mã giảm giá</h3>
         </div>
         <div className='float-end'>
-          <Create refresh={refresh}>
+          <Create>
             <Plus />
             Tạo mới
           </Create>

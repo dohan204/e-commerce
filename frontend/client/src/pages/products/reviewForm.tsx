@@ -1,4 +1,4 @@
-import type { Review } from '@/models/Review'
+import type { Review } from '@/models/Products'
 import { User } from 'lucide-react'
 
 const ratingFormat: Record<number, string> = {

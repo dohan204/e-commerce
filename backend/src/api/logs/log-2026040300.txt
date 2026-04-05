@@ -1,0 +1,16 @@
+2026-04-03 00:39:32.075 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-04-03 00:39:32.087 +07:00 [INF] tìm thấy người dùng với id: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 00:39:32.092 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-04-03 00:39:32.112 +07:00 [INF] tìm thấy sản phẩm với id: 15
+2026-04-03 00:39:34.267 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 00:39:34.623 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 00:39:47.237 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 00:39:47.491 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 00:43:02.818 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 00:43:03.064 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 00:43:17.269 +07:00 [INF] Bắt đầu Tìm kiếm người dùng
+2026-04-03 00:43:17.271 +07:00 [INF] tìm thấy người dùng với id: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 00:43:17.274 +07:00 [INF] Lấy ra sản phẩm để tạo đánh giá
+2026-04-03 00:43:17.275 +07:00 [INF] tìm thấy sản phẩm với id: 15
+2026-04-03 00:43:17.278 +07:00 [INF] Đầu vào hợp lệ, tiến hành tạo đánh giá
+2026-04-03 00:43:17.361 +07:00 [INF] Tạo thành công đánh giá: 0 - "1277e68e-3f9e-4286-bad2-85fb44b833a4" - 15- 4 - sdfsdfdfsd

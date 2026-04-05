@@ -8,10 +8,10 @@ import {
     Tooltip,
     Legend
 } from "chart.js"
-import useFetchSingle from '@/hooks/use-fetchs';
 import type { BaseResponse } from '@/models/products';
 import type { Revence } from '@/models/orders';
 import { API_ENDPOINTS } from '@/constants/urls';
+import { useQuery } from '@tanstack/react-query';
 
 
 ChartJS.register(
@@ -22,7 +22,13 @@ ChartJS.register(
     Legend
 )
 const RevenueSale = () => {
-    const { data } = useFetchSingle<BaseResponse<Revence>>(API_ENDPOINTS.ORDER.GETREVENUE);
+    const { data } = useQuery({
+        queryKey: ['revenuas'],
+        queryFn: async (): Promise<BaseResponse<Revence>> => {
+            const res = await fetch(API_ENDPOINTS.ORDER.GETREVENUE);
+            return await res.json();
+        }
+    })
 
     const datas = {
         labels: data?.data.map(e => new Date(e.date).toLocaleDateString('vi-VN')),

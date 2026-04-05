@@ -3,7 +3,7 @@ import ProductCards from './ProductCard'
 import SkeletionCard from '@/components/SkeletionCard'
 
 type Props = {
-  products?: product[]
+  products: product[]
   loading?: boolean
 }
 
@@ -19,9 +19,9 @@ const ProductGrid = ({ products , loading }: Props) => {
   }
   return (
     <div className="grid grid-cols-2 md:grid-cols-6 2xl:grid-cols-8 gap-4">
-      {products?.map((p) => (
+      {products.length > 0 ? products?.map((p) => (
         <ProductCards key={p.id} product={p} />
-      ))}
+      )) : <div className='flex w-screen justify-center items-center'>Chưa có dữ liệu</div>}
     </div>
   )
 }

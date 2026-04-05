@@ -19,7 +19,7 @@ export interface ColumnConfig<T> {
 
 
 interface DataTableProps<T> {
-    data: T[],
+    data?: T[],
     columns: ColumnConfig<T>[],
     caption?: string,
     footer?: ReactNode
@@ -39,8 +39,8 @@ export default function TableCustom<T>({data, columns, caption, footer}: DataTab
                 </TableRow>
             </TableHeader>
             <TableBody>
-          {data.length > 0 ? (
-            data.map((item, rowIndex) => (
+          {data!.length > 0 ? (
+            data?.map((item, rowIndex) => (
               <TableRow key={rowIndex}>
                 {columns.map((col, colIndex) => (
                   <TableCell key={colIndex} className={col.className}>

@@ -1,0 +1,56 @@
+2026-04-02 23:10:11.512 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:10:11.913 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:10:16.660 +07:00 [INF] Cập nhật số lượng trong giỏ hàng.
+2026-04-02 23:10:16.695 +07:00 [INF] Cập nhật Thành công.
+2026-04-02 23:10:16.697 +07:00 [INF] Thêm sản phẩm vào đơn hàng thành công: 28-1-17500000.00
+2026-04-02 23:10:16.700 +07:00 [INF] thêm thành công.
+2026-04-02 23:10:20.859 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:10:21.184 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:11:43.465 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:11:43.823 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:12:08.060 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:12:08.315 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:12:09.144 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:12:09.384 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:12:34.154 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:12:34.447 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:13:10.323 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:13:10.614 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:15:24.129 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:15:24.506 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:15:25.909 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:15:26.192 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:16:19.790 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:16:20.105 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:19:46.546 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:19:47.106 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:21:21.702 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:21:22.252 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:22:44.562 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:22:45.286 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:22:48.843 +07:00 [WRN] Product with id: 0 Not found
+2026-04-02 23:26:47.639 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:26:48.194 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:26:50.388 +07:00 [WRN] Product with id: 0 Not found
+2026-04-02 23:27:37.018 +07:00 [INF] Start insert Db,
+2026-04-02 23:32:49.965 +07:00 [INF] Start insert Db,
+2026-04-02 23:35:07.628 +07:00 [INF] Start insert Db,
+2026-04-02 23:35:20.300 +07:00 [INF] Cập nhật thành công.
+2026-04-02 23:35:20.307 +07:00 [INF] Gửi thông báo thành công
+2026-04-02 23:36:58.696 +07:00 [INF] Cập nhật thành công.
+2026-04-02 23:36:58.704 +07:00 [INF] Gửi thông báo thành công
+2026-04-02 23:37:01.054 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:37:01.477 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:37:30.784 +07:00 [INF] Cập nhật thành công.
+2026-04-02 23:37:30.792 +07:00 [INF] Gửi thông báo thành công
+2026-04-02 23:37:34.121 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:37:34.463 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:38:08.601 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:38:08.866 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:38:33.699 +07:00 [INF] Cập nhật thành công.
+2026-04-02 23:38:33.708 +07:00 [INF] Gửi thông báo thành công
+2026-04-02 23:38:40.866 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:38:41.190 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 23:47:26.645 +07:00 [INF] Start insert Db,
+2026-04-02 23:48:49.656 +07:00 [INF] Start insert Db,
+2026-04-02 23:48:49.700 +07:00 [INF] Xóa sản phẩm trong giỏ hàng thành công

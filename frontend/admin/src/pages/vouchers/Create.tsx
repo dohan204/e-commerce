@@ -28,8 +28,10 @@ import {
 import { API_ENDPOINTS } from "@/constants/urls"
 import { authService } from "@/services/authService"
 import { toast } from "sonner"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+import axios from "axios"
 
-export function Create({ children, refresh }: { children: ReactNode, refresh: () => void }) {
+export function Create({ children }: { children: ReactNode}) {
     const [open, setOpen] = useState<boolean>(false);
     const form = useForm<VoucherCreate>({
         resolver: zodResolver(schema),
@@ -41,38 +43,43 @@ export function Create({ children, refresh }: { children: ReactNode, refresh: ()
             expiryDate: null
         }
     })
+    const queryClient = useQueryClient();
 
-    const onSubmit = async (data: VoucherCreate) => {
-        const convertInput = {
-            ...data,
-            expiryDate: new Date(data.expiryDate).toISOString().slice(0, 10)
-        }
-        
-        const url = API_ENDPOINTS.VOUCHER.CREATE
-        console.log(url)
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
+
+    const mutation = useMutation({
+        mutationFn: async (data: VoucherCreate) => {
+            const convertInput = {
+                ...data,
+                expiryDate: new Date(data.expiryDate).toISOString().slice(0, 10)
+            }
+
+            const response = await fetch(API_ENDPOINTS.VOUCHER.CREATE, {
                 headers: {
-                    "Content-Type": 'application/json',
-                    "Authorization": `Bearer ${authService.getToken()}`
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
                 body: JSON.stringify(convertInput)
             })
-            
-            if(!response.ok)
-                throw new Error(response.statusText)
 
-            toast.success("Tạo Mã giảm giá thành công.", {position: 'top-center'})
-            refresh();
-            setOpen(false);
-            form.reset();
-        } catch (err) {
-            toast.error('Tạo mã giảm giá thất bại', {position: 'top-center'})
-            console.error(err);
+            if (!response.ok) throw new Error(response.statusText)
+            return response.json()
+        },
+        onSuccess: () => {
+            toast.success("Tạo Mã giảm giá thành công.")
+            // Tự động gọi lại các query có key là 'vouchers'
+            queryClient.invalidateQueries({ queryKey: ['vouchers'] })
+            setOpen(false)
+            form.reset()
+        },
+        onError: (err) => {
+            toast.error('Tạo mã giảm giá thất bại')
+            console.error(err)
         }
-    };
+    })
 
+    const onSubmit = (data: VoucherCreate) => {
+        mutation.mutate(data)
+    }
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
@@ -198,7 +205,7 @@ export function Create({ children, refresh }: { children: ReactNode, refresh: ()
                                                 disabled={(date) =>
                                                     date < new Date(new Date().setHours(0, 0, 0, 0))
                                                 }
-                                                
+
                                             />
                                         </PopoverContent>
                                     </Popover>

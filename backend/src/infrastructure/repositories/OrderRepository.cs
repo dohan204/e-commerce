@@ -40,6 +40,7 @@ namespace infrastructure.repositories {
         {
             var orders = await _ctx.Orders.Include(e => e.Items)
                 .Where(e => e.UserId == userId && !e.IsDeleted)
+                .OrderByDescending(e => e.CreatedAt)
                 .AsNoTracking().ToListAsync();
             var ordersDomain = _mapper.Map<List<Order>>(orders);
             return ordersDomain;

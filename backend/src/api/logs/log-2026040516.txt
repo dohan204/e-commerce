@@ -1,0 +1,9 @@
+2026-04-05 16:00:08.526 +07:00 [INF] Start insert Db,
+2026-04-05 16:12:50.266 +07:00 [INF] Cập nhật số lượng trong giỏ hàng.
+2026-04-05 16:12:50.365 +07:00 [INF] Cập nhật Thành công.
+2026-04-05 16:12:50.368 +07:00 [INF] Thêm sản phẩm vào đơn hàng thành công: 42-1-14700000.00
+2026-04-05 16:12:50.382 +07:00 [INF] thêm thành công.
+2026-04-05 16:14:17.237 +07:00 [INF] Start insert Db,
+2026-04-05 16:14:17.291 +07:00 [INF] Xóa sản phẩm trong giỏ hàng thành công
+2026-04-05 16:16:09.859 +07:00 [INF] Cập nhật thành công.
+2026-04-05 16:16:09.872 +07:00 [INF] Gửi thông báo thành công

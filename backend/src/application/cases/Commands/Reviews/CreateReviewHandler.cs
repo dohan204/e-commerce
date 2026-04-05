@@ -48,7 +48,9 @@ namespace application.cases.Commands.Reviews
                 );
             Log.Information("Đầu vào hợp lệ, tiến hành tạo đánh giá");
             var review = Review.Create(userId, product.Id, command.Ratings , command.Comments);
-            await _reviewRepository.CreateAsync(review);
+
+            product.AddReview(review);
+            await _productRepository.UpdateAsync(product);
             Log.Information("Tạo thành công đánh giá: {Id} - {userid} - {productId}- {ratings} - {comment}", 
                 review.Id, 
                 review.UserId, 

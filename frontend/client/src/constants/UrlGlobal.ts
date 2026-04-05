@@ -1,7 +1,6 @@
 
-
 export const url = import.meta.env.VITE_API_URL
-console.log(url)
+
 export const API_ENDPOINTS = {
     CATEGORY: {
         GET: `${url}/api/category/alls`
@@ -52,6 +51,6 @@ export const API_ENDPOINTS = {
         CREATE: `${url}/api/review/create`
     },
     Notification: {
-        GET: (userId: string) => `${url}/api/notification/${userId}`
+        GET: (userId?: string) => `${url}/api/notification/${userId}`
     }
 }

@@ -1,0 +1,70 @@
+2026-04-02 14:16:59.905 +07:00 [INF] Create product: Đồng hồ nam dây da basic mặt trắng - Đồng hồ nam dây da basic mặt trắng - 400000 - 50 - 1020 - /uploads/6c6a5cf9-bfc7-4d19-8b20-e0713ec7788b.webp
+2026-04-02 14:17:00.370 +07:00 [INF] Create product successfully.
+2026-04-02 14:17:47.137 +07:00 [INF] Create product: Đồng hồ nam dây thép không gỉ - Đồng hồ nam dây thép không gỉ - 1200000000 - 5 - 1020 - /uploads/5574a61f-a7fb-4d1b-96ff-14e5f19ca3eb.webp
+2026-04-02 14:17:47.155 +07:00 [INF] Create product successfully.
+2026-04-02 14:18:15.430 +07:00 [INF] Create product: Đồng hồ nam chống nước nhẹ - Đồng hồ nam chống nước nhẹ - 300000 - 100 - 1020 - /uploads/1b43891b-afa5-4db6-a22b-5d4c2d653534.webp
+2026-04-02 14:18:15.462 +07:00 [INF] Create product successfully.
+2026-04-02 14:18:53.489 +07:00 [INF] Create product: Đồng hồ nam mặt vuông tối giản - Đồng hồ nam mặt vuông tối giản - 250000 - 200 - 1020 - /uploads/0605b3b0-5bd1-4c67-963e-b1710ee76037.webp
+2026-04-02 14:18:53.500 +07:00 [INF] Create product successfully.
+2026-04-02 14:19:20.956 +07:00 [INF] Create product: Đồng hồ nam phong cách doanh nhân giá rẻ - Đồng hồ nam phong cách doanh nhân giá rẻ - 670000 - 100 - 1020 - /uploads/80db365c-2775-4976-99da-0d47b64af0b9.webp
+2026-04-02 14:19:20.980 +07:00 [INF] Create product successfully.
+2026-04-02 14:19:53.915 +07:00 [INF] Create product: Đồng hồ nam kim loại màu đen - Đồng hồ nam kim loại màu đen - 490000 - 50 - 1020 - /uploads/a02d9db2-326b-4d08-b936-93c8eda5b952.webp
+2026-04-02 14:19:53.933 +07:00 [INF] Create product successfully.
+2026-04-02 14:20:28.969 +07:00 [INF] Create product: Đồng hồ nam dây da nâu cổ điển - Đồng hồ nam dây da nâu cổ điển - 390000 - 50 - 1020 - /uploads/9828ef73-9cf4-45aa-a230-f1e3bde7f440.webp
+2026-04-02 14:20:28.987 +07:00 [INF] Create product successfully.
+2026-04-02 14:20:58.516 +07:00 [INF] Create product: Đồng hồ nam sport giá rẻ - Đồng hồ nam sport giá rẻ - 400000 - 50 - 1020 - /uploads/ff4a4f2e-3867-46c3-9542-a24f7b6dd6ef.webp
+2026-04-02 14:20:58.527 +07:00 [INF] Create product successfully.
+2026-04-02 14:25:08.043 +07:00 [INF] Create product: Đồng hồ nữ dây thép nhỏ gọn - Đồng hồ nữ dây thép nhỏ gọn - 1400000 - 50 - 1020 - /uploads/e1eecde8-6143-4a2d-bd6b-a226d4ff5817.webp
+2026-04-02 14:25:08.061 +07:00 [INF] Create product successfully.
+2026-04-02 14:25:41.218 +07:00 [INF] Create product: Đồng hồ nữ mặt tròn thanh lịch - Đồng hồ nữ mặt tròn thanh lịch - 1600000 - 20 - 1020 - /uploads/832603f1-22c9-4610-9c28-fb70bad7b286.webp
+2026-04-02 14:25:41.238 +07:00 [INF] Create product successfully.
+2026-04-02 14:26:11.800 +07:00 [INF] Create product: Đồng hồ nữ thời trang Hàn Quốc - Đồng hồ nữ thời trang Hàn Quốc - 3900000 - 50 - 1020 - /uploads/3696281d-9075-4239-9648-d537957c0fb0.webp
+2026-04-02 14:26:11.815 +07:00 [INF] Create product successfully.
+2026-04-02 14:26:38.235 +07:00 [INF] Create product: Đồng hồ nữ đính đá sang chảnh - Đồng hồ nữ đính đá sang chảnh - 2500000 - 50 - 1020 - /uploads/28894d99-e8a7-404e-ac3b-1240db13b732.webp
+2026-04-02 14:26:38.248 +07:00 [INF] Create product successfully.
+2026-04-02 14:27:11.106 +07:00 [INF] Create product: Đồng hồ nữ mini xinh xắn - Đồng hồ nữ mini xinh xắn - 890000 - 50 - 1020 - /uploads/9b3f2a13-6039-44eb-b48f-cbcb4e3ef7cd.webp
+2026-04-02 14:27:11.121 +07:00 [INF] Create product successfully.
+2026-04-02 14:27:44.654 +07:00 [INF] Create product: Đồng hồ nữ dây lưới kim loại - Đồng hồ nữ dây lưới kim loại - 2100000 - 50 - 1020 - /uploads/0e865600-8c1e-4906-8a57-8eb320cce0ca.jpg
+2026-04-02 14:27:44.673 +07:00 [INF] Create product successfully.
+2026-04-02 14:28:17.631 +07:00 [INF] Create product: Đồng hồ nữ vintage cổ điển - Đồng hồ nữ vintage cổ điển - 2300000 - 50 - 1020 - /uploads/5c6b7ef5-1b80-4994-9453-8a8c0bd15b89.webp
+2026-04-02 14:28:17.648 +07:00 [INF] Create product successfully.
+2026-04-02 14:31:52.999 +07:00 [INF] Create product: Đồng hồ thể thao chống nước - Đồng hồ thể thao chống nước - 1200000 - 50 - 1020 - /uploads/f8dd7d35-7859-4133-ae77-7a9efb760b76.jpg
+2026-04-02 14:31:53.020 +07:00 [INF] Create product successfully.
+2026-04-02 14:32:25.685 +07:00 [INF] Create product: Đồng hồ sport điện tử giá rẻ - Đồng hồ sport điện tử giá rẻ - 2670000 - 50 - 1020 - /uploads/d4e49c1a-1b5e-4e78-bc56-c640e42e367e.jpg
+2026-04-02 14:32:25.704 +07:00 [INF] Create product successfully.
+2026-04-02 14:32:57.670 +07:00 [INF] Create product: Đồng hồ sport điện tử giá rẻ - Đồng hồ LED nam nữ - 299000 - 50 - 1020 - /uploads/b2346bec-334e-4be9-9a9e-1eb2fe825f9f.jpg
+2026-04-02 14:32:57.684 +07:00 [INF] Create product successfully.
+2026-04-02 14:33:26.267 +07:00 [INF] Create product: Đồng hồ digital đa chức năng - Đồng hồ digital đa chức năng - 4000000 - 20 - 1020 - /uploads/11c688dd-8327-419d-87b7-846e40ebe5ba.jpg
+2026-04-02 14:33:26.284 +07:00 [INF] Create product successfully.
+2026-04-02 14:33:59.604 +07:00 [INF] Create product: Đồng hồ phong cách G-Shock fake 😏 - Đồng hồ phong cách G-Shock fake 😏 - 4000000 - 50 - 1020 - /uploads/3cb291ae-0a9b-4de2-af08-1e5d04111fcc.jpg
+2026-04-02 14:33:59.616 +07:00 [INF] Create product successfully.
+2026-04-02 14:40:40.514 +07:00 [INF] Create product: Nhẫn nam - nhẫn - 50000 - 100 - 1017 - /uploads/3562a252-6212-4d31-8c02-2fe2aeb92254.jpg
+2026-04-02 14:40:40.630 +07:00 [INF] Create product successfully.
+2026-04-02 14:41:08.050 +07:00 [INF] Create product: Nhẫn nữ - Nhẫn - 200000 - 100 - 1017 - /uploads/4f7f5493-e2ca-4a90-8e1c-5d9a1bbe3777.jpg
+2026-04-02 14:41:08.067 +07:00 [INF] Create product successfully.
+2026-04-02 14:41:38.519 +07:00 [INF] Create product: Nhẫn đôi - nhẫn - 400000 - 50 - 1017 - /uploads/0df15ffe-6c70-404c-854f-274692306d2d.jpg
+2026-04-02 14:41:38.531 +07:00 [INF] Create product successfully.
+2026-04-02 14:42:28.331 +07:00 [INF] Create product: Nhẫn mạ vàng - Nhẫn - 150000 - 100 - 1017 - /uploads/327ef612-61a0-4746-b199-188a34418589.jpg
+2026-04-02 14:42:28.356 +07:00 [INF] Create product successfully.
+2026-04-02 14:43:31.307 +07:00 [INF] Create product: Nhẫn bạc - Nhẫn - 500000 - 50 - 1017 - /uploads/54456804-bed3-46fc-aed6-2bcbaa6aca5f.jpg
+2026-04-02 14:43:31.323 +07:00 [INF] Create product successfully.
+2026-04-02 14:44:16.615 +07:00 [INF] Create product: Nhẫn minimal - Nhẫn - 500000 - 50 - 1017 - /uploads/56e09046-44f2-4932-8a41-4a28c145bc18.jpg
+2026-04-02 14:44:16.632 +07:00 [INF] Create product successfully.
+2026-04-02 14:50:37.823 +07:00 [INF] Create product: Giày sneaker nam - Giày sneaker  - 250000 - 50 - 1021 - /uploads/536e6e0f-b8db-4c3f-9fbe-7930fefd353e.jpg
+2026-04-02 14:50:37.843 +07:00 [INF] Create product successfully.
+2026-04-02 14:51:18.867 +07:00 [INF] Create product: Giày thể thao nam - giày thể thao - 300000 - 50 - 1021 - /uploads/28847fdf-3a1b-42ea-afdb-d57d63281ee2.jpg
+2026-04-02 14:51:18.881 +07:00 [INF] Create product successfully.
+2026-04-02 14:52:01.021 +07:00 [INF] Create product: Giày chạy bộ - Giày chạy bộ - 150000 - 50 - 1021 - /uploads/f564d2b8-4119-40fc-a7b0-b340a077a57b.jpg
+2026-04-02 14:52:01.041 +07:00 [INF] Create product successfully.
+2026-04-02 14:52:45.758 +07:00 [INF] Create product: Giày lười nam - Giày lười - 500000 - 50 - 1021 - /uploads/9f4926a3-749b-4c42-a1b1-6d359c77564b.jpg
+2026-04-02 14:52:45.777 +07:00 [INF] Create product successfully.
+2026-04-02 14:53:26.540 +07:00 [INF] Create product: Giày da nam - Giày gia - 600000 - 50 - 1021 - /uploads/8d562d90-91ac-4ad4-a597-ab2b44709097.jpg
+2026-04-02 14:53:26.556 +07:00 [INF] Create product successfully.
+2026-04-02 14:54:00.975 +07:00 [INF] Create product: Giày boot nam - giày boot - 1200000 - 50 - 1021 - /uploads/a01ca389-b479-4b17-a710-4b3c77d0c59d.jpg
+2026-04-02 14:54:00.989 +07:00 [INF] Create product successfully.
+2026-04-02 14:54:47.139 +07:00 [INF] Create product: Dép cross siêu cấp vip - dép - 150000 - 100 - 1021 - /uploads/7d69d4dd-f81d-43e5-a272-16aa605e3091.jpg
+2026-04-02 14:54:47.154 +07:00 [INF] Create product successfully.
+2026-04-02 14:58:59.604 +07:00 [INF] Create product: Giày sneaker nữ - Giày sneaker - 300000 - 50 - 1021 - /uploads/82a1ef48-ae72-493d-98b0-e92600b7c388.jpg
+2026-04-02 14:58:59.624 +07:00 [INF] Create product successfully.
+2026-04-02 14:59:30.184 +07:00 [INF] Create product: Giày cao gót - cao gót - 400000 - 50 - 1021 - /uploads/7330128b-515c-41c7-afc2-b6c5ab3fbd38.jpg
+2026-04-02 14:59:30.202 +07:00 [INF] Create product successfully.

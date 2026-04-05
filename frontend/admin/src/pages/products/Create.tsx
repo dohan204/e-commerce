@@ -88,7 +88,7 @@ const Create = ({ refresh, categories }: { refresh: () => void, categories?: any
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-                <Button variant={'outline'}>
+                <Button variant={'outline'} className={'bg-lime-300'}>
                     <Icons name='plus' />
                     Tạo mới
                 </Button>

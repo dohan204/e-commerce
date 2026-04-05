@@ -1,6 +1,5 @@
 import { useUserContext } from '@/hooks/useUserContext'
 import { useLocation, useNavigate } from 'react-router'
-import useFetch from '@/hooks/useFetch'
 import type { Address } from '@/models/Address'
 import { API_ENDPOINTS } from '@/constants/UrlGlobal'
 import { toast } from 'sonner'
@@ -8,10 +7,12 @@ import { useEffect, useState } from 'react'
 import { Spinner } from '@/components/ui/spinner'
 import type { CartItem } from '@/models/Cart'
 import { useCartStore } from '@/store/useCartStore'
+import useFetchData from '@/hooks/useFetch'
 
 const Order = () => {
     const [loading, setLoading] = useState<boolean>(false)
     const location = useLocation()
+    const [products, setProducts] = useState<CartItem[]>([])
     const navigate = useNavigate()
     const { user } = useUserContext()
     useEffect(() => {
@@ -19,21 +20,45 @@ const Order = () => {
     }, [])
 
     const { triggerRefresh } = useCartStore()
-    const products = location.state as CartItem[]
-    if (!user?.sub) {
-        console.log("không thấy mã người dùng")
-    }
-    const { data: address } = useFetch<Address>(API_ENDPOINTS.ADDRESS.GET(user?.sub))
+    useEffect(() => {
+        if (!location.state) {
+            navigate('/cart');
+            return;
+        }
 
-    if (!products) {
-        return <div className="p-10 text-center">Không tìm thấy sản phẩm. <button onClick={() => navigate('/categories')}>Quay lại</button></div>
+        const state = location.state;
+
+
+        if (Array.isArray(state.data)) {
+            setProducts(state.data);
+        }
+        else if (state.data && typeof state.data === 'object') {
+            const data: CartItem = {
+                productId: state.data.id,
+                name: state.data.name,
+                price: state.data.price,
+                quantity: state.data.quantity,
+                imageUrl: state.data.imageUrl
+            }
+            setProducts([data]);
+        }
+        else {
+            console.error("Invalid state:", state);
+            setProducts([]);
+        }
+
+    }, [location.state, navigate]);
+
+    console.log('products:', products)
+
+    const { data: address } = useFetchData<Address>(
+        API_ENDPOINTS.ADDRESS.GET(user?.sub),
+        `add_${user?.id}`,
+        [user?.sub], {
+        enabled: !!user?.sub
     }
+    )
     const dateOrder = new Date()
-
-
-    products.forEach(item => {
-        console.log(item.productId + ' ' + item.name)
-    })
     const handleOrder = async (): Promise<void> => {
         const token = localStorage.getItem('token');
         setLoading(true);
@@ -70,7 +95,7 @@ const Order = () => {
             )
             toast.success("Đặt hàng thành công", { position: 'top-center' })
             triggerRefresh();
-            navigate('/')
+            navigate('/orders/success')
         } catch (err) {
             toast.error("Đặt hàng thất bại")
             console.error(err);
@@ -87,8 +112,6 @@ const Order = () => {
             <div className='flex items-center justify-center py-6'>
                 <div className='w-full max-w-lg flex flex-col border rounded-md shadow-md p-6 gap-4'>
                     <h3 className='text-xl font-bold text-center'>Thông tin đơn hàng</h3>
-
-                    {/* Thông tin khách hàng */}
                     <div className='flex flex-col gap-2 border-b pb-4'>
                         <p className='font-medium text-gray-500'>Khách hàng</p>
                         <p>Họ tên: <span className='font-semibold'>{user?.FullName}</span></p>

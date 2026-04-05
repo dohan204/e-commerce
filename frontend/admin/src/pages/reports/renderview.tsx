@@ -1,10 +1,7 @@
 // import React from 'react'
 import { Card, CardContent, CardDescription } from '@/components/ui/card';
 // import type { res } from '../products'
-import { API_ENDPOINTS } from '@/constants/urls'
-import useFetchSingle from '@/hooks/use-fetchs'
-import type { BaseResponse, Product, TopProductsSales } from '@/models/products';
-import TopSales from './topsales';
+import type { BaseResponse, Product} from '@/models/products';
 export default function View({data}: {data: BaseResponse<Product>}) {
 
     const totalProducts = data?.data.length;

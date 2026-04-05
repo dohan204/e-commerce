@@ -1,0 +1,5 @@
+2026-04-05 01:35:18.263 +07:00 [INF] Cập nhật số lượng trong giỏ hàng.
+2026-04-05 01:35:18.579 +07:00 [INF] Cập nhật Thành công.
+2026-04-05 01:35:18.582 +07:00 [INF] Thêm sản phẩm vào đơn hàng thành công: 15-1-50000000.00
+2026-04-05 01:35:18.591 +07:00 [INF] thêm thành công.
+2026-04-05 01:38:55.519 +07:00 [ERR] Connnection: Server=FC-HAN\SQLEXPRESS;Database=TMDT;Trusted_Connection=True;TrustServerCertificate=True

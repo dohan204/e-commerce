@@ -1,0 +1,20 @@
+2026-04-02 22:03:55.815 +07:00 [INF] NotificationHub: 
+2026-04-02 22:44:34.467 +07:00 [INF] NotificationHub: 
+2026-04-02 22:44:36.289 +07:00 [INF] NotificationHub: 
+2026-04-02 22:44:37.223 +07:00 [INF] NotificationHub: 
+2026-04-02 22:50:47.130 +07:00 [INF] Cập nhật thành công.
+2026-04-02 22:50:47.239 +07:00 [INF] Gửi thông báo thành công
+2026-04-02 22:51:47.814 +07:00 [INF] NotificationHub: 
+2026-04-02 22:51:48.403 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 22:52:29.249 +07:00 [WRN] Product with id: 0 Not found
+2026-04-02 22:53:04.948 +07:00 [WRN] Product with id: 0 Not found
+2026-04-02 22:53:38.417 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 22:53:38.939 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 22:55:23.589 +07:00 [INF] Cập nhật số lượng trong giỏ hàng.
+2026-04-02 22:55:23.674 +07:00 [INF] Cập nhật Thành công.
+2026-04-02 22:55:23.675 +07:00 [INF] Thêm sản phẩm vào đơn hàng thành công: 40-1-35000000.00
+2026-04-02 22:55:23.681 +07:00 [INF] thêm thành công.
+2026-04-02 22:55:28.063 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 22:55:28.444 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 22:55:33.950 +07:00 [INF] Start insert Db,
+2026-04-02 22:55:34.138 +07:00 [INF] Xóa sản phẩm trong giỏ hàng thành công

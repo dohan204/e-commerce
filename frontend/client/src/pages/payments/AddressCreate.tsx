@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 import { toast } from 'sonner'
 import * as z from 'zod'
+import { useQueryClient } from '@tanstack/react-query';
 
 const schema = z.object({
     phone: z.string().min(10, 'Số điện thoại không hợp lệ'),
@@ -24,7 +25,9 @@ type Props = {
 const AddressCreate = ({ isOpen, close }: Props) => {
     const [loading, setLoading] = useState<boolean>(false);
     const navigate = useNavigate();
-    const { register, handleSubmit, formState: { errors } } = useForm<AddressForm>({
+    const queryClient = useQueryClient();
+
+    const { register, handleSubmit,reset, formState: { errors } } = useForm<AddressForm>({
         resolver: zodResolver(schema),
         defaultValues: { phone: '', province: '', district: '', ward: '' }
     })
@@ -45,7 +48,11 @@ const AddressCreate = ({ isOpen, close }: Props) => {
 
             if(!res.ok)
                 throw new Error('failed');
+
+            queryClient.invalidateQueries({queryKey: ['add']})
+
             toast.success("Đăng ký thành công.");
+            reset();
             close()
         } catch (err) {
             toast.error('Đăng ký thất bại')
@@ -107,7 +114,9 @@ const AddressCreate = ({ isOpen, close }: Props) => {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full py-2 bg-orange-500 text-white font-bold rounded-lg hover:bg-orange-600 transition"
+                        className="w-full py-2 bg-orange-500 
+                        text-white font-bold rounded-lg hover:bg-orange-600 
+                        transition "
                     >
                         {loading ? 'Đang xử lý' : 'Đăng ký'}
                     </button>

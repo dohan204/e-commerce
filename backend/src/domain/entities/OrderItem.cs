@@ -8,29 +8,29 @@ namespace domain.entities
         public int ProductId { get; private set; }
         public string ProductName { get; private set; }
         public int Quantity { get; private set; }
-        public decimal Price { get; private set; }  
-        protected OrderItem() {}
+        public decimal Price { get; private set; }
+        protected OrderItem() { }
 
         private OrderItem(int orderId, int productId, string productName, int quantity, decimal price)
         {
             // if(orderId <= 0) 
             //     throw new DomainException("Invalid Order");
 
-            if(productId <= 0) 
+            if (productId <= 0)
                 throw new DomainException("Invalid Product");
-            
+
             if (quantity <= 0)
                 throw new DomainException("Quantity must be than more 0");
-            
-            if(price <= 0) 
+
+            if (price <= 0)
                 throw new DomainException("Invalid Price");
-            
+
             OrderId = orderId;
             ProductId = productId;
             Quantity = quantity;
             Price = price;
-                ProductName = productName;
-        } 
+            ProductName = productName;
+        }
         public OrderItem(int Productid, string productName, int quantity, decimal price)
         {
             ProductId = Productid;
@@ -41,7 +41,7 @@ namespace domain.entities
         public static OrderItem Create(int orderId, int productId, string productName, int quantity, decimal price)
         => new OrderItem(orderId, productId, productName, quantity, price);
 
-        public static OrderItem Update(int productId, string productName, int quantity, decimal price) 
+        public static OrderItem Update(int productId, string productName, int quantity, decimal price)
         => new OrderItem(productId, productName, quantity, price);
     }
 }

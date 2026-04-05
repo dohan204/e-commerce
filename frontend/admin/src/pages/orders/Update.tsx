@@ -9,12 +9,13 @@ import type { OrderResponse } from '@/models/orders'
 import { API_ENDPOINTS } from '@/constants/urls'
 import { toast } from 'sonner'
 import { authService } from '@/services/authService'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
 export type StatusOrder = {
     status: number,
 }
 
-const Update = ({ children, item, refresh }: { children: ReactNode, item: OrderResponse, refresh: () => void }) => {
+const Update = ({ children, item }: { children: ReactNode, item: OrderResponse }) => {
     const [open, setOpen] = useState<boolean>(false);
     const { control, handleSubmit } = useForm<StatusOrder>({
         defaultValues: {
@@ -22,9 +23,9 @@ const Update = ({ children, item, refresh }: { children: ReactNode, item: OrderR
         }
     })
 
-    const onSubmit = async (data: StatusOrder) => {
-        console.log("Dữ liệu cập nhật:",item.id + " " + data);
-        try {
+    const queryClient = useQueryClient();
+    const mutation = useMutation({
+        mutationFn: async (data: StatusOrder) => {
             const response = await fetch(API_ENDPOINTS.ORDER.UPDATE(item.id), {
                 method: 'PUT',
                 headers: {
@@ -32,20 +33,25 @@ const Update = ({ children, item, refresh }: { children: ReactNode, item: OrderR
                     "Authorization": `Bearer ${authService.getToken()}`
                 },
                 body: JSON.stringify(data)
-            });
-
-            if(!response.ok)
-                throw new Error("lỗi cập nhật");
-
-            toast.success("Cập nhật thành công!", {position: 'top-center'});
-            refresh();
+            })
+            if (!response.ok) {
+                throw new Error("Lỗi cập nhật rồi...");
+            }
+        },
+        onSuccess: () => {
+            toast.success("Cập nhật thành công", { position: 'top-center' })
+            queryClient.invalidateQueries({queryKey: ['orders']})
             setOpen(false);
-        } catch (err) {
-            toast.error("Cập nhật Thất bại", {position: 'top-center'});
-            console.error(err)
+        },
+        onError: (err) => {
+            toast.error("Cập nhật thất bại", { position: 'top-center' });
+            console.error(err);
         }
-    }
+    })
 
+    const onSubmit = async (data: StatusOrder) => {
+        mutation.mutate(data);
+    }
     const convertInputData = Object.entries(convertStatus).map(([key, value]) => ({
         key, value
     }))
@@ -93,7 +99,9 @@ const Update = ({ children, item, refresh }: { children: ReactNode, item: OrderR
                     </div>
 
                     <DialogFooter>
-                        <Button type="submit">Cập nhật đơn hàng</Button>
+                        <Button type="submit" disabled={mutation.isPending}>
+                            {mutation.isPending ? 'Đang cập nhật' : 'Cập nhật'}
+                        </Button>
                     </DialogFooter>
                 </form>
             </DialogContent>

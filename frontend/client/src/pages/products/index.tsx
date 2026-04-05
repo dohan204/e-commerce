@@ -12,38 +12,57 @@ import {
 } from "@/components/ui/breadcrumb"
 import { API_ENDPOINTS, url } from '@/constants/UrlGlobal';
 import { useCartStore } from '@/store/useCartStore';
-import useFetch from '@/hooks/useFetch';
 import type { Address } from '@/models/Address';
 import AddressCreate from '../payments/AddressCreate';
 import { useAddressDialog } from '@/store/useAddressDialog';
 import EvaluationForm from './EvaluationForm';
 import { Button } from '@/components/ui/button';
 import { useRatingStore } from '@/store/useRatingStore';
-import type { Review } from '@/models/Review';
 import ReviewDisplay from './reviewForm';
-import type { Base } from '@/models/response/base';
 import { toast } from 'sonner';
-import { useReviewStore } from '@/store/useReviewStore';
-
+import useFetchData from '@/hooks/useFetch';
+import { useQuery } from '@tanstack/react-query';
 const DetailsProduct = () => {
     // Để mặc định là 1 cho chuẩn
     const [quantity, setQuantity] = useState<number>(1);
+    const [status, setStatus] = useState<number>(0);
     const { user } = useUserContext();
     const navigate = useNavigate();
     const location = useLocation();
-    const { key } = useReviewStore();
     const { triggerRefresh } = useCartStore();
     const { isOpen, open, close } = useAddressDialog();
     const { isOpen: isRatingOpen, openForm, closeForm } = useRatingStore();
-    // Bảo vệ app nếu user reload trang (state bị mất)
     const product = location.state as product;
-
     if (!product) {
         return <div className="p-10 text-center">Không tìm thấy sản phẩm. <button onClick={() => navigate('/categories')}>Quay lại</button></div>;
     }
+    const result = useQuery({
+        queryKey: ['reviewsUser', product.id],
+        queryFn: async () => {
+            const response = await fetch(`http://localhost:5255/api/review/review/${product.id}`, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            });
+            if (!response.ok)
+                throw new Error("Lỗi rồi fen ơi.");
+            const data = await response.json(); 
+            console.log(response.status);
+            console.log(data.status);
+            return data;
+        },
+    });
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        
+    }, [result])
+
+    console.log(status)
+    const countReview = product.reviews.length
+
     // Thêm async ở đây
     const AddProductToCart = async () => {
         const token = localStorage.getItem('token');
@@ -70,24 +89,21 @@ const DetailsProduct = () => {
                 }
                 throw new Error("Không thể thêm vào giỏ hàng");
             }
-            toast.success("Thêm sản phẩm thành công.", { position: 'top-center'});
+
+            toast.success("Thêm sản phẩm thành công.", { position: 'top-center' });
             triggerRefresh();
         } catch (error) {
-            toast.error("Thêm sản phẩm thất bại", {position: 'top-center'})
+            toast.error("Thêm sản phẩm thất bại", { position: 'top-center' })
             console.error("Lỗi thêm giỏ hàng", error);
         }
     };
     console.log(user?.sub);
     // check address user with function();
-    const { data: address } = useFetch<Address>(API_ENDPOINTS.ADDRESS.GET(user?.sub ?? ''))
-    const { data: reviews } = useFetch<Base<Review>>(API_ENDPOINTS.Review.GET(product.id), [key])
+    const { data: address } = useFetchData<Address>(API_ENDPOINTS.ADDRESS.GET(user?.sub ?? ''), `add`, [user?.sub], {
+        enabled: !!user?.sub
+    })
     const hasAddress = !!address;
-    console.log(address)
-
-    const dataReviews = reviews?.data ?? []
-    const data = [{ ...product, quantity }]
-
-
+    const data = { ...product, quantity }
 
     return (
         <div className="w-full bg-gray-100 min-h-screen p-6">
@@ -123,7 +139,7 @@ const DetailsProduct = () => {
 
                     <div className="flex items-center gap-4 text-sm">
                         <span className="text-orange-500 font-bold">⭐ {product.avgRatings || 0}</span>
-                        <span className="text-gray-400">| {product.reviewCount || 0} Đánh giá</span>
+                        <span className="text-gray-400">| {countReview} Đánh giá</span>
                         <span className="text-gray-400">| Đã bán {product.sold || 0}</span>
                     </div>
 
@@ -167,7 +183,7 @@ const DetailsProduct = () => {
                                         open();
                                         return;
                                     }
-                                    navigate('/order', { state: data })
+                                    navigate('/order', { state: { data: data, path: location.pathname } })
                                 }}
                             >
                                 Đặt hàng
@@ -192,8 +208,10 @@ const DetailsProduct = () => {
                     </div>
                 </div>
                 <div>
-                    {dataReviews?.map((review) => (
-                        <ReviewDisplay review={review} />
+                    {product.reviews?.map((review) => (
+                        <div key={review.id} className='py-4'>
+                            <ReviewDisplay review={review} />
+                        </div>
                     ))}
                 </div>
             </div>
@@ -203,3 +221,4 @@ const DetailsProduct = () => {
     );
 };
 export default DetailsProduct
+

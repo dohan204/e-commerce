@@ -391,6 +391,22 @@
     ]
   },
   {
+    "ContainingType": "api.Controllers.NotificationController",
+    "Method": "GetNotificationUser",
+    "RelativePath": "api/Notification/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "api.Controllers.OrderController",
     "Method": "GetAll",
     "RelativePath": "api/Order",

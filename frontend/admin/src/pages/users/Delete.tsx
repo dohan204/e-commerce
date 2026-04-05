@@ -9,41 +9,34 @@ import { Dialog,
     DialogFooter,
 } from '@/components/ui/dialog'
 import { API_ENDPOINTS } from '@/constants/urls'
-import { authService } from '@/services/authService'
-import React, { useState, type ReactNode } from 'react'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import axios from 'axios'
+import { useState, type ReactNode } from 'react'
 import { toast } from 'sonner'
 
-const Delete = ({ children, item, refresh }: { children: ReactNode, item: any, refresh: () => void }) => {
-
-    const [open, setOpen] = useState<boolean>(false)
-    const url =  API_ENDPOINTS.USER.DELETE(item.id)
-    const submit = async (e: React.FormEvent) => {
-        e.preventDefault();
-
-        try {
-            var isDelete = await fetch(url, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `${authService.getToken()}`
-                }
-            });
-            if(!isDelete.ok)
-                throw new Error("Xóa thất bại");
-            toast.success("Xóa thành công", {position: 'top-center'});
-            setOpen(false);
-            refresh();
-        } catch (err) {
-            toast.error('Xóa không thành công');
-            console.error(err)
+const Delete = ({ children, item}: { children: ReactNode, item: any }) => {
+    const [open, setOpen] = useState(false);
+    const useClient = useQueryClient();
+    const mutation = useMutation({
+        mutationFn: async () => {
+            const response = await axios.delete(API_ENDPOINTS.USER.DELETE(item.id));
+            if(!response)
+                throw new Error("lỗi rồi");
+        }, onSuccess: () => {
+            toast.success('Xóa người dùng thành công', { position: 'top-center'})
+            useClient.invalidateQueries({queryKey: ['users']})
+            setOpen(false)
+        }, onError: () => {
+            toast.error("Xóa người dùng thất bại,  ", {position: 'top-center'})
         }
-    }
+    })
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
                 {children}
             </DialogTrigger>
             <DialogContent className='min-h-min'>
-                <form onSubmit={submit}>
+                <form onSubmit={() => mutation.mutate()}>
                     <DialogHeader>
                         <DialogTitle>
                             Xóa sản phẩm {item.name}?

@@ -16,7 +16,7 @@ namespace infrastructure.persistence.entities
         [ForeignKey(nameof(ProductEntityId))]
         public int ProductEntityId { get; set; }
         public ProductEntity ProductEntity { get; set; }
-        public decimal? Rating { get; set; }
+        public decimal Rating { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public bool IsDeleted { get; set; }

@@ -1,0 +1,1 @@
+2026-04-05 14:40:11.493 +07:00 [ERR] Connnection: Server=FC-HAN\SQLEXPRESS;Database=TMDT;Trusted_Connection=True;TrustServerCertificate=True

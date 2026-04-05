@@ -10,6 +10,7 @@ namespace application.interfaces
     {
         public string Name { get; set; }
         public int? Quantity { get; set; }
+        public int? ReviewCount {get; set;}
     }
     public interface IProductRepository
     {

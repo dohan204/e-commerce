@@ -1,15 +1,21 @@
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Label } from '@/components/ui/label'
-import useFetchSingle from '@/hooks/use-fetchs'
 import type { OrderResponse } from '@/models/orders'
-import React, { type ReactNode } from 'react'
+import { type ReactNode } from 'react'
 import { API_ENDPOINTS } from '@/constants/urls'
 import type { BaseResponse, Product } from '@/models/products'
+import { useQuery } from '@tanstack/react-query'
 
 
 const DetailsOrder = ({ item, children }: { item: OrderResponse, children: ReactNode }) => {
-    const { data } = useFetchSingle<BaseResponse<Product>>(API_ENDPOINTS.PRODUCT.GETALL);
+    const { data } = useQuery({
+        queryKey: ['products'],
+        queryFn:  async (): Promise<BaseResponse<Product>> => {
+            const response = await fetch(API_ENDPOINTS.PRODUCT.GETALL);
+            return await response.json();
+        } 
+    })
     const productMap = Object.fromEntries(
         data?.data.map(p => [p.id, p.name]) || []
     );

@@ -1,0 +1,2 @@
+2026-04-02 21:44:11.704 +07:00 [ERR] Connnection: Server=FC-HAN\SQLEXPRESS;Database=TMDT;Trusted_Connection=True;TrustServerCertificate=True
+2026-04-02 21:44:13.699 +07:00 [INF] NotificationHub: 

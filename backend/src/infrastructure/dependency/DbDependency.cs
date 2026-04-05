@@ -42,11 +42,15 @@ namespace infrastructure.dependency
                 cfg.CreateMap<CategoryEntity, Category>();
 
                 cfg.CreateMap<Products, ProductEntity>()
-                    .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Images));
-                cfg.CreateMap<ProductEntity, Products>();
+                    .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Images))
+                    .ForMember(dest => dest.AvgRating, opt => opt.Ignore());
+                cfg.CreateMap<ProductEntity, ProductViewDto>()
+                    .ForMember(dest => dest.ReviewCount, opt => opt.MapFrom(src => src.Reviews.Count))
+                    .ForMember(dest => dest.AvgRating, opt => opt.MapFrom(src =>
+                        src.Reviews.Any() ? src.Reviews.Average(r => r.Rating) : 0));
                 cfg.CreateMap<Products, ProductViewDto>();
                 cfg.CreateMap<ProductEntity, ProductViewDto>().ReverseMap();
-                
+                cfg.CreateMap<ProductEntity, Products>();
                 cfg.CreateMap<Order, OrderEntity>()
                     .ForMember(dest => dest.StatusOrdere, opt => opt.MapFrom(src => src.Status)).ReverseMap();
                 cfg.CreateMap<OrderItem, OrderItemEntity>();
@@ -61,23 +65,25 @@ namespace infrastructure.dependency
                     .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.UnitPrice));
                 cfg.CreateMap<CartItem, CartItemEntity>()
                     .ForMember(dest => dest.UnitPrice, opt => opt.MapFrom(src => src.Price));
-                
+
 
                 cfg.CreateMap<Review, ReviewEntity>()
                     .ForMember(dest => dest.ProductEntityId, opt => opt.MapFrom(src => src.ProductId));
 
                 cfg.CreateMap<ReviewEntity, Review>()
                     .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.ProductEntityId));
-
+                cfg.CreateMap<ReviewEntity, ReviewDto>().ReverseMap();
                 cfg.CreateMap<Voucher, VoucherEntity>().ReverseMap();
 
                 cfg.CreateMap<Address, AddressEntity>().ReverseMap();
 
                 cfg.CreateMap<Notification, NotificationEntity>().ReverseMap();
             });
+            var connection = configuration.GetConnectionString("DefaultConnection");
+            Log.Error($"Connnection: {connection}");
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(connection);
             });
 
             services.AddIdentityCore<AppUser>()
@@ -122,7 +128,7 @@ namespace infrastructure.dependency
                     {
                         var accessToken = context.Request.Query["access_token"];
                         var path = context.HttpContext.Request.Path;
-                        if(!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/notificationHub"))
+                        if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/notificationHub"))
                         {
                             context.Token = accessToken;
                         }

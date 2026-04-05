@@ -1,0 +1,24 @@
+2026-04-03 11:02:47.572 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 11:02:55.381 +07:00 [ERR] Connnection: Server=FC-HAN\SQLEXPRESS;Database=TMDT;Trusted_Connection=True;TrustServerCertificate=True
+2026-04-03 11:03:06.108 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 11:05:17.526 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 11:05:17.544 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 11:05:47.517 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 11:06:10.952 +07:00 [ERR] Connnection: Server=FC-HAN\SQLEXPRESS;Database=TMDT;Trusted_Connection=True;TrustServerCertificate=True
+2026-04-03 11:06:38.159 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 11:08:34.299 +07:00 [INF] Cập nhật thành công.
+2026-04-03 11:08:34.445 +07:00 [INF] Gửi thông báo thành công
+2026-04-03 11:08:41.616 +07:00 [INF] Cập nhật thành công.
+2026-04-03 11:08:41.631 +07:00 [INF] Gửi thông báo thành công
+2026-04-03 11:09:59.780 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 11:10:06.306 +07:00 [ERR] Connnection: Server=FC-HAN\SQLEXPRESS;Database=TMDT;Trusted_Connection=True;TrustServerCertificate=True
+2026-04-03 11:10:16.694 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 11:16:02.072 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 11:16:08.875 +07:00 [ERR] Connnection: Server=FC-HAN\SQLEXPRESS;Database=TMDT;Trusted_Connection=True;TrustServerCertificate=True
+2026-04-03 11:16:09.489 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 11:17:28.535 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 11:17:28.548 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 11:17:58.543 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-03 11:18:28.606 +07:00 [ERR] Connnection: Server=FC-HAN\SQLEXPRESS;Database=TMDT;Trusted_Connection=True;TrustServerCertificate=True
+2026-04-03 11:21:40.211 +07:00 [ERR] Connnection: Server=FC-HAN\SQLEXPRESS;Database=TMDT;Trusted_Connection=True;TrustServerCertificate=True
+2026-04-03 11:23:36.464 +07:00 [ERR] Connnection: Server=FC-HAN\SQLEXPRESS;Database=TMDT;Trusted_Connection=True;TrustServerCertificate=True

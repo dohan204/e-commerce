@@ -1,0 +1,34 @@
+2026-04-02 15:00:00.714 +07:00 [INF] Create product: Giày búp bê - búp bê - 290000 - 50 - 1021 - /uploads/ae38a563-eeb6-43c6-817b-6ee992292874.jpg
+2026-04-02 15:00:00.734 +07:00 [INF] Create product successfully.
+2026-04-02 15:00:44.349 +07:00 [INF] Create product: Giày sandal nữ - giày sandal - 300000 - 50 - 1021 - /uploads/99cf0b6d-fc39-467c-8928-434899712e83.jpg
+2026-04-02 15:00:44.362 +07:00 [INF] Create product successfully.
+2026-04-02 15:01:20.251 +07:00 [INF] Create product: Giày boot nữ - giày boot - 600000 - 50 - 1021 - /uploads/20c5f279-e667-4e1a-81de-1e5e4388fae0.jpg
+2026-04-02 15:01:20.266 +07:00 [INF] Create product successfully.
+2026-04-02 15:01:57.277 +07:00 [INF] Create product: Dép nữ thời trang - dép nữ - 150000 - 50 - 1021 - /uploads/f59b66f1-90f2-473e-8664-1f33326120db.jpg
+2026-04-02 15:01:57.292 +07:00 [INF] Create product successfully.
+2026-04-02 15:02:33.034 +07:00 [INF] Create product: Giày thể thao nữ - giày thể thao - 250000 - 50 - 1022 - /uploads/1bcb35c3-4e15-4ad9-bbfa-4b06f3cfdc14.jpg
+2026-04-02 15:02:33.048 +07:00 [INF] Create product successfully.
+2026-04-02 15:03:15.204 +07:00 [INF] Create product: Giày đế bánh mì - bánh mì - 300000 - 100 - 1021 - /uploads/85f463a3-bb7e-4e2d-ba5b-44f39b6dcf1d.jpg
+2026-04-02 15:03:15.222 +07:00 [INF] Create product successfully.
+2026-04-02 15:07:32.218 +07:00 [INF] Create product: Đồ chơi xếp hình - Đồ chơi xếp hình - 200000 - 20 - 1023 - /uploads/14c71e16-dcbf-4d52-87e2-8ab5354731f5.jpg
+2026-04-02 15:07:32.235 +07:00 [INF] Create product successfully.
+2026-04-02 15:08:00.343 +07:00 [INF] Create product: Đồ chơi lego - lego - 150000 - 50 - 1023 - /uploads/b1041000-79ba-44ee-86fd-5a58dd1c977a.jpg
+2026-04-02 15:08:00.357 +07:00 [INF] Create product successfully.
+2026-04-02 15:08:29.791 +07:00 [INF] Create product: Đồ chơi nấu ăn - nấu ăn - 80000 - 50 - 1023 - /uploads/1222c858-245d-4d38-87f8-e60db480d344.jpg
+2026-04-02 15:08:29.807 +07:00 [INF] Create product successfully.
+2026-04-02 15:09:01.932 +07:00 [INF] Create product: Đồ chơi bác sĩ - bác siz - 90000 - 50 - 1023 - /uploads/5eb91338-1735-49ec-a42a-b48a1da5c506.jpg
+2026-04-02 15:09:01.945 +07:00 [INF] Create product successfully.
+2026-04-02 15:09:34.288 +07:00 [INF] Create product: Xe đồ chơi - xe đồ chơi - 40000 - 30 - 1023 - /uploads/be4e0dbd-7f48-4a99-bcee-b6a5357080f8.jpg
+2026-04-02 15:09:34.304 +07:00 [INF] Create product successfully.
+2026-04-02 15:10:07.465 +07:00 [INF] Create product: Robot đồ chơi - robot - 100000 - 50 - 1023 - /uploads/0c2a2260-816a-46a4-9e6f-f4d4b2405f75.jpg
+2026-04-02 15:10:07.478 +07:00 [INF] Create product successfully.
+2026-04-02 15:10:43.684 +07:00 [INF] Create product: Thú nhồi bông - đồ chơi thú nhồi bông - 60000 - 50 - 1023 - /uploads/9e43568d-4159-4469-92d1-ade545f52b63.jpg
+2026-04-02 15:10:43.699 +07:00 [INF] Create product successfully.
+2026-04-02 15:20:30.474 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 15:23:00.140 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 15:23:00.157 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 15:23:30.135 +07:00 [INF] NotificationHub: 1277e68e-3f9e-4286-bad2-85fb44b833a4
+2026-04-02 15:27:31.468 +07:00 [ERR] Connnection: Server=FC-HAN\\SQLEXPRESS;Database=TMDT;Trusted_Connection=True;TrustServerCertificate=True
+2026-04-02 15:29:57.620 +07:00 [ERR] Connnection: Server=FC-HAN\\SQLEXPRESS;Database=TMDT;Trusted_Connection=True;TrustServerCertificate=True
+2026-04-02 15:34:24.430 +07:00 [ERR] Connnection: Server=FC-HAN\SQLEXPRESS;Database=TMDT;Trusted_Connection=True;TrustServerCertificate=True
+2026-04-02 15:36:06.034 +07:00 [ERR] Connnection: Server=FC-HAN\SQLEXPRESS;Database=TMDT;Trusted_Connection=True;TrustServerCertificate=True

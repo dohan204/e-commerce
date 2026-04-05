@@ -1,5 +1,6 @@
 using api.Helpers.Dtos;
 using application.cases.Commands.Users;
+using application.cases.Dtos;
 using application.cases.Queries.Users;
 using domain.entities;
 using MediatR;
@@ -25,14 +26,14 @@ namespace api.Controllers
             _getAll = getAllUserQuery;
             _mediator = mediator;
         }
-        
+
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(Guid id)
         {
             var result = await _handler.Handle(id);
-            if(result is null)
+            if (result is null)
                 return NotFound(result);
             return Ok(result);
         }
@@ -41,10 +42,11 @@ namespace api.Controllers
         [AllowAnonymous]
         [ProducesResponseType(typeof(CreateUserCommand), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<IActionResult> CreateAsync(CreateUserCommand command) 
+        public async Task<IActionResult> CreateAsync(CreateUserCommand command)
         {
             await _createUserHandler.Handle(command);
-            return StatusCode(StatusCodes.Status201Created,new {
+            return StatusCode(StatusCodes.Status201Created, new
+            {
                 Status = StatusCodes.Status201Created,
                 Message = "Created Successfully"
             });
@@ -54,19 +56,23 @@ namespace api.Controllers
         public async Task<IActionResult> GetUsers()
         {
             var result = await _getAll.Handle();
-            if(!result.Any())
-                return Ok(new
+            if (!result.Any())
+                return Ok(new ApiResponse<IReadOnlyList<UserResponseList>>
                 {
-                    message = "chưa có người dùng nào",
-                    data = result
+                    Message = "chưa có người dùng nào",
+                    Data = result
                 });
-            return Ok(result);
+            return Ok(new ApiResponse<IReadOnlyList<UserResponseList>>
+            {
+                Message = "Lấy dữ liệu thành công",
+                Data = result
+            });
         }
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var command = new RemoveUserCommand {id = id};
+            var command = new RemoveUserCommand { id = id };
             await _mediator.Send(command);
             return NoContent();
         }
@@ -74,9 +80,9 @@ namespace api.Controllers
         [ProducesResponseType<IEnumerable<Order>>(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetOrderUser(Guid userId)
         {
-            var query = new GetOrdersUserQuery { UserId = userId};
+            var query = new GetOrdersUserQuery { UserId = userId };
             var result = await _mediator.Send(query);
-            if(!result.Any())
+            if (!result.Any())
                 return Ok(new ApiResponse<IEnumerable<Order>>
                 {
                     Message = $"Không có đơn hàng của người dùng {query}",
@@ -94,7 +100,7 @@ namespace api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetCount()
         {
-            var user = await _mediator.Send(new GetCountUserQuery {});
+            var user = await _mediator.Send(new GetCountUserQuery { });
             return Ok(new ApiResponse<int>
             {
                 Message = "Lấy dữ liệu thành công",

@@ -25,6 +25,7 @@ namespace infrastructure.repositories
         public async Task<IEnumerable<ProductViewDto>> GetProductsAsync()
         {
             return await _ctx.Products.AsNoTracking()
+                .Include(e => e.Reviews)
                 .Select(p => new ProductViewDto
                 {
                     Id = p.Id,
@@ -33,11 +34,11 @@ namespace infrastructure.repositories
                     Price = p.Price,
                     Stock = p.Stock,
                     Sold = p.Sold,
-                    ReviewCount = p.ReviewCount,
                     SalePrice = (decimal)p.SalePrice!,
                     CategoryId = p.CategoryId,
                     ImageUrl = p.ImageUrl,
-                    AvgRating = (decimal)p.AvgRating!,
+                    ReviewCount = p.Reviews.Count(),
+                    AvgRating = p.Reviews.Average(e => e.Rating),
                 }).ToListAsync();
         }
         public async Task<Products?> GetProductById(int id)
@@ -88,7 +89,8 @@ namespace infrastructure.repositories
 
         public async Task<IEnumerable<TopProductSale>> GetTopProductSalesAsync()
         {
-            return await _ctx.Products.AsNoTracking()
+            var products = await _ctx.Products.AsNoTracking()
+                .Include(e => e.Reviews)
                 .GroupBy(e => e.Name)
                 .Select(e => new TopProductSale
                 {
@@ -97,20 +99,23 @@ namespace infrastructure.repositories
                 })
                 .OrderByDescending(e => e.Quantity)
                 .ToListAsync();
+
+            return products;
         }
         public async Task<PagedResult<ProductViewDto>> PaginationProduct(int page, int pageSize, string? search, int? categoryId)
         {
             var products = _ctx.Products.AsNoTracking().AsQueryable();
 
-            if(!string.IsNullOrEmpty(search))
+            if (!string.IsNullOrEmpty(search))
                 products = products.Where(e => e.Name.Contains(search) || e.Tag.Contains(search));
 
-            if(categoryId.HasValue)
+            if (categoryId.HasValue)
                 products = products.Where(e => e.CategoryId == categoryId.Value);
 
             var total = await products.CountAsync();
 
             var items = await products
+            .Include(e => e.Reviews.Where(e => !e.IsDeleted))
                 .OrderBy(e => e.Id)
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
@@ -130,7 +135,7 @@ namespace infrastructure.repositories
             var product = await _ctx.Products.AsNoTracking()
             .Where(e => e.Name.Contains(search) || e.CategoryEntity.Name.Contains(search))
             .ToListAsync();
-            
+
             return _mapper.Map<IEnumerable<ProductViewDto>>(product);
         }
 
@@ -142,5 +147,7 @@ namespace infrastructure.repositories
                 .ToListAsync();
             return _mapper.Map<IEnumerable<ProductViewDto>>(products);
         }
+
+
     }
 }

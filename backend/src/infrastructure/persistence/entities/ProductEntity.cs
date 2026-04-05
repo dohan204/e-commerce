@@ -21,7 +21,7 @@ namespace infrastructure.persistence.entities
         public CategoryEntity CategoryEntity { get; set; }
         public string? ImageUrl { get; set; }
         public decimal? AvgRating { get; set; }
-        public int? ReviewCount { get; set; }
+        public int ReviewCount {get; set;}
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public StatusProduct Status { get; set; } = StatusProduct.active;

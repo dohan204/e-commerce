@@ -1,0 +1,5 @@
+2026-04-05 11:45:35.095 +07:00 [ERR] Connnection: Server=FC-HAN\SQLEXPRESS;Database=TMDT;Trusted_Connection=True;TrustServerCertificate=True
+2026-04-05 11:50:03.442 +07:00 [ERR] Connnection: Server=FC-HAN\SQLEXPRESS;Database=TMDT;Trusted_Connection=True;TrustServerCertificate=True
+2026-04-05 11:51:23.344 +07:00 [INF] Start insert Db,
+2026-04-05 11:51:23.935 +07:00 [INF] Xóa sản phẩm trong giỏ hàng thành công
+2026-04-05 11:51:23.935 +07:00 [INF] Xóa sản phẩm trong giỏ hàng thành công

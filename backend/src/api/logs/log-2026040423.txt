@@ -1,0 +1,3 @@
+2026-04-04 23:09:52.247 +07:00 [INF] Cập nhật thành công Trạng thái đơn hàng: $29
+2026-04-04 23:09:58.829 +07:00 [INF] Cập nhật thành công Trạng thái đơn hàng: $29
+2026-04-04 23:16:48.118 +07:00 [ERR] Connnection: Server=FC-HAN\SQLEXPRESS;Database=TMDT;Trusted_Connection=True;TrustServerCertificate=True

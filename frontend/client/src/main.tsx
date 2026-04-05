@@ -13,12 +13,20 @@ import { UserProvider } from "./hooks/useUserContext.tsx"
 import Login from "./pages/authentication/Login.tsx"
 import Payments from "./pages/payments/index.tsx"
 import Order from "./pages/orders/index.tsx"
-import SearchHeader from "./components/Search.tsx"
 import SearchResult from "./components/SearchResult.tsx"
-import Notification from "./pages/notifications/index.tsx"
 import OrderHistory from "./pages/orders/OrderHistory.tsx"
-import NotificationProvider from "./hooks/useNotificationContext.tsx"
+import Notification from "./pages/notifications/index.tsx"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import OrderSuccess from "./pages/orders/OrderSuccess.tsx"
 
+const query = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      staleTime: 2 * 1000 * 60,
+    }
+  }
+});
 const router = createBrowserRouter([
   {
     path: '/',
@@ -68,6 +76,10 @@ const router = createBrowserRouter([
       {
         path: '/orders',
         element: <OrderHistory />
+      },
+      {
+        path: '/orders/success',
+        element: <OrderSuccess />
       }
     ]
   },
@@ -78,10 +90,10 @@ const router = createBrowserRouter([
 ])
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <NotificationProvider>
-      <UserProvider>
-        <RouterProvider router={router} />
-      </UserProvider>
-    </NotificationProvider>
+    <QueryClientProvider client={query}>
+        <UserProvider>
+          <RouterProvider router={router} />
+        </UserProvider>
+    </QueryClientProvider>
   </StrictMode>
 )

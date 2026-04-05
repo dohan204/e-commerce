@@ -1,11 +1,11 @@
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { API_ENDPOINTS } from '@/constants/UrlGlobal';
-import useFetch from '@/hooks/useFetch'
+import useFetchData from '@/hooks/useFetch';
 import { useUserContext } from '@/hooks/useUserContext';
 import type { Order } from '@/models/Orders';
 import type { Base } from '@/models/response/base';
-import axios from 'axios';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
@@ -20,18 +20,16 @@ const OrderHistory = () => {
   const { user } = useUserContext();
   const userId = user?.id || '';
   const [count, setCount] = useState(0);
-  const { data } = useFetch<Base<Order>>(API_ENDPOINTS.ORDER.GETBYUSERID(userId), [count]);
+  const { data, isLoading } = useFetchData<Base<Order>>(API_ENDPOINTS.ORDER.GETBYUSERID(userId), `orders_${userId}`, [userId, count], {
+    enabled: !!userId
+  });
 
-
-  const token = localStorage.getItem('token');
-  if (!token)
-    return;
   const HandleCancelOrder = async (id: number) => {
     try {
       const res = await fetch(API_ENDPOINTS.ORDER.CANCELLED(id), {
         method: 'PUT',
         headers: {
-          'Authorization': `Bearer ${token}`
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
 
@@ -54,7 +52,7 @@ const OrderHistory = () => {
       const res = await fetch(API_ENDPOINTS.ORDER.DELETE(id), {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${token}`
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
       })
       if (!res.ok) {
@@ -62,7 +60,7 @@ const OrderHistory = () => {
       };
 
       toast.success("Xóa Đơn hàng thành công.", { position: 'top-center' });
-      setCount(prev => prev - 1);
+      setCount(prev => prev + 1);
     } catch (err) {
       toast.error("Xóa đơn hàng thất bại.", { position: 'top-center' })
       console.log(err);
@@ -86,12 +84,32 @@ const OrderHistory = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {data?.data?.map((order) => (
+            {isLoading ? (
+              <TableRow>
+                {(
+                  Array.from({ length: 5 }).map((_, i) => (
+                    <TableRow key={i}>
+                      <TableCell><Skeleton className='h-4 w-full rounded-md' /></TableCell>
+                      <TableCell><Skeleton className='h-4 w-full rounded-md' /></TableCell>
+                      <TableCell><Skeleton className='h-4 w-full rounded-md' /></TableCell>
+                      <TableCell><Skeleton className='h-4 w-full rounded-md' /></TableCell>
+                      <TableCell><Skeleton className='h-4 w-full rounded-md' /></TableCell>
+                    </TableRow>
+                  ))
+                )}
+              </TableRow>
+            ) : data?.data?.length === 0 ? (
+              <TableRow>
+                <TableCell colSpan={5} className="text-center text-muted-foreground">
+                  Bạn chưa có đơn hàng nào.
+                </TableCell>
+              </TableRow>
+            ) : data?.data?.map((order) => (
               <TableRow key={order.id}>
                 <TableCell>{new Date(order.createdAt).toLocaleDateString('vi-VN')}</TableCell>
                 <TableCell>{OrderStatus[order.status as keyof typeof OrderStatus]}</TableCell>
                 <TableCell>{order.items.length}</TableCell>
-                <TableCell>{order.totalAmount.toFixed(2)}</TableCell>
+                <TableCell>{order.totalAmount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</TableCell>
                 <TableCell className='flex items-center justify-center gap-2'>
                   {order.status === 4 || order.status === 3 ? (
                     <div>

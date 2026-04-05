@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Security.Cryptography.X509Certificates;
@@ -22,9 +23,11 @@ namespace domain.entities
         public int? Sold { get; private set; } = 0; // số lượng đẫ bán 
         public int CategoryId { get; private set; }
         public string? Images { get; private set; }
-        public string? Tag {get; private set; } 
-        public decimal? AvgRating { get; private set; }
-        public int? ReviewCount { get; private set; }
+        public string? Tag { get; private set; }
+        private readonly List<Review> _review = new();
+        public IReadOnlyList<Review> Reviews => _review;
+        public decimal AvgRating =>  _review.Average(e => e.Rating);      
+        public int ReviewCount => _review.Count; 
         public StatusProduct Status { get; set; } = StatusProduct.active;
         public DateTime Created_At { get; set; }
         public Products() { }
@@ -58,8 +61,6 @@ namespace domain.entities
             this.Sold = 0;
             this.CategoryId = categoryId;
             this.Images = images ?? string.Empty;
-            this.AvgRating = 0;
-            this.ReviewCount = 0;
             this.SalePrice = 0;
             this.Slug = GenerateSlug(name);
             this.Created_At = DateTime.Now;
@@ -84,8 +85,6 @@ namespace domain.entities
             this.Sold = 0;
             this.CategoryId = categoryId;
             this.Images = imageUrl;
-            this.AvgRating = 0;
-            this.ReviewCount = 0;
             this.SalePrice = 0;
             this.Slug = GenerateSlug(name);
             this.Created_At = DateTime.Now;
@@ -139,6 +138,21 @@ namespace domain.entities
         {
             Stock += stock;
             Sold -= stock;
+        }
+
+        public void AddReview(Review review)
+        {
+            if (review is null)
+                throw new DomainException("Review cannot be null");
+
+            if (_review.Any(e => e.UserId == review.UserId))
+            {
+                throw new DomainException("User already reviewd this product");
+            }
+
+            _review.Add(review);
+
+            // UpdateAvgRating();
         }
     }
 }

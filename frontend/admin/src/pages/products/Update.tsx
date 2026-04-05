@@ -23,11 +23,10 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select'
-import useFetchs from '@/hooks/use-fetch'
-import type { Product } from '@/models/products'
 import { API_ENDPOINTS } from '@/constants/urls'
 import { authService } from '@/services/authService'
 import { toast } from 'sonner'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 // import { categories } from '../categories/DataTable'
 
 /* ✅ FIX schema */
@@ -67,33 +66,31 @@ export default function Update({
       salePrice: item.salePrice ?? 0,
       stock: item.stock ?? 0,
 
-      
+
       categoryId: item.categoryId
     }
   })
 
   const [open, setOpen] = useState(false)
 
-  /* ✅ handle submit */
-  const onSubmit = async (values: ModelUpdate) => {
-    console.log('form values:', values)
 
-    /* 🔥 nếu có file → dùng FormData */
-    const formData = new FormData()
 
-    formData.append('id', String(item.id))
-    formData.append('name', values.name ?? '')
-    formData.append('description', values.description ?? '')
-    formData.append('price', String(values.price ?? 0))
-    formData.append('salePrice', String(values.salePrice ?? 0))
-    formData.append('stock', String(values.stock ?? 0))
-    formData.append('categoryId', String(values.categoryId ?? 0))
+  const userClient = useQueryClient();
+  const mutation = useMutation({
+    mutationFn: async (values: ModelUpdate): Promise<void> => {
+      const formData = new FormData()
 
-    if (values.imageFile) {
-      formData.append('file', values.imageFile)
-    }
-    console.log('formData entries:', Array.from(formData.entries()))
-    try {
+      formData.append('id', String(item.id))
+      formData.append('name', values.name ?? '')
+      formData.append('description', values.description ?? '')
+      formData.append('price', String(values.price ?? 0))
+      formData.append('salePrice', String(values.salePrice ?? 0))
+      formData.append('stock', String(values.stock ?? 0))
+      formData.append('categoryId', String(values.categoryId ?? 0))
+
+      if (values.imageFile) {
+        formData.append('file', values.imageFile)
+      }
       const response = await fetch(API_ENDPOINTS.PRODUCT.UPDATE, {
         method: 'PUT',
         headers: {
@@ -106,14 +103,21 @@ export default function Update({
       if (!response.ok)
         throw new Error("update failed");
 
+    },
+    onSuccess: () => {
       toast.success("Cập nhật thành công", { position: 'top-center' });
-      refresh();
+      userClient.invalidateQueries({ queryKey: ['products'] })
       setOpen(false);
-    } catch (err) {
-      toast.error("Cập nhật thất bại", { position: 'top-center' })
+    },
+    onError: (error) => {
+      toast.error("Cập nhật thất bại.", { position: 'top-center' });
+      console.error(error);
     }
-  }
+  })
 
+  const onSubmit = async (values: ModelUpdate) => {
+    mutation.mutate(values);
+  }
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>

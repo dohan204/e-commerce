@@ -1,4 +1,4 @@
-import type { product } from '@/models/Products'
+import type { product, Review } from '@/models/Products'
 import { useNavigate } from 'react-router'
 import { url } from '@/constants/UrlGlobal'
 
@@ -13,10 +13,19 @@ const ProductCards = ({ product }: Props) => {
     product.salePrice && product.price > 0
       ? Math.round((1 - product.salePrice / product.price) * 100)
       : null
+
+  if(!product.reviews) {
+    return;
+  } 
+  const avg = CalculatorRating(product.reviews);
+    const prd = {
+      ...product,
+      avgRatings: avg
+    }
   return (
     <div
       className="relative border rounded-xl p-4 shadow hover:scale-105 transition cursor-pointer"
-      onClick={() => navigate(`/product/detail/${product.id}`, { state: product })}
+      onClick={() => navigate(`/product/detail/${product.id}`, { state: prd })}
     >
       {/* Discount badge */}
       {discountPercent !== null && (
@@ -35,7 +44,7 @@ const ProductCards = ({ product }: Props) => {
       {/* Info */}
       <div className="mt-3">
         <div className="flex items-center gap-1 text-yellow-500 text-sm">
-          ⭐ <span className="text-black">{product.avgRatings}</span>
+          ⭐ <span className="text-black">{prd.avgRatings}</span>
         </div>
 
         <h3 className="font-medium text-sm mt-1 line-clamp-2">{product.name}</h3>
@@ -52,3 +61,9 @@ const ProductCards = ({ product }: Props) => {
 }
 
 export default ProductCards
+
+function CalculatorRating(ratings: Review[]) {
+    return ratings.length === 0
+        ? 0
+        : ratings.reduce((sum, item) => sum + item.rating, 0) / ratings.length;
+}

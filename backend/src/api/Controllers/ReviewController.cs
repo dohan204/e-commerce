@@ -31,7 +31,6 @@ namespace api.Controllers
             });
         }
         [HttpPost("create")]
-        [AllowAnonymous]
         [ProducesResponseType(typeof(Review), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> CreateAsync([FromBody] CreateReviewCommand command)
@@ -50,6 +49,17 @@ namespace api.Controllers
         {
             await _mediator.Send(new DeleteReviewCommand { ReviewId = reviewId});
             return NoContent();
+        }
+
+        [HttpGet("review/{userProductId}")]
+        [Authorize]
+        public async Task<IActionResult> CheckProductReview(int userProductId)
+        {
+            var query = new CheckUserValidReview { ProductId = userProductId };
+            var isValid = await _mediator.Send(query);
+            if(!isValid)
+                return NotFound();
+            return Ok();
         }
     }
 }
